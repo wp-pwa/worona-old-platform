@@ -29,7 +29,7 @@ worona:app-base
 ### Worona App Optional Packages
 #   ------------------------
 #   These packages go with the shipped version of Worona but you can remove
-#   them and Worona should still work properly. They depend on worona-app-core.
+#   them and Worona should still work properly. They depend on worona-app-base.
 
 # worona:app-tester
 
