@@ -462,10 +462,8 @@ Tinytest.add(
   }
 );
 
-// This test is failing on purpose. It shouldn't fail if Meteor solves the
-// issue #
 Tinytest.add(
-  'worona:state-api - We can set different fields on arrays',
+  'worona:state-api - We can set different fields on cursors',
 
   function(test) {
     beforeEach();
@@ -480,6 +478,39 @@ Tinytest.add(
     Worona.set('posts.isReady', true);
 
     var posts = Worona.get('posts');
+    test.equal(posts[0].title, 'Post 1');
+    test.equal(posts[0].url, 'http://blog.com');
+    test.equal(posts[1].title, 'Post 2');
+    test.equal(posts[1].url, 'http://blog2.com');
+    test.equal(Worona.get('posts.isReady'), true);
+    test.equal(Blaze.toHTML(Template.postTemplate4),
+      'Post title is Post 1 and url is http://blog.com. ' +
+      'Post title is Post 2 and url is http://blog2.com. '
+    );
+  }
+);
+
+Tinytest.add(
+  'worona:state-api - We can set different fields on cursors reactively',
+
+  function(test) {
+    beforeEach();
+
+    var posts;
+    Tracker.autorun(() => {
+      posts = Worona.get('posts');
+    });
+
+    Posts = new Mongo.Collection(null);
+    Posts.insert({ title: 'Post 1', url: 'http://blog.com' });
+    Posts.insert({ title: 'Post 2', url: 'http://blog2.com' });
+
+    Worona.set('posts', () => {
+      return Posts.find();
+    });
+    Worona.set('posts.isReady', true);
+    Tracker.flush();
+
     test.equal(posts[0].title, 'Post 1');
     test.equal(posts[0].url, 'http://blog.com');
     test.equal(posts[1].title, 'Post 2');
