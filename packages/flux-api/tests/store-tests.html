@@ -1,0 +1,10 @@
+<template name="testNested">
+This is {{author.name}}. He has {{author.age}}.
+</template>
+
+<template name="testWithAndNested">
+{{#with author}}This is {{name}}. He has {{age}}.{{/with}}
+</template>
+
+
+<!-- hacer unos tests con más nested tipo author.img.url -->

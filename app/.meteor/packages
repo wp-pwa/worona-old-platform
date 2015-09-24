@@ -1,0 +1,42 @@
+# Meteor packages used by this project, one per line.
+
+### Meteor Base:
+#   ------------
+#   Required Meteor platform packages.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+
+
+### Worona App Core:
+#   ----------------
+#   This package contains all the minimum pieces to get Worona working.
+#   You also need at least one theme package.
+
+worona:app-base
+
+
+
+### Worona App Optional Packages
+#   ------------------------
+#   These packages go with the shipped version of Worona but you can remove
+#   them and Worona should still work properly. They depend on worona-app-core.
+
+# worona:app-tester
+
+
+
+### Your Custom Packages
+#   ------------------------
+#   If you want to add some custom package go ahead and add them here.
+
+# your-name:cutom-package
