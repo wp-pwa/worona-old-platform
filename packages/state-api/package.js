@@ -1,15 +1,15 @@
 Package.describe({
   name: 'worona:state-api',
   version: '1.0.0',
-  summary: 'App State API for Worona apps.',
-  git: 'https://github.com/worona/worona-app/',
+  summary: 'AppState API for Worona apps.',
+  git: 'https://github.com/worona/worona/',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
-  api.use('xamfoo:reactive-obj');
+  api.use('xamfoo:reactive-obj@0.5.0');
   api.use('blaze-html-templates');
   api.addFiles('lib/client/state-api.js', 'client');
 });

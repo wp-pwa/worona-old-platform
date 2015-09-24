@@ -2,13 +2,13 @@ Package.describe({
   name: 'worona:app-external-libraries',
   version: '1.0.0',
   summary: 'Worona App External Libraries.',
-  git: 'https://github.com/worona/worona-app/',
+  git: 'https://github.com/worona/worona/',
   documentation: 'README.md'
 });
 
 Package.onUse(function (api) {
 
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('1.2');
 
   // External packages needed for Worona App (but not Worona Dashboard).
   var packages = [];

@@ -97,6 +97,8 @@ Worona.AppState = class AppState {
   }
 };
 
+// We create a new instance and asign its methods to the final Worona namespace.
+// We have to bind them so they use the correct class this, instead of Worona's.
 var appState = new Worona.AppState();
 Worona.set = appState.set.bind(appState);
 Worona.get = appState.get.bind(appState);
