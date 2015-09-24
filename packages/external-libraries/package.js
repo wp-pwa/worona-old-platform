@@ -2,7 +2,7 @@ Package.describe({
   name: 'worona:external-libraries',
   version: '1.0.0',
   summary: 'External libraries for Worona App and Worona Dashboard.',
-  git: 'https://github.com/worona/worona-app/',
+  git: 'https://github.com/worona/worona/',
   documentation: 'README.md'
 });
 

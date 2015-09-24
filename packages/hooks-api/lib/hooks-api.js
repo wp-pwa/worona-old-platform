@@ -182,7 +182,7 @@ class Filter extends Hook {
   }
 }
 
-// We create a new class and asign its methods to the final Worona namespace.
+// We create a new instance and asign its methods to the final Worona namespace.
 // We have to bind them so they use the correct class this, instead of Worona's.
 var action = new Action();
 Worona.doAction      = action.doHook.bind(action);
@@ -190,7 +190,7 @@ Worona.addAction     = action.addHook.bind(action);
 Worona.removeAction  = action.removeHook.bind(action);
 Worona._resetActions = action._reset.bind(action);
 
-// We create a new class and asign its methods to the final Worona namespace.
+// We create a new instance and asign its methods to the final Worona namespace.
 // We have to bind them so they use the correct class this, instead of Worona's.
 var filter = new Filter();
 Worona.doFilter      = filter.doHook.bind(filter);

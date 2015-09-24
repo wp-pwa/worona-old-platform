@@ -2,7 +2,7 @@ Package.describe({
   name: 'worona:app-base',
   version: '1.0.0',
   summary: 'Worona App Base Package. Adding this should get you going.',
-  git: '',
+  git: 'https://github.com/worona/worona/',
   documentation: 'README.md',
 });
 
