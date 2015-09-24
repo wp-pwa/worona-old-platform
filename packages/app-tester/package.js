@@ -8,11 +8,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
-  api.addFiles('app-tester.js');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
   api.use('worona:app-tester');
-  api.addFiles('app-tester-tests.js');
 });
