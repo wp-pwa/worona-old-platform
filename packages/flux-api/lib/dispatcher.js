@@ -13,6 +13,8 @@ Worona.Dispatcher = class Dispatcher {
 
     payload.actionType = actionType;
     this._dispatcher.dispatch(payload);
+
+    console.log('Action: ' + actionType + '.  ', _.omit(payload, 'actionType'));
   }
 
   // The register method is just like the MeteorFlux register method but it

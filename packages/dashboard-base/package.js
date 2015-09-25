@@ -18,7 +18,8 @@ Package.onUse(function (api) {
     'worona:dashboard-external-libraries@1.0.0', // no deps
     'worona:hooks-api@1.0.0', // external-libraries
     'worona:flux-api@1.0.0', // external-libraries, meteorflux:dispatcher
-    'worona:state-api@1.0.0' // external-libraries, xamfoo:reactive-obj
+    'worona:state-api@1.0.0', // external-libraries, xamfoo:reactive-obj
+    'worona:dashboard-router@1.0.0' // kadirahq:flow-router
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.
