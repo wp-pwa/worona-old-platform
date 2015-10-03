@@ -20,10 +20,10 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 ### Worona App Core:
 #   ----------------
 #   This package contains all the minimum pieces to get Worona working.
-#   You also need at least one theme package.
+#   You also need at least one theme package and one content package.
 
 worona:app-base
-
+worona:wordpress-org-api
 
 
 ### Worona App Optional Packages
