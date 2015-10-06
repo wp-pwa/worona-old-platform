@@ -9,6 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
+  api.use('kadira:blaze-layout@2.1.0');
   api.addFiles('lib/theme-switcher.js', 'client');
 });
 

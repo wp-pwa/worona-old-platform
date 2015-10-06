@@ -1,0 +1,15 @@
+<template name="chess">
+  <head>
+    {{> head}}
+  </head>
+  <body class="wrn-body">
+    {{> header}}
+
+    {{#if isHome}}
+      {{> home}}
+    {{/if}}
+
+    {{> footer}}
+    <div id="async-scripts"></div>
+  </body>
+</template>
