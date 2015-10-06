@@ -11,6 +11,8 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.1
 callback-hook@1.0.4
 check@1.0.6
+coffeescript@1.0.9
+cosmos:browserify@0.5.1
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.1
@@ -29,6 +31,7 @@ htmljs@1.0.5
 http@1.1.1
 id-map@1.0.4
 jquery@1.11.4
+kadira:flow-router@2.6.2
 launch-screen@1.0.4
 livedata@1.0.15
 logging@1.0.8
@@ -49,6 +52,7 @@ observe-sequence@1.0.7
 ordered-dict@1.0.4
 promise@0.4.8
 random@1.0.4
+reactive-dict@1.1.1
 reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
@@ -65,5 +69,7 @@ url@1.0.5
 webapp@1.2.2
 webapp-hashing@1.0.5
 worona:dashboard-base@1.0.0
+worona:dashboard-debug@1.0.0
 worona:dashboard-external-libraries@1.0.0
+worona:dashboard-router@1.0.0
 worona:external-libraries@1.0.0
