@@ -16,7 +16,8 @@ Package.onUse(function(api) {
   var packages = [
     'worona:external-libraries@1.0.0', // no deps
     'worona:dashboard-external-libraries@1.0.0', // no deps
-    'worona:dashboard-router@1.0.0' // kadira:flow-router
+    'worona:dashboard-router@1.0.0', // kadira:flow-router
+    'worona:theme-switcher@1.0.0'
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.

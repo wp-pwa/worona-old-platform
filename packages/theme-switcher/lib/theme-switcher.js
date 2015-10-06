@@ -1,0 +1,1 @@
+AppState.set('theme', 'chess');
