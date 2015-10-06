@@ -31,7 +31,7 @@ worona:dashboard-base
 #   These packages go with the shipped version of Worona but you can remove
 #   them and Worona should still work properly. They depend on worona-dashboard-base.
 
-
+worona:dashboard-debug
 
 
 ### Your Custom Packages:
