@@ -15,22 +15,25 @@ Package.onUse(function(api) {
   api.imply('jquery', 'client');
 
   api.addFiles([
-    'webflow.js',
+    'chess.js',
     'chess.html',
-    'head.html',
     'header.html',
     'footer.html',
+    'left-menu.html',
     'home.html',
-    'css/normalize.css',
-    'css/webflow.css',
-    'css/worona-dashboard.webflow.css',
+    'profile.html',
+    'css/1-normalize.css',
+    'css/2-webflow.css',
+    'css/3-worona-dashboard.webflow.css',
     'js/modernizr.js',
-    'js/webflow.js'
+    'js/webflow.js',
   ], 'client');
 
   api.addAssets([
     'images/worona.svg'
   ], 'client');
+
+  api.export('WebFontConfig');
 
 });
 

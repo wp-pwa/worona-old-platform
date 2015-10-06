@@ -1,10 +1,10 @@
-FlowRouter.route('/', {
+FlowRouter.route(AppState.get('homeUrl'), {
   action: function() {
     Dispatcher.dispatch('SHOW_HOME');
   },
 });
 
-FlowRouter.route('/profile', {
+FlowRouter.route(AppState.get('profileUrl'), {
   action: function() {
     Dispatcher.dispatch('SHOW_PROFILE');
   },

@@ -1,0 +1,16 @@
+<template name="chess_leftMenu">
+  <div>
+    <div class="wrn-menu-header">DASHBOARD</div>
+    <ul class="wrn-menu-list">
+      <li class="wrn-menu-list-item"><a class="wrn-menu-list-link {{#if isHome}}active{{/if}}" href="{{homeUrl}}">Apps</a>
+      </li>
+    </ul>
+    <div class="wrn-menu-header">Profile</div>
+    <ul class="wrn-menu-list">
+      <li class="wrn-menu-list-item"><a class="wrn-menu-list-link {{#if isProfile}}active{{/if}}" href="{{profileUrl}}">Edit profile</a>
+      </li>
+      <li class="wrn-menu-list-item"><a class="wrn-menu-list-link" href="#" data-action-type="LOGOUT">Logout</a>
+      </li>
+    </ul>
+  </div>
+</template>

@@ -3,6 +3,9 @@ body {
   color: #333;
   font-size: 14px;
   line-height: 20px;
+  background-color: #ecf0f1;
+  font-family:'Open Sans', sans-serif;
+  min-height: 100%;
 }
 h2 {
   margin-top: 20px;
@@ -38,8 +41,7 @@ a {
   color: #b3b3b3;
 }
 .wrn-body {
-  background-color: #ecf0f1;
-  font-family:'Open Sans', sans-serif;
+
 }
 .wrn-main {
   padding-top: 30px;
@@ -206,4 +208,3 @@ a {
   line-height: 40px;
   font-weight: 300;
 }
-
