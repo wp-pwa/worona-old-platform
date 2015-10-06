@@ -6,7 +6,7 @@ Package.describe({
   documentation: 'README.md',
 });
 
-Package.onUse(function (api) {
+Package.onUse(function(api) {
 
   api.versionsFrom('1.2');
 
@@ -16,9 +16,6 @@ Package.onUse(function (api) {
   var packages = [
     'worona:external-libraries@1.0.0', // no deps
     'worona:dashboard-external-libraries@1.0.0', // no deps
-    'worona:hooks-api@1.0.0', // external-libraries
-    'worona:flux-api@1.0.0', // external-libraries, meteorflux:dispatcher
-    'worona:state-api@1.0.0' // external-libraries, xamfoo:reactive-obj
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.
@@ -26,7 +23,7 @@ Package.onUse(function (api) {
 
 });
 
-Package.onTest(function (api) {
+Package.onTest(function(api) {
   api.use('tinytest');
   api.use('worona:dashboard-base');
 });

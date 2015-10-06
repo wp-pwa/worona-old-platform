@@ -34,7 +34,10 @@ livedata@1.0.15
 logging@1.0.8
 meteor@1.1.7
 meteor-base@1.0.1
-meteorflux:dispatcher@1.0.4
+meteorflux:appstate@1.0.0
+meteorflux:dispatcher@1.1.0
+meteorflux:dispatcher-helper@1.0.0
+meteorflux:namespace@1.0.0
 minifiers@1.1.7
 minimongo@1.0.9
 mobile-experience@1.0.1
@@ -64,7 +67,3 @@ webapp-hashing@1.0.5
 worona:dashboard-base@1.0.0
 worona:dashboard-external-libraries@1.0.0
 worona:external-libraries@1.0.0
-worona:flux-api@1.0.0
-worona:hooks-api@1.0.0
-worona:state-api@1.0.0
-xamfoo:reactive-obj@0.5.0

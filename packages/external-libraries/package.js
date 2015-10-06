@@ -14,7 +14,10 @@ Package.onUse(function (api) {
     'check',
     'tracker',
     'underscore',
-    'ecmascript'
+    'ecmascript',
+    'meteorflux:dispatcher@1.1.0',
+    'meteorflux:dispatcher-helper@1.0.0',
+    'meteorflux:appstate@1.0.0'
   ];
 
   // Imply them so they are accesible anywhere in the app or the dashboard.
