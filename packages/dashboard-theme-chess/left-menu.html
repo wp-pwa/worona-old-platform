@@ -9,7 +9,14 @@
     <ul class="wrn-menu-list">
       <li class="wrn-menu-list-item"><a class="wrn-menu-list-link {{#if isProfile}}active{{/if}}" href="{{profileUrl}}">Edit profile</a>
       </li>
-      <li class="wrn-menu-list-item"><a class="wrn-menu-list-link" href="#" data-action-type="LOGOUT">Logout</a>
+      <li class="wrn-menu-list-item"><a class="wrn-menu-list-link" href="#" data-action-type="LOGOUT">
+        Logout
+        {{#if loggingOut}}
+          <span class="wrn-logging">
+            (logging out...)
+          </span>
+        {{/if}}
+      </a>
       </li>
     </ul>
   </div>

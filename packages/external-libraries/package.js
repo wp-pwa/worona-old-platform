@@ -15,6 +15,7 @@ Package.onUse(function (api) {
     'tracker',
     'underscore',
     'ecmascript',
+    'underscorestring:underscore.string@3.2.2',
     'meteorflux:dispatcher@1.1.0',
     'meteorflux:dispatcher-helper@1.0.0',
     'meteorflux:appstate@1.0.0'

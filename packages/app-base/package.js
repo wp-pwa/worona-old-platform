@@ -16,9 +16,6 @@ Package.onUse(function (api) {
   var packages = [
     'worona:external-libraries@1.0.0', // no deps
     'worona:app-external-libraries@1.0.0', // no deps
-    'worona:hooks-api@1.0.0', // external-libraries
-    'worona:flux-api@1.0.0', // external-libraries, meteorflux:dispatcher
-    'worona:state-api@1.0.0' // external-libraries, xamfoo:reactive-obj
   ];
 
   // Imply them so they are available in the rest of the Worona App.

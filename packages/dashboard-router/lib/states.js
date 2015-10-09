@@ -3,6 +3,7 @@ let pages = [
   'isProfile',
   'isLogin',
   'isGeneralSettings',
+  'isCreateYourFirstApp'
 ];
 
 let setPage = newPage => {
@@ -25,11 +26,16 @@ Dispatcher.register(action => {
     case 'SHOW_LOGIN':
       setPage('isLogin');
       break;
+    case 'SHOW_CREATE_YOUR_FIRST_APP':
+      setPage('isCreateYourFirstApp');
+      break;
     case 'SHOW_APP_GENERAL_SETTINGS':
       setPage('isGeneralSettings');
       AppState.set('appId', action.id);
       break;
-    default:
-
+    case 'LOGIN_SUCCESSFUL':
+      let redirectAfterLogin = AppState.get('redirectAfterLogin');
+      FlowRouter.go(redirectAfterLogin);
+      break;
   }
 });

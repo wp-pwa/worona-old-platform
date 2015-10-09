@@ -9,14 +9,19 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
+  api.use('worona:dashboard-default-state@1.0.0');
 
   api.use('templating', 'client');
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
+  api.use('kadira:flow-router@2.6.2');
+
   api.addFiles([
     'chess.js',
     'chess.html',
+    'login.html',
+    'create-your-first-app.html',
     'header.html',
     'footer.html',
     'left-menu.html',

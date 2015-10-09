@@ -1,28 +1,50 @@
-FlowRouter.route(AppState.get('homeUrl'), {
+
+var dashboard = FlowRouter.group({
+  name: 'dashboard',
+  triggersEnter: [function(context, redirect) {
+    if (!Meteor.userId()) {
+      AppState.set('redirectAfterLogin', FlowRouter.current().path);
+      redirect(AppState.get('loginUrl'));
+    }
+  }]
+});
+
+FlowRouter.route(AppState.get('loginUrl'), {
+  action: function() {
+    Dispatcher.dispatch('SHOW_LOGIN');
+  },
+  triggersEnter: function(context, redirect) {
+    if (Meteor.userId()) {
+      redirect(AppState.get('redirectAfterLogin'));
+    }
+  }
+});
+
+FlowRouter.route(AppState.get('createYourFirstAppUrl'), {
+  action: function() {
+    Dispatcher.dispatch('SHOW_CREATE_YOUR_FIRST_APP');
+  }
+});
+
+dashboard.route(AppState.get('homeUrl'), {
   action: function() {
     Dispatcher.dispatch('SHOW_HOME');
   },
 });
 
-FlowRouter.route(AppState.get('profileUrl'), {
+dashboard.route(AppState.get('profileUrl'), {
   action: function() {
     Dispatcher.dispatch('SHOW_PROFILE');
   },
 });
 
-FlowRouter.route('/login-or-sign-up', {
-  action: function() {
-    Dispatcher.dispatch('SHOW_LOGIN');
-  },
-});
-
-FlowRouter.route('/app/:id', {
+dashboard.route('/app/:id', {
   triggersEnter: [function(context, redirect) {
     redirect(context.path + '/general-settings');
   },],
 });
 
-FlowRouter.route('/app/:id/general-settings', {
+dashboard.route('/app/:id/general-settings', {
   action: function(params) {
     Dispatcher.dispatch('SHOW_APP_GENERAL_SETTINGS', { id: params.id });
   },

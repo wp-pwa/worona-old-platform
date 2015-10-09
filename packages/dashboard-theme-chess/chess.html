@@ -20,25 +20,33 @@
 
       <main class="w-section wrn-main">
         <div class="w-container">
-          <div class="w-row">
-            <div class="w-col w-col-3 wrn-menu-column">
-              {{> chess_leftMenu}}
-            </div>
-            <div class="w-col w-col-9 wrn-cards-column">
-              {{#if isHome}}
-                {{> chess_home}}
-              {{/if}}
 
-              {{#if isProfile}}
-                {{> chess_profile}}
-              {{/if}}
+          {{#if isLogin}}
+            {{> chess_login}}
+          {{else}} {{#if isCreateYourFirstApp}}
+            {{> chess_createYourFirstApp}}
+          {{else}}
+            <div class="w-row">
+              <div class="w-col w-col-3 wrn-menu-column">
+                {{> chess_leftMenu}}
+              </div>
+              <div class="w-col w-col-9 wrn-cards-column">
+                {{#if isHome}}
+                  {{> chess_home}}
+                {{/if}}
 
-              {{> chess_footer}}
+                {{#if isProfile}}
+                  {{> chess_profile}}
+                {{/if}}
+
+                {{> chess_footer}}
+              </div>
             </div>
-          </div>
+          {{/if}} {{/if}}
+
         </div>
       </main>
-      
+
     </div>
   {{/if}}
 </template>

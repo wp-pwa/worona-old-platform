@@ -18,4 +18,13 @@ Meteor.startup(() => {
     wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
     s.parentNode.insertBefore(wf, s);
   })(document);
+
+  Template.chess_createYourFirstApp.events({
+    'submit .create-your-first-app'(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      Dispatcher.dispatch('NEW_APP_CREATED');
+      FlowRouter.go(AppState.get('homeUrl'));
+    }
+  });
 });
