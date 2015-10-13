@@ -32,6 +32,7 @@ worona:dashboard-theme-chess
 #   them and Worona should still work properly. They depend on worona-dashboard-base.
 
 worona:dashboard-debug
+underscorestring:underscore.string@3.2.2
 
 
 ### Your Custom Packages:
