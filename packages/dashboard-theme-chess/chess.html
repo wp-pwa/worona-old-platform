@@ -13,33 +13,33 @@
   </style>
 </head>
 
-<template name="chess">
+<template name="Chess">
   {{#if webFontLoaded}}
     <div class="wrn-body">
-      {{> chess_header}}
+      {{> Chess_Header}}
 
       <main class="w-section wrn-main">
         <div class="w-container">
 
           {{#if IsLogin}}
-            {{> chess_login}}
+            {{> Chess_Login}}
           {{else}} {{#if IsCreateYourFirstApp}}
-            {{> chess_createYourFirstApp}}
+            {{> Chess_CreateYourFirstApp}}
           {{else}}
             <div class="w-row">
               <div class="w-col w-col-3 wrn-menu-column">
-                {{> chess_leftMenu}}
+                {{> Chess_LeftMenu}}
               </div>
               <div class="w-col w-col-9 wrn-cards-column">
                 {{#if IsHome}}
-                  {{> chess_home}}
+                  {{> Chess_Home}}
                 {{/if}}
 
                 {{#if IsProfile}}
-                  {{> chess_profile}}
+                  {{> Chess_Profile}}
                 {{/if}}
 
-                {{> chess_footer}}
+                {{> Chess_Footer}}
               </div>
             </div>
           {{/if}} {{/if}}

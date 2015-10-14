@@ -64,7 +64,6 @@ FlowRouter.triggers.enter([
 // or analytics.
 FlowRouter.triggers.enter([
   (context, redirect) => {
-    console.log(context);
     if (context && context.oldRoute)
       AppState.set('PreviousRoute', {
         url: context.oldRoute.path,
