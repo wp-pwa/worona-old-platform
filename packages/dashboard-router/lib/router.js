@@ -1,8 +1,8 @@
 // Add your routes here. For each route, some things get registered.
 // For example, for route SomePlace with path /some-place:
-// - a 'isSomePlace' helper (true or false).
-// - a 'SomePlaceUrl' helper with '/some-place' url.
-// - an action 'SHOW_SOME_PLACE' dispatched when '/some-place' is visited.
+// - 'IsSomePlace' helper (true or false).
+// - 'SomePlaceUrl' helper with '/some-place' url.
+// - Action 'SHOW_SOME_PLACE' dispatched when '/some-place' is visited.
 let routes = {
   Home: '/',
   Login: '/login',
@@ -10,8 +10,13 @@ let routes = {
   CreateYourFirstApp: '/create-your-first-app'
 };
 
-// Get action type for route. For example, SHOW_HOME for Home or
-// SHOW_CREATE_YOUR_FIRST_APP for CreateYourFirstApp.
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+// Function to get an action type for a route. For example, SHOW_HOME for Home
+// or SHOW_CREATE_YOUR_FIRST_APP for CreateYourFirstApp.
 let getActionType = function(route) {
   route = s.replaceAll(route, ':.+?/', '_');
   route = s.replaceAll(route, '/', '');
@@ -19,26 +24,29 @@ let getActionType = function(route) {
   return s.replaceAll(route, ' ', '_');
 };
 
-
-// Register all the stuff needed for each route.
+// Loop to register all the stuff needed for each route.
 for (var route in routes) {
   let actionType = getActionType(route);
 
-  // Create state for urls. For example, HomeUrl or LoginUrl
+  // Create urls. For example, HomeUrl or LoginUrl.
   let stateUrl = route + 'Url';
   let url = routes[route];
   AppState.set(stateUrl, url);
 
-  // Create state for is. For example, isHome or isLogin
-  let isState = 'is' + route;
+  // Create is helpers. For example, IsHome or IsLogin.
+  let isState = 'Is' + route;
   AppState.modify(isState, (action, state = false) => {
-    return action.type.startsWith(actionType) ? true : false;
+    if (action.type.startsWith('SHOW_')) {
+      return action.type === actionType ? true : false;
+    }
+    return state;
   });
 
   // Dispatch an action when the actionType is visited.
   FlowRouter.route(url, {
-    action(params) {
-      Dispatcher.dispatch(actionType, params);
+    name: route,
+    action(params, queryParams) {
+      Dispatcher.dispatch(actionType, { params, queryParams });
     }
   });
 }
@@ -47,9 +55,21 @@ for (var route in routes) {
 FlowRouter.triggers.enter([
   (context, redirect) => {
     if (!Meteor.userId()) {
-      AppState.set('redirectAfterLogin', FlowRouter.current().path);
-      redirect(AppState.get('loginUrl'));
+      redirect(AppState.get('LoginUrl'));
     }
+  }
+], { except: ['Login'] });
+
+// Create a trigger to set a PreviousUrl to be used in things like redirects
+// or analytics.
+FlowRouter.triggers.enter([
+  (context, redirect) => {
+    console.log(context);
+    if (context && context.oldRoute)
+      AppState.set('PreviousRoute', {
+        url: context.oldRoute.path,
+        name: context.oldRoute.name
+      });
   }
 ]);
 

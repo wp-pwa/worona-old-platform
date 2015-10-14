@@ -42,7 +42,7 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
-meteorflux:appstate@1.0.1
+meteorflux:appstate@1.1.0
 meteorflux:dispatcher@1.1.1
 meteorflux:dispatcher-helper@1.0.1
 meteorflux:namespace@1.0.0
@@ -82,7 +82,6 @@ webapp-hashing@1.0.5
 worona:dashboard-accounts@1.0.0
 worona:dashboard-base@1.0.0
 worona:dashboard-debug@1.0.0
-worona:dashboard-default-state@1.0.0
 worona:dashboard-external-libraries@1.0.0
 worona:dashboard-router@1.0.0
 worona:dashboard-theme-chess@1.0.0

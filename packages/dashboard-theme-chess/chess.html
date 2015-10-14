@@ -21,9 +21,9 @@
       <main class="w-section wrn-main">
         <div class="w-container">
 
-          {{#if isLogin}}
+          {{#if IsLogin}}
             {{> chess_login}}
-          {{else}} {{#if isCreateYourFirstApp}}
+          {{else}} {{#if IsCreateYourFirstApp}}
             {{> chess_createYourFirstApp}}
           {{else}}
             <div class="w-row">
@@ -31,11 +31,11 @@
                 {{> chess_leftMenu}}
               </div>
               <div class="w-col w-col-9 wrn-cards-column">
-                {{#if isHome}}
+                {{#if IsHome}}
                   {{> chess_home}}
                 {{/if}}
 
-                {{#if isProfile}}
+                {{#if IsProfile}}
                   {{> chess_profile}}
                 {{/if}}
 

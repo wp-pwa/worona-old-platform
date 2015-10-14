@@ -9,7 +9,6 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
-  api.use('worona:dashboard-default-state@1.0.0');
   api.use('accounts-password@1.1.3');
   api.use('kadira:flow-router@2.6.2');
   api.addFiles('lib/accounts.js', 'client');

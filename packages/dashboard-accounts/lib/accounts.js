@@ -1,3 +1,25 @@
+
+// Async action
+Dispatcher.register(action => {
+  switch (action.type) {
+    case 'LOGIN_FORM_SENT':
+      let email = action.event.currentTarget.email.value;
+      let password = action.event.currentTarget.password.value;
+      loginSent({ email, password });
+      break;
+    case 'LOGOUT':
+      Meteor.logout( function(err) {
+        if (!err) {
+          FlowRouter.go(AppState.get('LoginUrl'));
+        } else {
+          console.log(err);
+        }
+      });
+      break;
+  }
+});
+
+// Async login action.
 let loginSent = function({ email, password }) {
   Meteor.loginWithPassword(email, password, function(err){
 
@@ -12,9 +34,9 @@ let loginSent = function({ email, password }) {
           if (err) {
             console.log('Error creating account: ', err);
 
-          // Account created succesfully.
+          // Account created succesfully. Show 'CreateYourFirstApp' template.
           } else {
-            let createYourFirstAppUrl = AppState.get('createYourFirstAppUrl');
+            let createYourFirstAppUrl = AppState.get('CreateYourFirstAppUrl');
             FlowRouter.go(createYourFirstAppUrl);
           }
         });
@@ -27,51 +49,60 @@ let loginSent = function({ email, password }) {
     // Log in sucessful.
     } else {
       Dispatcher.dispatch('LOGIN_SUCCESS');
-      let redirectAfterLogin = AppState.get('redirectAfterLogin');
-      FlowRouter.go(redirectAfterLogin);
+      let url = AppState.get('PreviousRoute.url') || AppState.get('HomeUrl');
+      FlowRouter.go(url);
     }
 
   });
 };
 
-Dispatcher.register(action => {
-  switch (action.type) {
-    case 'LOGIN_FORM_SENT':
-      // Get form values.
-      let email = action.event.currentTarget.email.value;
-      let password = action.event.currentTarget.password.value;
-      // Set state.
-      AppState.set('lastEmailEnteredInLogin', email);
-      AppState.set('loginError', false);
-      // Send action.
-      loginSent({ email, password });
-      break;
-    case 'LOGOUT':
-      AppState.set('loggingOut', true);
-      Meteor.logout( function(err) {
-        if (!err) {
-          AppState.set('loggingOut', false);
-          FlowRouter.go(AppState.get('loginUrl'));
-        } else {
-          console.log(err);
-        }
-      });
-      break;
-    case 'LOGIN_FAILED':
-      AppState.set('loginError', action.error.reason);
-      break;
-  }
-});
-
 // Bind loggingIn state to meteor's loggingIn().
-AppState.set('loggingIn', function() {
+AppState.set('LoggingIn', function() {
   return Meteor.loggingIn();
 });
 
-Tracker.autorun(function() {
-  let email = AppState.get('lastEmailEnteredInLogin');
-  let nameArray = s(email).strLeft('@').split('.');
-  nameArray = nameArray.map(name => s.capitalize(name));
-  let name = s.toSentence(nameArray, ' ', ' ');
-  AppState.set('loginNameGuess', name);
+// Use LogInError to show Meteor's errors to the user.
+AppState.modify('LogInError', (action, state = false) => {
+  switch (action.type) {
+    case 'LOGIN_FAILED':
+      return action.error.reason;
+    default:
+      return false;
+  }
+});
+
+// Give feedback when user has clicked the LogOut button.
+AppState.modify('LoggingOut', (action, state = false) => {
+  switch (action.type) {
+    case 'LOGOUT':
+      return true;
+    default:
+      return false;
+  }
+});
+
+// Get last email used so when the user logs out, it doesn't have to write
+// it again.
+AppState.modify('LastEmailUsed', (action, state = '') => {
+  switch (action.type) {
+    case 'LOGIN_FORM_SENT':
+      let email = action.event.currentTarget.email.value;
+      return email;
+    default:
+      return state;
+  }
+});
+
+// Get a guess of the user name for the second step.
+AppState.modify('NameGuess', (action, state = '') => {
+  switch (action.type) {
+    case 'LOGIN_FORM_SENT':
+      let email = action.event.currentTarget.email.value;
+      let nameArray = s(email).strLeft('@').split('.');
+      nameArray = nameArray.map(name => s.capitalize(name));
+      let name = s.toSentence(nameArray, ' ', ' ');
+      return name;
+    default:
+      return state;
+  }
 });

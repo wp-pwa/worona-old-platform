@@ -6,26 +6,20 @@
     <div class="w-form">
       <form id="email-form" name="email-form" data-name="Email Form" data-action-type="LOGIN_FORM_SENT">
         <label for="email" class="wrn-label">Email</label>
-        <input class="w-input wrn-text-field" id="email" type="email" placeholder="john@example.com" name="email" data-name="email" required="required" value={{lastEmailEnteredInLogin}}>
+        <input class="w-input wrn-text-field" id="email" type="email" placeholder="john@example.com" name="email" data-name="email" required="required" value={{LastEmailUsed}}>
         <label for="password" class="wrn-label">Password</label>
         <input class="w-input wrn-text-field" id="password" type="password" placeholder="········" name="password" data-name="password" required="required">
         <input class="w-button wrn-submit" type="submit" value="Let's go!">
       </form>
     </div>
 
-    {{#if loginError}}
+    {{#if LogInError}}
       <div class="wrn-login-error">
-        Error! {{loginError}}
+        Error! {{LogInError}}
       </div>
     {{/if}}
 
-    {{#if helperX}}
-      <div class="wrn-login-error">
-        helper! {{helperX}}
-      </div>
-    {{/if}}
-
-    {{#if loggingIn}}
+    {{#if LoggingIn}}
       <span class="wrn-logging">Checking account... </span>
     {{/if}}
   </div>

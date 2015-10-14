@@ -24,7 +24,7 @@ Meteor.startup(() => {
       event.preventDefault();
       event.stopPropagation();
       Dispatcher.dispatch('NEW_APP_CREATED');
-      FlowRouter.go(AppState.get('homeUrl'));
+      FlowRouter.go(AppState.get('HomeUrl'));
     }
   });
 });
