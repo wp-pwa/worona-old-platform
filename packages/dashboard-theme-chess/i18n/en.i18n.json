@@ -18,5 +18,8 @@
   "Checking_account": "Checking account",
   "DOCS": "DOCS",
   "FORUMS": "FORUMS",
-  "SUPPORT": "SUPPORT"
+  "SUPPORT": "SUPPORT",
+  "Welcome": "Welcome",
+  "Choose_an_app": "Choose an app to configure it, or create a new one.",
+  "add_new_app": "add new app"
 }

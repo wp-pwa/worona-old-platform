@@ -15,6 +15,7 @@ Package.onUse(function (api) {
     'tracker',
     'underscore',
     'ecmascript',
+    'accounts-password@1.1.3',
     'underscorestring:underscore.string@3.2.2',
     'tap:i18n@1.7.0',
     'meteorflux:dispatcher@1.1.1',
