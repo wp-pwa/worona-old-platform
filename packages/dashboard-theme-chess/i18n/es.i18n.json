@@ -11,5 +11,12 @@
   "Go_to_Admin_Panel": "Ir al panel de Administrador",
   "Profile": "Perfil",
   "Edit_profile": "Editar perfil",
-  "Logout": "Desconectar"
+  "Logout": "Cerrar sesión",
+  "logging_out": "desconectando",
+  "Error!": "¡Error!",
+  "Incorrect password": "Contraseña incorrecta",
+  "Checking_account": "Comprobando cuenta",
+  "DOCS": "DOCS",
+  "FORUMS": "FOROS",
+  "SUPPORT": "SOPORTE"
 }

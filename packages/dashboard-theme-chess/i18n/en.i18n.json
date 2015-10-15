@@ -11,5 +11,12 @@
   "Go_to_Admin_Panel": "Go to the Admin Panel",
   "Profile": "Profile",
   "Edit_profile": "Edit profile",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "logging_out": "logging out",
+  "Error!": "Error!",
+  "Incorrect password": "Incorrect password",
+  "Checking_account": "Checking account",
+  "DOCS": "DOCS",
+  "FORUMS": "FORUMS",
+  "SUPPORT": "SUPPORT"
 }

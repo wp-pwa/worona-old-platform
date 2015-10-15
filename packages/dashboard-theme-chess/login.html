@@ -15,12 +15,12 @@
 
     {{#if LogInError}}
       <div class="wrn-login-error">
-        Error! {{LogInError}}
+        {{_ 'Error!'}} {{_ LogInError}}
       </div>
     {{/if}}
 
     {{#if LoggingIn}}
-      <span class="wrn-logging">Checking account... </span>
+      <span class="wrn-logging">{{_ 'Checking_account'}}... </span>
     {{/if}}
   </div>
 </template>
