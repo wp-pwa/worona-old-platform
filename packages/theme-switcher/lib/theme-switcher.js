@@ -1,1 +1,1 @@
-AppState.set('theme', 'chess');
+AppState.set('theme', 'Chess');

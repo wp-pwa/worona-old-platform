@@ -8,7 +8,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
+
+  // external libraries
   api.use('worona:external-libraries@1.0.0');
+
+  // i18n
+  api.addFiles('package-tap.i18n', ['client', 'server']);
 
   api.use('templating', 'client');
   api.use('jquery', 'client');
@@ -16,6 +21,7 @@ Package.onUse(function(api) {
 
   api.use('kadira:flow-router@2.6.2');
 
+  // Theme files
   api.addFiles([
     'chess.js',
     'chess.html',
@@ -36,6 +42,11 @@ Package.onUse(function(api) {
   api.addAssets([
     'images/worona.svg'
   ], 'client');
+
+  api.addFiles([
+    'i18n/en.i18n.json',
+    'i18n/es.i18n.json',
+  ], ['client', 'server']);
 
   api.export('WebFontConfig');
 

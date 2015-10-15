@@ -1,26 +1,26 @@
-<template name="chess_login">
+<template name="Chess_Login">
   <div class="wrn-padder login">
 
-    <h3 class="wrn-login-title">Login or Create an account</h3>
+    <h3 class="wrn-login-title">{{_ 'Login_or_Create_account'}}</h3>
 
     <div class="w-form">
       <form id="email-form" name="email-form" data-name="Email Form" data-action-type="LOGIN_FORM_SENT">
-        <label for="email" class="wrn-label">Email</label>
+        <label for="email" class="wrn-label">{{_ 'Email'}}</label>
         <input class="w-input wrn-text-field" id="email" type="email" placeholder="john@example.com" name="email" data-name="email" required="required" value={{LastEmailUsed}}>
-        <label for="password" class="wrn-label">Password</label>
+        <label for="password" class="wrn-label">{{_ 'Password'}}</label>
         <input class="w-input wrn-text-field" id="password" type="password" placeholder="········" name="password" data-name="password" required="required">
-        <input class="w-button wrn-submit" type="submit" value="Let's go!">
+        <input class="w-button wrn-submit" type="submit" value="{{_ 'Submit_Login'}}">
       </form>
     </div>
 
     {{#if LogInError}}
       <div class="wrn-login-error">
-        Error! {{LogInError}}
+        {{_ 'Error!'}} {{_ LogInError}}
       </div>
     {{/if}}
 
     {{#if LoggingIn}}
-      <span class="wrn-logging">Checking account... </span>
+      <span class="wrn-logging">{{_ 'Checking_account'}}... </span>
     {{/if}}
   </div>
 </template>

@@ -1,0 +1,22 @@
+{
+  "Login_or_Create_account": "Entra o crea una cuenta",
+  "Email": "Email",
+  "Password": "Contraseña",
+  "Submit_Login": "Vamos!",
+  "Your_first_time_in_Worona": "Bienvenido a Worona!",
+  "Let_us_know_more_about_you": "Cuéntanos un poco más sobre ti :)",
+  "Your_name": "Tu nombre",
+  "Url_of_your_WordPress_site": "La URL de tu sitio WordPress",
+  "your_blog_url": "http://www.tu-dominio.com",
+  "Go_to_Admin_Panel": "Ir al panel de Administrador",
+  "Profile": "Perfil",
+  "Edit_profile": "Editar perfil",
+  "Logout": "Cerrar sesión",
+  "logging_out": "desconectando",
+  "Error!": "¡Error!",
+  "Incorrect password": "Contraseña incorrecta",
+  "Checking_account": "Comprobando cuenta",
+  "DOCS": "DOCS",
+  "FORUMS": "FOROS",
+  "SUPPORT": "SOPORTE"
+}

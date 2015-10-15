@@ -16,6 +16,7 @@ Package.onUse(function (api) {
     'underscore',
     'ecmascript',
     'underscorestring:underscore.string@3.2.2',
+    'tap:i18n@1.7.0',
     'meteorflux:dispatcher@1.1.1',
     'meteorflux:dispatcher-helper@1.0.1',
     'meteorflux:appstate@1.1.0'
