@@ -9,7 +9,9 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
+  api.use('templating');
   api.use('kadira:flow-router@2.6.2');
+  api.use('browserify:path-to-regexp@1.2.1');
   api.addFiles('lib/router.js', 'client');
 });
 
