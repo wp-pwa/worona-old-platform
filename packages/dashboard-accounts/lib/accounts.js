@@ -1,5 +1,5 @@
 
-// Async action
+// Async actions
 Dispatcher.register(action => {
   switch (action.type) {
     case 'LOGIN_FORM_SENT':

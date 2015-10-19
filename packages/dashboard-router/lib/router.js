@@ -21,7 +21,7 @@ const routes = {
     helper: 'IsCreateYourFirstApp'
   },
   AppGeneralSettings: {
-    path: '/app/:id/general-settings',
+    path: '/app/:appId/general-settings',
     action: 'SHOW_APP_GENERAL_SETTINGS',
     helper: 'IsGeneralSettings'
   }
@@ -60,7 +60,8 @@ for (var route in routes) {
   // Create callback to change url
   Dispatcher.register(action => {
     if (action.type === item.action) {
-      FlowRouter.go(item.path);
+      let url = FlowRouter.path(item.path, action.params);
+      FlowRouter.go(url);
     }
   });
 
@@ -72,8 +73,11 @@ for (var route in routes) {
 // Dispatch the first router action when loaded
 Meteor.startup(() => {
   let route = FlowRouter.current().route.name;
-  // Dispatcher.dispatch(routes[route].action);
+  let params = FlowRouter.current().params;
+  Dispatcher.dispatch(routes[route].action, { params });
 });
+
+
 
 for (var t in Template) {
   if (Template.hasOwnProperty(t)) {
@@ -95,9 +99,12 @@ for (var t in Template) {
               let item = routes[route];
               let re = item.regexp;
               if (re.test(dest)){
-                console.log(re.exec(dest));
-                debugger;
-                // Dispatcher.dispatch(item.action);
+                let paramNames = [];
+                pathToRegexp(item.path, paramNames);
+                paramNames = _.pluck(paramNames, "name");
+                let paramValues = _.rest(re.exec(dest));
+                let params = _.object(paramNames, paramValues);
+                Dispatcher.dispatch(item.action, { params });
                 event.preventDefault();
                 event.stopImmediatePropagation();
               }
@@ -118,11 +125,3 @@ FlowRouter.triggers.enter([
     }
   }
 ], { except: ['Login'] });
-
-
-// // Redirect to general settings when seeing an app.
-// FlowRouter.route('/app/:id', {
-//   triggersEnter: [function(context, redirect) {
-//     redirect(context.path + '/general-settings');
-//   }]
-// });
