@@ -3,6 +3,8 @@ MeteorFlux.FluxRouter = class FluxRouter {
     let self = this;
 
     self._routes = {};
+    self._redirections = [];
+
     self._isChangingUrl = false;
     self._lastUrlUsed = null;
     self._pathToRegexp = Browserify['path-to-regexp'];
@@ -85,7 +87,8 @@ MeteorFlux.FluxRouter = class FluxRouter {
                     paramNames = _.pluck(paramNames, "name");
                     let paramValues = _.rest(re.exec(dest));
                     let params = _.object(paramNames, paramValues);
-                    Dispatcher.dispatch(item.action, { params });
+                    let type = item.action;
+                    self._dispatchAction({ type, params });
                     event.preventDefault();
                     event.stopImmediatePropagation();
                   }
@@ -110,15 +113,33 @@ MeteorFlux.FluxRouter = class FluxRouter {
           self._lastUrlUsed = current.path;
           let route = current.route.name;
           let params = current.params;
-          Dispatcher.dispatch(self._routes[route].action, { params });
+          let type = self._routes[route].action;
+          self._dispatchAction({ type, params });
         }
       });
     });
   }
 
+  _dispatchAction(action) {
+    let self = this;
+    for (let func of self._redirections) {
+      let actionType = func(action);
+      if (actionType) {
+        action.type = actionType;
+        break;
+      }
+    }
+    Dispatcher.dispatch(action);
+  }
+
   routes(newRoutes) {
     let self = this;
     self._updateRoutes(newRoutes);
+  }
+
+  redirection(func) {
+    let self = this;
+    self._redirections.push(func);
   }
 };
 

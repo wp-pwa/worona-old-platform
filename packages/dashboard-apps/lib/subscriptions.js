@@ -10,7 +10,7 @@ Tracker.autorun(() => {
 
 // Create a helper when the subscription is ready.
 AppState.set('Apps.isReady', () => {
-  return handle && handle.ready();
+  return !!handle && handle.ready();
 });
 
 // Populate the data.
