@@ -27,31 +27,19 @@ Meteor.startup(() => {
       event.preventDefault();
       event.stopPropagation();
 
-      let name = event.currentTarget.name.value;
-      let url  = event.currentTarget.url.value;
+      let firstName = event.currentTarget.firstName.value;
+      let appUrl  = event.currentTarget.appUrl.value;
+      let appName = s.strRight(appUrl, '://');
+      appName = s.strLeft(appName, '/');
 
-      Dispatcher.dispatch('PROFILE_CHANGED', { name });
-      Dispatcher.dispatch('NEW_APP_CREATED', { url });
+      if (appUrl === '') {
+        appUrl = 'https://www.worona.org';
+        appName = 'Worona Blog (example)';
+      }
+
+      Dispatcher.dispatch('PROFILE_CHANGED', { firstName });
+      Dispatcher.dispatch('NEW_APP_CREATED', { appName, appUrl });
       Dispatcher.dispatch('SHOW_HOME');
     }
   });
-});
-
-
-getUserLanguage = function () {
-  // Put here the logic for determining the user language
-  return "es";
-};
-
-
-Meteor.startup(function () {
-  AppState.set("ShowLoadingIndicator", true);
-
-  TAPi18n.setLanguage(getUserLanguage())
-    .done(function () {
-      AppState.set("ShowLoadingIndicator", false);
-    }).fail(function (error_message) {
-      // Handle the situation
-      console.log(error_message);
-    });
 });

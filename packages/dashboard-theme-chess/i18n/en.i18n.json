@@ -21,5 +21,11 @@
   "SUPPORT": "SUPPORT",
   "Welcome": "Welcome",
   "Choose_an_app": "Choose an app to configure it, or create a new one.",
-  "add_new_app": "add new app"
+  "add_new_app": "add new app",
+  "App_Name": "App Name",
+  "WordPress_URL": "WordPress URL",
+  "Create": "Create!",
+  "Cancel": "Cancel",
+  "ID": "ID",
+  "Modified": "Modified"
 }

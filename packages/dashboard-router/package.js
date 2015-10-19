@@ -12,7 +12,9 @@ Package.onUse(function(api) {
   api.use('templating');
   api.use('kadira:flow-router@2.6.2');
   api.use('browserify:path-to-regexp@1.2.1');
-  api.addFiles('lib/router.js', 'client');
+  api.addFiles('lib/flux-router.js', 'client');
+  api.addFiles('lib/routes.js', 'client');
+  api.addFiles('lib/redirections.js', 'client');
 });
 
 Package.onTest(function(api) {
