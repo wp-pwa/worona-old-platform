@@ -18,5 +18,8 @@
   "Checking_account": "Comprobando cuenta",
   "DOCS": "DOCS",
   "FORUMS": "FOROS",
-  "SUPPORT": "SOPORTE"
+  "SUPPORT": "SOPORTE",
+  "Welcome": "Bienvenido",
+  "Choose_an_app": "Escoge una app para configurarla o crea una nueva.",
+  "add_new_app": "añadir nueva app"
 }

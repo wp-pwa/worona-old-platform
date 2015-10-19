@@ -14,11 +14,12 @@ Package.onUse(function(api) {
   // They should be only packages which are essential and can't be taken away.
   // If they are not essential, they shouldn't be here.
   var packages = [
-    'worona:external-libraries@1.0.0', // no deps
-    'worona:dashboard-external-libraries@1.0.0', // no deps
+    'worona:external-libraries@1.0.0',
+    'worona:dashboard-external-libraries@1.0.0',
     'worona:dashboard-router@1.0.0', // kadira:flow-router
     'worona:theme-switcher@1.0.0',
-    'worona:dashboard-accounts@1.0.0' // accounts-password
+    'worona:dashboard-accounts@1.0.0',
+    'worona:dashboard-profile@1.0.0'
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.

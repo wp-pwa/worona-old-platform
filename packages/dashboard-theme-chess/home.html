@@ -1,15 +1,22 @@
 <template name="Chess_Home">
   <div class="wrn-white-line">
     <div class="wrn-padder">
-      <h3>Welcome!</h3>
-      <div class="wrn-small-header">Choose an app tO configure it, or create a new one.</div>
+      <h3>
+        {{_ 'Welcome'}}
+        {{#if profile.isReady}}
+          {{profile.name}}!
+        {{else}}
+          ...
+        {{/if}}
+      </h3>
+      <div class="wrn-small-header">{{_ 'Choose_an_app'}}</div>
     </div>
   </div>
   <div class="wrn-padder">
     <div class="w-row wrn-app-row">
       <div class="w-col w-col-4">
         <a class="w-inline-block wrn-app-card add-new" href="add-new-app.html">
-          <div class="wrn-app-new-card-title">+&nbsp;add new app</div>
+          <div class="wrn-app-new-card-title">+&nbsp;{{_ 'add_new_app'}}</div>
         </a>
       </div>
       <div class="w-col w-col-4">

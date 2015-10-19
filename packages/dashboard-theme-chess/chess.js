@@ -30,10 +30,9 @@ Meteor.startup(() => {
       let name = event.currentTarget.name.value;
       let url  = event.currentTarget.url.value;
 
-      Dispatcher.dispatch('SETTINGS_CHANGED', { name });
+      Dispatcher.dispatch('PROFILE_CHANGED', { name });
       Dispatcher.dispatch('NEW_APP_CREATED', { url });
-
-      FlowRouter.go(AppState.get('HomeUrl'));
+      Dispatcher.dispatch('SHOW_HOME');
     }
   });
 });

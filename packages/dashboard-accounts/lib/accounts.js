@@ -1,5 +1,5 @@
 
-// Async action
+// Async actions
 Dispatcher.register(action => {
   switch (action.type) {
     case 'LOGIN_FORM_SENT':
@@ -10,7 +10,7 @@ Dispatcher.register(action => {
     case 'LOGOUT':
       Meteor.logout( function(err) {
         if (!err) {
-          FlowRouter.go(AppState.get('LoginUrl'));
+          Dispatcher.dispatch('SHOW_LOGIN');
         } else {
           console.log(err);
         }
@@ -36,8 +36,7 @@ let loginSent = function({ email, password }) {
 
           // Account created succesfully. Show 'CreateYourFirstApp' template.
           } else {
-            let createYourFirstAppUrl = AppState.get('CreateYourFirstAppUrl');
-            FlowRouter.go(createYourFirstAppUrl);
+            Dispatcher.dispatch('SHOW_CREATE_YOUR_FIRST_APP');
           }
         });
 
@@ -49,10 +48,8 @@ let loginSent = function({ email, password }) {
     // Log in sucessful.
     } else {
       Dispatcher.dispatch('LOGIN_SUCCESS');
-      let url = AppState.get('PreviousRoute.url') || AppState.get('HomeUrl');
-      FlowRouter.go(url);
+      Dispatcher.dispatch('SHOW_HOME');
     }
-
   });
 };
 
