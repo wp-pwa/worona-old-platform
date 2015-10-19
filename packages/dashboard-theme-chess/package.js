@@ -19,7 +19,9 @@ Package.onUse(function(api) {
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
-  api.use('kadira:flow-router@2.6.2');
+  api.use('webtempest:animate@0.1.9');
+
+  api.use('worona:dashboard-i18n@1.0.0');
 
   // Theme files
   api.addFiles([
@@ -32,11 +34,13 @@ Package.onUse(function(api) {
     'left-menu.html',
     'home.html',
     'profile.html',
+    'new-app-form.html',
+    'app-card.html',
     'css/1-normalize.css',
     'css/2-webflow.css',
     'css/3-worona-dashboard.webflow.css',
     'js/modernizr.js',
-    'js/webflow.js',
+    'js/webflow.js'
   ], 'client');
 
   api.addAssets([

@@ -19,7 +19,9 @@ Package.onUse(function(api) {
     'worona:dashboard-router@1.0.0', // kadira:flow-router
     'worona:theme-switcher@1.0.0',
     'worona:dashboard-accounts@1.0.0',
-    'worona:dashboard-profile@1.0.0'
+    'worona:dashboard-profile@1.0.0',
+    'worona:dashboard-apps@1.0.0',
+    'worona:dashboard-i18n@1.0.0'
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.

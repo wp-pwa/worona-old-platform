@@ -1,3 +1,3 @@
 Fields = {
-  name: Match.Optional(String)
+  firstName: Match.Optional(String)
 };

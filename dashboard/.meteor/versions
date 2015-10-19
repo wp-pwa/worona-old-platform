@@ -58,6 +58,7 @@ kadira:flow-router@2.7.0
 lai:collection-extensions@0.1.4
 lai:ddp-inspector@1.1.7
 launch-screen@1.0.4
+lbee:moment-helpers@1.2.0
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
@@ -72,6 +73,7 @@ minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
+momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
 mousetrap:mousetrap@1.4.6_1
@@ -106,10 +108,13 @@ underscorestring:underscore.string@3.2.2
 url@1.0.5
 webapp@1.2.2
 webapp-hashing@1.0.5
+webtempest:animate@0.1.9
 worona:dashboard-accounts@1.0.0
+worona:dashboard-apps@1.0.0
 worona:dashboard-base@1.0.0
 worona:dashboard-debug@1.0.0
 worona:dashboard-external-libraries@1.0.0
+worona:dashboard-i18n@1.0.0
 worona:dashboard-profile@1.0.0
 worona:dashboard-router@1.0.0
 worona:dashboard-theme-chess@1.0.0

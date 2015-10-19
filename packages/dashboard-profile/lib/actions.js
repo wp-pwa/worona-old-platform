@@ -1,12 +1,9 @@
-
-// If user is logged in. Let's do stuff;
+// If user is logged in. Let's do stuff.
 Tracker.autorun(() => {
   if (Meteor.userId()) {
-
-    Meteor.subscribe('profile', () => AppState.set('profile.isReady', true));
-
-
-    AppState.set('profile', () => Meteor.users.findOne(Meteor.userId()) );
+    let handle = Meteor.subscribe('UserProfile');
+    AppState.set('Profile.isReady', () => handle.ready());
+    AppState.set('Profile', () => Meteor.users.findOne(Meteor.userId()) );
   }
 });
 
