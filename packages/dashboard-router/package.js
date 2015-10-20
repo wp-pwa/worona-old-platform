@@ -15,6 +15,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/flux-router.js', 'client');
   api.addFiles('lib/routes.js', 'client');
   api.addFiles('lib/redirections.js', 'client');
+  api.export('FluxRouter');
 });
 
 Package.onTest(function(api) {

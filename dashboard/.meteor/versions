@@ -119,5 +119,6 @@ worona:dashboard-i18n@1.0.0
 worona:dashboard-profile@1.0.0
 worona:dashboard-router@1.0.0
 worona:dashboard-theme-chess@1.0.0
+worona:dashboard-wp-api-checker@1.0.0
 worona:external-libraries@1.0.0
 worona:theme-switcher@1.0.0

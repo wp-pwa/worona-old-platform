@@ -22,7 +22,8 @@ Package.onUse(function(api) {
     'worona:dashboard-profile@1.0.0',
     'worona:dashboard-apps@1.0.0',
     'worona:dashboard-i18n@1.0.0',
-    'worona:dashboard-breadcrumbs@1.0.0'
+    'worona:dashboard-breadcrumbs@1.0.0',
+    'worona:dashboard-wp-api-checker@1.0.0'
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.
