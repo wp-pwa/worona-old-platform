@@ -36,6 +36,8 @@ Package.onUse(function(api) {
     'profile.html',
     'new-app-form.html',
     'app-card.html',
+    'app-general-settings.html',
+    'breadcrumb.html',
     'css/1-normalize.css',
     'css/2-webflow.css',
     'css/3-worona-dashboard.webflow.css',

@@ -1,0 +1,14 @@
+<template name="Chess_Breadcrumb">
+  <div class="wrn-breadcrumb">
+    <h3 class="breadcrumb">
+      {{#each Breadcrumbs}}
+        <a href="{{Url}}" class="wrn-breadcrumb-link">
+          {{Name}}
+        </a>
+        {{#if NextBreadcrumb}}
+          &gt;
+        {{/if}}
+      {{/each}}
+    </h3>
+  </div>
+</template>

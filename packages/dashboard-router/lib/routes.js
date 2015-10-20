@@ -20,7 +20,7 @@ FluxRouter.routes({
     helper: 'IsCreateYourFirstApp'
   },
   AppGeneralSettings: {
-    path: '/app/:appId/general-settings',
+    path: '/app/:AppId/general-settings',
     action: 'SHOW_APP_GENERAL_SETTINGS',
     helper: 'IsGeneralSettings'
   }

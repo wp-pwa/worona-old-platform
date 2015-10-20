@@ -11,6 +11,14 @@ AppState.modify('IsNewAppForm', (action, state = false) => {
   }
 });
 
+Tracker.autorun(() => {
+  let appId = AppState.get('AppId');
+  let app = Apps.findOne(appId);
+  if (app)
+    AppState.set('AppName', app.name);
+});
+
+
 // Add new app.
 Dispatcher.register(action => {
   switch (action.type) {
