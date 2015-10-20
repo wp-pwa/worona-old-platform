@@ -22,10 +22,6 @@ MeteorFlux.FluxRouter = class FluxRouter {
 
       let item = newRoutes[route];
 
-      // Create RouteUrl. For example, HomeUrl or LoginUrl.
-      let stateUrl = route + 'Url';
-      AppState.set(stateUrl, item.path);
-
       // Create IsRoute helpers. For example, IsHome or IsLogin.
       AppState.modify(item.helper, (action, state = false) => {
         if (action.type.startsWith('SHOW_')) {
@@ -50,9 +46,34 @@ MeteorFlux.FluxRouter = class FluxRouter {
         }
       });
 
-      // Save regexp to check every time a click is sent.
-      let re = self._pathToRegexp(item.path);
+      // Save regexp to check every time a click is sent and param names.
+      let paramNames = [];
+      let re = self._pathToRegexp(item.path, paramNames);
       item.regexp = re;
+      item.paramNames = _.pluck(paramNames, "name");
+
+      // Expose param names to AppState
+      _.each(item.paramNames, param => {
+        Tracker.autorun(() => {
+          AppState.set(param, FlowRouter.getParam(param));
+        });
+      });
+
+      // Create RouteUrl. For example, HomeUrl or LoginUrl.
+      // If item has params, create a computation.
+      // debugger;
+      let stateUrl = route + 'Url';
+      if (item.paramNames.length > 0) {
+        Tracker.autorun(() => {
+          let params = {};
+          _.each(item.paramNames, param => {
+            params[param] = AppState.get(param);
+          });
+          AppState.set(stateUrl, FlowRouter.path(item.path, params));
+        });
+      } else {
+        AppState.set(stateUrl, item.path);
+      }
 
       // Save the item in our internal object.
       self._routes[route] = item;
@@ -82,11 +103,8 @@ MeteorFlux.FluxRouter = class FluxRouter {
                   let item = self._routes[route];
                   let re = item.regexp;
                   if (re.test(dest)){
-                    let paramNames = [];
-                    self._pathToRegexp(item.path, paramNames);
-                    paramNames = _.pluck(paramNames, "name");
                     let paramValues = _.rest(re.exec(dest));
-                    let params = _.object(paramNames, paramValues);
+                    let params = _.object(item.paramNames, paramValues);
                     let type = item.action;
                     self._dispatchAction({ type, params });
                     event.preventDefault();

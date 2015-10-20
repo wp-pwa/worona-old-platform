@@ -112,6 +112,7 @@ webtempest:animate@0.1.9
 worona:dashboard-accounts@1.0.0
 worona:dashboard-apps@1.0.0
 worona:dashboard-base@1.0.0
+worona:dashboard-breadcrumbs@1.0.0
 worona:dashboard-debug@1.0.0
 worona:dashboard-external-libraries@1.0.0
 worona:dashboard-i18n@1.0.0

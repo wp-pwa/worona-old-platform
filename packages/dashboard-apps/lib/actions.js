@@ -11,12 +11,13 @@ AppState.modify('IsNewAppForm', (action, state = false) => {
   }
 });
 
-AppState.modify('AppId', (action, state = false) => {
-  if ((action.type.startsWith('SHOW_')) && (action.params)) {
-    return action.params.AppId || false;
-  }
-  return state;
+Tracker.autorun(() => {
+  let appId = AppState.get('AppId');
+  let app = Apps.findOne(appId);
+  if (app)
+    AppState.set('AppName', app.name);
 });
+
 
 // Add new app.
 Dispatcher.register(action => {
