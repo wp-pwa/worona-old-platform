@@ -18,6 +18,10 @@
             {{> Chess_Login}}
           {{else}} {{#if IsCreateYourFirstApp}}
             {{> Chess_CreateYourFirstApp}}
+          {{else}} {{#if AppId}}
+            {{#if IsGeneralSettings}}
+              {{> Chess_AppGeneralSettings}}
+            {{/if}}
           {{else}}
             <div class="w-row">
               <div class="w-col w-col-3 wrn-menu-column">
@@ -35,7 +39,7 @@
                 {{> Chess_Footer}}
               </div>
             </div>
-          {{/if}} {{/if}}
+          {{/if}} {{/if}} {{/if}}
 
         </div>
       </main>

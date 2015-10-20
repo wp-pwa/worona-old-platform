@@ -11,6 +11,13 @@ AppState.modify('IsNewAppForm', (action, state = false) => {
   }
 });
 
+AppState.modify('AppId', (action, state = false) => {
+  if ((action.type.startsWith('SHOW_')) && (action.params)) {
+    return action.params.AppId || false;
+  }
+  return state;
+});
+
 // Add new app.
 Dispatcher.register(action => {
   switch (action.type) {
