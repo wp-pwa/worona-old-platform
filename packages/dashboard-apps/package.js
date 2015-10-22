@@ -14,6 +14,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/subscriptions.js', 'client');
   api.addFiles('lib/methods.js', ['client', 'server']);
   api.addFiles('lib/actions.js', 'client');
+  api.export('Apps');
 });
 
 Package.onTest(function(api) {

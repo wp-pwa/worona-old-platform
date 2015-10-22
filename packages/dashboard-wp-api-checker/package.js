@@ -10,7 +10,10 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-router@1.0.0');
+  api.use('worona:dashboard-apps@1.0.0');
   api.use('templating');
+
+  api.use('browserify:wordpress-rest-api@0.5.0');
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
 

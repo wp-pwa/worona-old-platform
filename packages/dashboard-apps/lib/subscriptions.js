@@ -14,6 +14,6 @@ AppState.set('Apps.isReady', () => {
 });
 
 // Populate the data.
-AppState.set('Apps', () => {
+AppState.set('Apps.items', () => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });

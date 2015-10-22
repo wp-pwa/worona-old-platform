@@ -1,7 +1,7 @@
 let __ = TAPi18n.__;
 
 Tracker.autorun(() => {
-  let appName = AppState.get('AppName');
+  let appName = AppState.get('CurrentApp.name');
   let sectionName = null;
 
   if (AppState.get('IsGeneralSettings')) {
@@ -10,12 +10,12 @@ Tracker.autorun(() => {
   }
 
   if (sectionName) {
-    AppState.set('Breadcrumbs', [
+    AppState.set('Breadcrumbs.items', [
       { Name: __('Apps'), Url: '/', NextBreadcrumb: true},
       { Name: appName, Url: sectionUrl, NextBreadcrumb: true},
       { Name: sectionName, Url: '#', NextBreadcrumb: false}
     ]);
   } else {
-    AppState.set('Breadcrumbs', []);
+    AppState.set('Breadcrumbs.items', []);
   }
 });

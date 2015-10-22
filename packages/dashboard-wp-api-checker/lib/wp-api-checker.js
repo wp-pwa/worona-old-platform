@@ -1,5 +1,5 @@
 Template.WpApiChecker.helpers({
   name() {
-    return AppState.get('AppName');
+    return AppState.get('CurrentApp.name');
   }
 });
