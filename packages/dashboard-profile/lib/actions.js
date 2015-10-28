@@ -1,10 +1,27 @@
 // If user is logged in. Let's do stuff.
+let handleUserProfile = Meteor.subscribe('UserProfile');
+
 Tracker.autorun(() => {
-  if (Meteor.userId()) {
-    let handle = Meteor.subscribe('UserProfile');
-    AppState.set('Profile.isReady', () => handle.ready());
-    AppState.set('Profile', () => Meteor.users.findOne(Meteor.userId()) );
+  if (handleUserProfile.ready()) {
+    Dispatcher.dispatch('USER_PROFILE_SUBSCRIPTION_READY');
+  } else {
+    // Dispatcher.dispatch('USER_PROFILE_SUBSCRIPTION_NOT_READY');
   }
+});
+
+AppState.modify('Profile.isReady', (action, state = false) => {
+  switch (action.type) {
+    case 'USER_PROFILE_SUBSCRIPTION_READY':
+      return true;
+    case 'USER_PROFILE_SUBSCRIPTION_NOT_READY':
+      return false;
+    default:
+      return state;
+  }
+});
+
+AppState.modify('Profile', (action, state = {}) => {
+  return Meteor.users.findOne(Meteor.userId());
 });
 
 Dispatcher.register(action => {

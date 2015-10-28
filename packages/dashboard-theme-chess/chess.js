@@ -2,7 +2,6 @@
 window.$ = jQuery;
 
 // Load WebFont correctly in Meteor.
-AppState.set('webFontLoaded', false);
 WebFontConfig = {
   google: {
     families: [
@@ -11,9 +10,16 @@ WebFontConfig = {
     ]
   },
   active() {
-    AppState.set('webFontLoaded', true);
+    Dispatcher.dispatch('WEBFONT_LOADED');
   }
 };
+
+AppState.modify('webFontLoaded', (action, state = false) => {
+  if (action.type === 'WEBFONT_LOADED')
+    return true;
+  else
+    return state;
+});
 
 Meteor.startup(() => {
   (function(d) {

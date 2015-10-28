@@ -53,11 +53,11 @@ MeteorFlux.FluxRouter = class FluxRouter {
       item.paramNames = _.pluck(paramNames, "name");
 
       // Expose param names to AppState
-      _.each(item.paramNames, param => {
-        Tracker.autorun(() => {
-          AppState.set(param, FlowRouter.getParam(param));
-        });
-      });
+      // _.each(item.paramNames, param => {
+      //   Tracker.autorun(() => {
+      //     AppState.set(param, FlowRouter.getParam(param));
+      //   });
+      // });
 
       // Create RouteUrl. For example, HomeUrl or LoginUrl.
       // If item has params, create a computation.

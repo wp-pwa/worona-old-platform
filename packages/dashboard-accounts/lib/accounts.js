@@ -53,8 +53,7 @@ let loginSent = function({ email, password }) {
   });
 };
 
-// Bind loggingIn state to meteor's loggingIn().
-AppState.set('LoggingIn', function() {
+AppState.modify('LoggingIn', (action, state = false) => {
   return Meteor.loggingIn();
 });
 

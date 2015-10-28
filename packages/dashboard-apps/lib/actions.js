@@ -11,15 +11,15 @@ AppState.modify('IsNewAppForm', (action, state = false) => {
   }
 });
 
-Tracker.autorun(() => {
-  let appId = AppState.get('AppId');
-  let app = Apps.findOne(appId);
-  if (app) {
-    AppState.set('CurrentApp', app);
-  }
-
-
-});
+// Tracker.autorun(() => {
+//   let appId = AppState.get('AppId');
+//   let app = Apps.findOne(appId);
+//   if (app) {
+//     AppState.set('CurrentApp', app);
+//   }
+//
+//
+// });
 
 
 // Add new app.

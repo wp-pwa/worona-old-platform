@@ -1,6 +1,5 @@
 i18n = {};
 
-AppState.set('lang.isReady', false);
 let momentReady = new ReactiveVar(false);
 let tapi18nReady = new ReactiveVar(false);
 
@@ -29,8 +28,22 @@ i18n.setLanguage = function (language) {
 };
 
 Tracker.autorun(() => {
-  if (momentReady.get() && tapi18nReady.get())
-    AppState.set('lang.isReady', true);
+  if (momentReady.get() && tapi18nReady.get()) {
+    // Dispatcher.dispatch('LANGUAGE_IS_READY');
+  } else {
+    // Dispatcher.dispatch('LANGUAGE_IS_NOT_READY');
+  }
+});
+
+AppState.modify('lang.isReady', (action, state = false) => {
+  switch (action.type) {
+    case 'LANGUAGE_IS_READY':
+      return true;
+    case 'LANGUAGE_IS_NOT_READY':
+      return false;
+    default:
+      return state;
+  }
 });
 
 Meteor.startup(function () {

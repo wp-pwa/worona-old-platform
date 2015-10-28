@@ -22,7 +22,7 @@ Package.onUse(function (api) {
     'tap:i18n@1.7.0',
     'meteorflux:dispatcher@1.1.1',
     'meteorflux:dispatcher-helper@1.0.1',
-    'meteorflux:appstate@1.1.1'
+    'meteorflux:appstate@1.2.0'
   ];
 
   // Imply them so they are accesible anywhere in the app or the dashboard.
