@@ -11,11 +11,11 @@ Package.onUse(function(api) {
   api.use('worona:external-libraries@1.0.0');
   api.use('templating');
   api.use('kadira:flow-router@2.6.2');
+  api.imply('kadira:flow-router@2.6.2');
   api.use('browserify:path-to-regexp@1.2.1');
   api.addFiles('lib/flux-router2.js', 'client');
   // api.addFiles('lib/routes.js', 'client');
   // api.addFiles('lib/redirections.js', 'client');
-  api.export('FluxRouter');
 });
 
 Package.onTest(function(api) {

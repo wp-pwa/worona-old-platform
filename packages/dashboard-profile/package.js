@@ -13,7 +13,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/collections.js', ['client', 'server']);
   api.addFiles('lib/publications.js', 'server');
   api.addFiles('lib/methods.js', ['client', 'server']);
-  api.addFiles('lib/actions.js', 'client');
+  api.addFiles('lib/profile-actions.js', 'client');
 });
 
 Package.onTest(function(api) {

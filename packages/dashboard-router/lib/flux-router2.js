@@ -12,32 +12,63 @@ FlowRouter.onRouteRegister(function(route) {
       return state;
   });
 
-  // Dispatch the action if it is not dispatched
+  // Create RouteUrl helpers. For example, HomeUrl or LoginUrl.
+  let nameUrl = name + 'Url';
+  Template.registerHelper(nameUrl, function(params) {
+    if (params && params.hash) {
+      return FlowRouter.path(pathDef, params.hash);
+    }
+    return pathDef;
+  });
+
+  // Dispatch the action if it is not dispatched.
   FlowRouter._routesMap[name]._action = () => {
-    if (!Dispatcher.isDispatching())
-      Dispatcher.dispatch(type, {
-        path: FlowRouter.current().path,
-        pathDef: pathDef,
-        params: FlowRouter.current().params
-      });
+    if (!Dispatcher.isDispatching()) {
+      Dispatcher.dispatch(type, { params: FlowRouter.current().params });
+    }
+
   };
 
-  // Change the url if the action is dispatched
+  // Change the url if the action is dispatched.
   Dispatcher.register(action => {
     if (action.type === type) {
-      if (action.path) {
-        FlowRouter.go(action.path);
-      }
-      else if (action.params) {
+      if (action.params) {
         let pathWithParams = FlowRouter.path(pathDef, action.params);
         FlowRouter.go(pathWithParams);
       } else {
-        FlowRouter.go(path);
+        FlowRouter.go(pathDef);
       }
     }
   });
 });
 
+
+// Redirect.
+Dispatcher.addDispatchFilter(function(action) {
+  if ((action.type.startsWith('SHOW_') && (!Meteor.userId()))) {
+    action.type = 'SHOW_LOGIN';
+  }
+  return [action];
+});
+
+FlowRouter.triggers.enter([(context, redirect) => {
+  if (!Meteor.userId() && context.path !== '/login') {
+    redirect('/login');
+  }
+}]);
+
+Dispatcher.addDispatchFilter(function(action) {
+  if ((action.type === 'SHOW_LOGIN') && (Meteor.userId())) {
+    action.type = 'SHOW_CREATE_YOUR_FIRST_APP';
+  }
+  return [action];
+});
+
+FlowRouter.triggers.enter([(context, redirect) => {
+  if (Meteor.userId() && context.path === '/login') {
+    redirect('/create-your-first-app');
+  }
+}]);
 
 FlowRouter.route('/', {
   name: 'Home',
@@ -52,25 +83,25 @@ FlowRouter.route('/profile', {
 });
 
 FlowRouter.route('/login', {
-    name: 'Login',
-    type: 'SHOW_LOGIN',
-    helper: 'IsLogin'
+  name: 'Login',
+  type: 'SHOW_LOGIN',
+  helper: 'IsLogin'
 });
 
 FlowRouter.route('/create-your-first-app', {
-    name: 'CreateYourFirstApp',
-    type: 'SHOW_CREATE_YOUR_FIRST_APP',
-    helper: 'IsCreateYourFirstApp'
+  name: 'CreateYourFirstApp',
+  type: 'SHOW_CREATE_YOUR_FIRST_APP',
+  helper: 'IsCreateYourFirstApp'
 });
 
 FlowRouter.route('/app/:AppId/general-settings', {
-    name: 'AppGeneralSettings',
-    type: 'SHOW_APP_GENERAL_SETTINGS',
-    helper: 'IsGeneralSettings'
+  name: 'AppGeneralSettings',
+  type: 'SHOW_APP_GENERAL_SETTINGS',
+  helper: 'IsGeneralSettings'
 });
 
 FlowRouter.route('/app/:AppId/other-thing', {
-    name: 'AppOtherThing',
-    type: 'SHOW_APP_OTHER_THING',
-    helper: 'IsOtherThing'
+  name: 'AppOtherThing',
+  type: 'SHOW_APP_OTHER_THING',
+  helper: 'IsOtherThing'
 });

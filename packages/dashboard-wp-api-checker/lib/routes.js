@@ -1,7 +1,5 @@
-FluxRouter.routes({
-  WpApiChecker: {
-    path: '/app/:AppId/wp-api-checker',
-    action: 'SHOW_WP_API_CHECKER',
-    helper: 'IsWpApiChecker'
-  }
+FlowRouter.route('/app/:AppId/wp-api-checker', {
+  name: 'WpApiChecker',
+  type: 'SHOW_WP_API_CHECKER',
+  helper: 'IsWpApiChecker'
 });

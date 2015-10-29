@@ -65,8 +65,8 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
-meteorflux:appstate@1.2.0
-meteorflux:dispatcher@1.1.1
+meteorflux:appstate@1.2.2
+meteorflux:dispatcher@1.2.0
 meteorflux:dispatcher-helper@1.0.1
 meteorflux:namespace@1.0.0
 meteorflux:reactive-state@1.0.1

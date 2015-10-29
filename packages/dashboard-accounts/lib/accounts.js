@@ -54,7 +54,12 @@ let loginSent = function({ email, password }) {
 };
 
 AppState.modify('LoggingIn', (action, state = false) => {
-  return Meteor.loggingIn();
+  switch (action.type) {
+    case 'LOGIN_FORM_SENT':
+      return true;
+    default:
+      return false;
+  }
 });
 
 // Use LogInError to show Meteor's errors to the user.
