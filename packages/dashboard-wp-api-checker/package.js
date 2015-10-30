@@ -17,8 +17,8 @@ Package.onUse(function(api) {
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
 
-  api.addFiles('lib/routes.js', 'client');
-  api.addFiles('lib/actions.js', 'client');
+  api.addFiles('lib/wp-api-checker-routes.js', 'client');
+  api.addFiles('lib/wp-api-checker-actions.js', 'client');
   api.addFiles('lib/wp-api-checker.html', 'client');
   api.addFiles('lib/wp-api-checker.js', 'client');
   api.addFiles('css/throbber.css', 'client');

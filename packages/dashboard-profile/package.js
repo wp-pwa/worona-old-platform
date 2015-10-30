@@ -9,10 +9,10 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
-  api.addFiles('lib/fields.js', ['client', 'server']);
-  api.addFiles('lib/collections.js', ['client', 'server']);
-  api.addFiles('lib/publications.js', 'server');
-  api.addFiles('lib/methods.js', ['client', 'server']);
+  api.addFiles('lib/profile-fields.js', ['client', 'server']);
+  api.addFiles('lib/profile-collections.js', ['client', 'server']);
+  api.addFiles('lib/profile-publications.js', 'server');
+  api.addFiles('lib/profile-methods.js', ['client', 'server']);
   api.addFiles('lib/profile-actions.js', 'client');
 });
 

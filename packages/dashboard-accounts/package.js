@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
   api.use('kadira:flow-router@2.6.2');
-  api.addFiles('lib/accounts.js', 'client');
+  api.addFiles('lib/accounts-actions.js', 'client');
 });
 
 Package.onTest(function(api) {

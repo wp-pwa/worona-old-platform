@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-apps@1.0.0');
-  api.addFiles('lib/actions.js', 'client');
+  api.addFiles('lib/breadcrumbs-actions.js', 'client');
 });
 
 Package.onTest(function(api) {
