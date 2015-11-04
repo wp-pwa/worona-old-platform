@@ -7,10 +7,10 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
   api.use('babrahams:constellation@0.1.11');
-  api.addFiles('dashboard-debug.js');
+  api.addFiles('dashboard-debug.js', 'client');
 });
 
 Package.onTest(function(api) {

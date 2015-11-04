@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   var packages = [
     'worona:external-libraries@1.0.0',
     'worona:dashboard-external-libraries@1.0.0',
-    'worona:dashboard-router@1.0.0', // kadira:flow-router
+    'worona:dashboard-router@1.0.0',
     'worona:theme-switcher@1.0.0',
     'worona:dashboard-accounts@1.0.0',
     'worona:dashboard-profile@1.0.0',

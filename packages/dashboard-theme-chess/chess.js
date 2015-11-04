@@ -10,12 +10,12 @@ WebFontConfig = {
     ]
   },
   active() {
-    Dispatcher.dispatch('WEBFONT_LOADED');
+    Dispatch('WEBFONT_LOADED');
   }
 };
 
-AppState.modify('webFontLoaded', (action, state = false) => {
-  if (action.type === 'WEBFONT_LOADED')
+State.set('webFontLoaded', (state = false) => {
+  if (Action.is('WEBFONT_LOADED'))
     return true;
   else
     return state;
@@ -33,19 +33,19 @@ Meteor.startup(() => {
       event.preventDefault();
       event.stopPropagation();
 
-      let firstName = event.currentTarget.firstName.value;
-      let appUrl  = event.currentTarget.appUrl.value;
-      let appName = s.strRight(appUrl, '://');
+      let firstName = event.currentTarget.firstName;
+      let appUrl  = event.currentTarget.appUrl;
+      let appName = s.strRight(appUrl.value, '://');
       appName = s.strLeft(appName, '/');
 
-      if (appUrl === '') {
-        appUrl = 'https://www.worona.org';
-        appName = 'Worona Blog (example)';
+      if (appUrl.value === '') {
+        appUrl = { value: 'https://www.worona.org' };
+        appName = { value: 'Worona Blog (example)' };
       }
 
-      Dispatcher.dispatch('PROFILE_CHANGED', { firstName });
-      Dispatcher.dispatch('NEW_APP_CREATED', { appName, appUrl });
-      Dispatcher.dispatch('SHOW_HOME');
+      Dispatch('PROFILE_CHANGED', { firstName })
+        .then('NEW_APP_CREATED', { appName, appUrl })
+        .then('SHOW_HOME');
     }
   });
 });

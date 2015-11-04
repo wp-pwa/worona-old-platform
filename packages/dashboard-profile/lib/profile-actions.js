@@ -1,17 +1,17 @@
 let handle = Meteor.subscribe('UserProfile');
 
-AppState.link('Profile.isReady', () => {
+State.set('Profile.isReady', (state = false) => {
   return !!handle && handle.ready();
 });
 
-AppState.link('Profile', () => {
+State.set('Profile', (state = {}) => {
   return Meteor.users.findOne(Meteor.userId());
 });
 
-Dispatcher.register(action => {
-  switch (action.type) {
+First(() => {
+  switch (Action.type()) {
     case 'PROFILE_CHANGED':
-      Meteor.call('changeProfile', _.omit(action, 'type'));
+      Meteor.call('changeProfile', Action.payload());
       break;
   }
 });

@@ -29,20 +29,9 @@ i18n.setLanguage = function (language) {
 
 Tracker.autorun(() => {
   if (momentReady.get() && tapi18nReady.get()) {
-    // Dispatcher.dispatch('LANGUAGE_IS_READY');
+    State.set('lang.isReady', true);
   } else {
-    // Dispatcher.dispatch('LANGUAGE_IS_NOT_READY');
-  }
-});
-
-AppState.modify('lang.isReady', (action, state = false) => {
-  switch (action.type) {
-    case 'LANGUAGE_IS_READY':
-      return true;
-    case 'LANGUAGE_IS_NOT_READY':
-      return false;
-    default:
-      return state;
+    State.set('lang.isReady', false);
   }
 });
 

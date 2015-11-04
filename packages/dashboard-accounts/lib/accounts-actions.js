@@ -1,136 +1,52 @@
-AppState.modify('LoggingIn', (action, state = false) => {
-  switch (action.type) {
-    case 'LOGIN_FORM_SENT':
-      return true;
-    default:
-      return false;
-  }
+State.set('LoggingIn', () => {
+  return Meteor.loggingIn();
 });
 
-Dispatcher.dispatch(action => {
-  switch (action.type) {
-    case 'LOGIN_FORM_SENT':
-      AppState.set('LoggingIn', true);
-      break;
-    default:
-      AppState.set('LoggingIn', false);
-  }
+State.set('LogInError', (state = false) => {
+  if (Action.is('LOGIN_FAILED'))
+    return Action.error.reason;
+  else
+    return false;
 });
 
-Action.run(() => {
-  if (Action.equals('LOGIN_FORM_SENT')) {
-    State.set('LoggingIn', true);
-  } else {
-    State.set('LoggingIn', false);
-  }
+State.set('LoggingOut', (state = false) => {
+  if (Action.is('LOGOUT'))
+    return true;
+  else
+    return false;
 });
 
-// Use LogInError to show Meteor's errors to the user.
-AppState.modify('LogInError', (action, state = false) => {
-  switch (action.type) {
-    case 'LOGIN_FAILED':
-      return action.error.reason;
-    default:
-      return false;
-  }
-});
-
-Action.run(() => {
-  if (Action.equals('LOGIN_FAILED')) {
-    State.set('LogInError', Action.error.reason);
-  } else {
-    State.set('LogInError', false);
-  }
-});
-
-// Give feedback when user has clicked the LogOut button.
-AppState.modify('LoggingOut', (action, state = false) => {
-  switch (action.type) {
-    case 'LOGOUT':
-      return true;
-    default:
-      return false;
-  }
-});
-
-// Get last email used so when the user logs out, it doesn't have to write
-// it again.
-AppState.modify('LastEmailUsed', (action, state = '') => {
-  switch (action.type) {
-    case 'LOGIN_FORM_SENT':
-      let email = action.event.currentTarget.email.value;
-      return email;
-    default:
-      return state;
-  }
-});
-
-
-Action.run(() => {
-  if (Action.equals('LOGIN_FORM_SENT')) {
-    State.set('LastEmailUsed', Action.event.currentTarget.email.value);
-  }
+State.set('LastEmailUsed', (state = '') => {
+  if (Action.is('LOGIN_FORM_SENT'))
+    return Action.event.currentTarget.email.value;
+  else
+    return state;
 });
 
 // Get a guess of the user name for the second step.
-AppState.modify('NameGuess', (action, state = '') => {
-  switch (action.type) {
-    case 'LOGIN_FORM_SENT':
-      let email = action.event.currentTarget.email.value;
-      let nameArray = s(email).strLeft('@').split('.');
-      nameArray = nameArray.map(name => s.capitalize(name));
-      let name = s.toSentence(nameArray, ' ', ' ');
-      return name;
-    default:
-      return state;
-  }
-});
-
-Action.run(() => {
-  if (Action.equals('LOGIN_FORM_SENT')) {
+State.set('NameGuess', (state = '') => {
+  if (Action.is('LOGIN_FORM_SENT')) {
     let email = Action.event.currentTarget.email.value;
     let nameArray = s(email).strLeft('@').split('.');
     nameArray = nameArray.map(name => s.capitalize(name));
     let name = s.toSentence(nameArray, ' ', ' ');
-    State.set('NameGuess', name);
+    return name;
+  } else {
+    return state;
   }
 });
 
-
-Dispatcher.register(action => {
-  switch (action.type) {
-
-    case 'LOGIN_FORM_SENT':
-      let email = action.event.currentTarget.email.value;
-      let password = action.event.currentTarget.password.value;
-      loginSent({ email, password });
-      break;
-
-    case 'LOGOUT':
-      Meteor.logout( function(err) {
-        if (!err) {
-          Dispatcher.dispatch('SHOW_LOGIN');
-        } else {
-          console.log(err);
-        }
-      });
-      break;
-  }
-});
-
-Action.run(() => {
-  switch (Action.get()) {
-
+First(() => {
+  switch (Action.type()) {
     case 'LOGIN_FORM_SENT':
       let email = Action.event.currentTarget.email.value;
       let password = Action.event.currentTarget.password.value;
       loginSent({ email, password });
       break;
-
     case 'LOGOUT':
       Meteor.logout( function(err) {
         if (!err) {
-          Action.dispatch('SHOW_LOGIN');
+          Dispatch('SHOW_LOGIN');
         } else {
           console.log(err);
         }
@@ -138,6 +54,7 @@ Action.run(() => {
       break;
   }
 });
+
 
 // Async login action.
 let loginSent = function({ email, password }) {
@@ -156,19 +73,18 @@ let loginSent = function({ email, password }) {
 
           // Account created succesfully. Show 'CreateYourFirstApp' template.
           } else {
-            Dispatcher.dispatch('SHOW_CREATE_YOUR_FIRST_APP');
+            Dispatch('SHOW_CREATE_YOUR_FIRST_APP');
           }
         });
 
       // Error logging in, report it.
       } else {
-        Dispatcher.dispatch('LOGIN_FAILED', { error: err });
+        Dispatch('LOGIN_FAILED', { error: err });
       }
 
     // Log in sucessful.
     } else {
-      Dispatcher.dispatch('LOGIN_SUCCESS');
-      Dispatcher.dispatch('SHOW_HOME');
+      Dispatch('LOGIN_SUCCESS').then('SHOW_HOME');
     }
   });
 };

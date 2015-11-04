@@ -1,12 +1,19 @@
-let checkWpApi = function(app) {
-  // use wp-api-rest to check the WP-API
+let WP = Browserify['wordpress-rest-api'];
+
+let checkWpApi = function(url) {
+  console.log(url);
+  let wp = new WP({ endpoint: url + '/wp-json' });
+  // Callbacks
+  wp.posts().then(function( data ) {
+    console.log(data);
+  }).catch(function( err ) {
+    console.log(err);
+  });
 };
 
-Dispatcher.register(action => {
-  switch (action.type) {
-    case 'SHOW_WP_API_CHECKER':
-      let url = await AppState.get('CurrentApp.url');
-      checkWpApi(url);
-      break;
+Finally(() => {
+  if (Action.is('SHOW_WP_API_CHECKER')) {
+    let url = State.get('CurrentApp.url');
+    checkWpApi(url);
   }
 });

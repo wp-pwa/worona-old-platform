@@ -1,13 +1,13 @@
 let __ = TAPi18n.__;
 
-AppState.modify('Breadcrumbs.items', (action, state = []) => {
+State.set('Breadcrumbs.items', (state = []) => {
 
-  if (action.type.startsWith('SHOW_')) {
-    let appName = AppState.get('CurrentApp.name');
+  if (Action.type().startsWith('SHOW_')) {
+    let appName = State.get('CurrentApp.name');
 
-    if (AppState.get('IsGeneralSettings')) {
+    if (State.get('IsGeneralSettings')) {
       sectionName = __('General_Settings');
-      sectionUrl = AppState.get('AppGeneralSettingsUrl');
+      sectionUrl = State.get('AppGeneralSettingsUrl');
     }
 
     if (sectionName) {

@@ -5,9 +5,9 @@ FlowRouter.onRouteRegister(function(route) {
   let pathDef = route.pathDef;
 
   // Create IsRoute helpers. For example, IsHome or IsLogin.
-  AppState.modify(helper, (action, state = false) => {
-    if (action.type.startsWith('SHOW_') === true)
-      return action.type === type ? true : false;
+  State.set(helper, (state = false) => {
+    if (Action.type().startsWith('SHOW_') === true)
+      return Action.type() === type ? true : false;
     else
       return state;
   });
@@ -23,17 +23,16 @@ FlowRouter.onRouteRegister(function(route) {
 
   // Dispatch the action if it is not dispatched.
   FlowRouter._routesMap[name]._action = () => {
-    if (!Dispatcher.isDispatching()) {
-      Dispatcher.dispatch(type, { params: FlowRouter.current().params });
+    if (!Dispatch.isDispatching()) {
+      Dispatch(type, { params: FlowRouter.current().params });
     }
-
   };
 
   // Change the url if the action is dispatched.
-  Dispatcher.register(action => {
-    if (action.type === type) {
-      if (action.params) {
-        let pathWithParams = FlowRouter.path(pathDef, action.params);
+  First(() => {
+    if (Action.is(type)) {
+      if (Action.params) {
+        let pathWithParams = FlowRouter.path(pathDef, Action.params);
         FlowRouter.go(pathWithParams);
       } else {
         FlowRouter.go(pathDef);
@@ -42,14 +41,13 @@ FlowRouter.onRouteRegister(function(route) {
   });
 });
 
-
 // Redirect.
-Dispatcher.addDispatchFilter(function(action) {
-  if ((action.type.startsWith('SHOW_') && (!Meteor.userId()))) {
-    action.type = 'SHOW_LOGIN';
-  }
-  return [action];
-});
+// Dispatcher.addDispatchFilter(function(action) {
+//   if ((action.type.startsWith('SHOW_') && (!Meteor.userId()))) {
+//     action.type = 'SHOW_LOGIN';
+//   }
+//   return [action];
+// });
 
 FlowRouter.triggers.enter([(context, redirect) => {
   if (!Meteor.userId() && context.path !== '/login') {
@@ -57,12 +55,12 @@ FlowRouter.triggers.enter([(context, redirect) => {
   }
 }]);
 
-Dispatcher.addDispatchFilter(function(action) {
-  if ((action.type === 'SHOW_LOGIN') && (Meteor.userId())) {
-    action.type = 'SHOW_CREATE_YOUR_FIRST_APP';
-  }
-  return [action];
-});
+// Dispatcher.addDispatchFilter(function(action) {
+//   if ((action.type === 'SHOW_LOGIN') && (Meteor.userId())) {
+//     action.type = 'SHOW_CREATE_YOUR_FIRST_APP';
+//   }
+//   return [action];
+// });
 
 FlowRouter.triggers.enter([(context, redirect) => {
   if (Meteor.userId() && context.path === '/login') {

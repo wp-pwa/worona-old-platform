@@ -1,3 +1,3 @@
-AppState.modify('theme', (action, state = 'Chess') => {
+State.set('theme', (state = 'Chess') => {
   return state;
 });
