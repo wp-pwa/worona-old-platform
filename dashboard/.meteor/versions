@@ -115,6 +115,7 @@ worona:dashboard-base@1.0.0
 worona:dashboard-breadcrumbs@1.0.0
 worona:dashboard-debug@1.0.0
 worona:dashboard-external-libraries@1.0.0
+worona:dashboard-general-settings@1.0.0
 worona:dashboard-i18n@1.0.0
 worona:dashboard-profile@1.0.0
 worona:dashboard-router@1.0.0

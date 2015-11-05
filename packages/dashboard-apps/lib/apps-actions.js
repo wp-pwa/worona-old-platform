@@ -20,9 +20,13 @@ State.set('CurrentApp', (state = {}) => {
 });
 
 State.set('AppId', (state = false) => {
-  if ((Action.type().startsWith('SHOW_') === true) &&
-      (Action.params) && (Action.params.AppId))
-    return Action.params.AppId;
+  if ((Action.type().startsWith('SHOW_') === true)) {
+    if ((Action.params) && (Action.params.AppId))
+      return Action.params.AppId;
+    else
+      return false;
+  }
+  return state;
 });
 
 State.set('IsNewAppForm', (state = false) => {
@@ -40,7 +44,6 @@ State.set('IsNewAppForm', (state = false) => {
 First(() => {
   switch (Action.type()) {
     case 'NEW_APP_CREATED':
-      debugger;
       let name = Action.appName.value;
       let url  = Action.appUrl.value;
       Meteor.call('addNewApp', { name, url });

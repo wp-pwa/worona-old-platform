@@ -61,7 +61,6 @@ MeteorFlux.FluxRouter = class FluxRouter {
 
       // Create RouteUrl. For example, HomeUrl or LoginUrl.
       // If item has params, create a computation.
-      // debugger;
       let stateUrl = route + 'Url';
       if (item.paramNames.length > 0) {
         Tracker.autorun(() => {
