@@ -11,6 +11,7 @@ Package.onUse(function(api) {
 
   // external libraries
   api.use('worona:external-libraries@1.0.0');
+  api.use('meteorflux:first-then-finally-blaze@1.0.1');
 
   // i18n
   api.addFiles('package-tap.i18n', ['client', 'server']);
@@ -20,7 +21,6 @@ Package.onUse(function(api) {
   api.imply('jquery', 'client');
 
   api.use('webtempest:animate@0.1.9');
-
   api.use('worona:dashboard-i18n@1.0.0');
 
   // Theme files
@@ -37,10 +37,10 @@ Package.onUse(function(api) {
     'new-app-form.html',
     'app-card.html',
     'app-general-settings.html',
-    'breadcrumb.html',
-    'css/1-normalize.css',
-    'css/2-webflow.css',
-    'css/3-worona-dashboard.webflow.css',
+    'css/normalize.css',
+    'css/webflow.css',
+    'css/worona-dashboard.webflow.css',
+    'css/custom.css',
     'js/modernizr.js',
     'js/webflow.js'
   ], 'client');

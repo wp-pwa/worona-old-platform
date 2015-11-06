@@ -1,4 +1,4 @@
-Dispatcher.register(action => {
-  console.log("==> \"" + action.type + "\"");
-  console.log(_.omit(action, 'type'));
+First(() => {
+  console.log("==> \"" + Action.type() + "\"");
+  console.log(_.omit(Action, _.functions(Action)));
 });

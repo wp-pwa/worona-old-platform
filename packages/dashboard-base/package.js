@@ -16,13 +16,15 @@ Package.onUse(function(api) {
   var packages = [
     'worona:external-libraries@1.0.0',
     'worona:dashboard-external-libraries@1.0.0',
-    'worona:dashboard-router@1.0.0', // kadira:flow-router
+    'worona:dashboard-router@1.0.0',
     'worona:theme-switcher@1.0.0',
     'worona:dashboard-accounts@1.0.0',
     'worona:dashboard-profile@1.0.0',
     'worona:dashboard-apps@1.0.0',
     'worona:dashboard-i18n@1.0.0',
-    'worona:dashboard-breadcrumbs@1.0.0'
+    'worona:dashboard-breadcrumbs@1.0.0',
+    'worona:dashboard-wp-api-checker@1.0.0',
+    'worona:dashboard-general-settings@1.0.0'
   ];
 
   // Imply them so they are available in the rest of the Worona Dashboard.

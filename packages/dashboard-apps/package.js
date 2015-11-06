@@ -9,11 +9,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('worona:external-libraries@1.0.0');
-  api.addFiles('lib/collections.js', ['client', 'server']);
-  api.addFiles('lib/publications.js', 'server');
-  api.addFiles('lib/subscriptions.js', 'client');
-  api.addFiles('lib/methods.js', ['client', 'server']);
-  api.addFiles('lib/actions.js', 'client');
+  api.use('worona:dashboard-external-libraries@1.0.0');
+  api.addFiles('lib/apps-collections.js', ['client', 'server']);
+  api.addFiles('lib/apps-publications.js', 'server');
+  api.addFiles('lib/apps-methods.js', ['client', 'server']);
+  api.addFiles('lib/apps-actions.js', 'client');
+  api.export('Apps');
 });
 
 Package.onTest(function(api) {

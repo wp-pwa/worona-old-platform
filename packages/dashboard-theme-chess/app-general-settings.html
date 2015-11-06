@@ -1,7 +1,9 @@
 <template name="Chess_AppGeneralSettings">
   <main class="w-section wrn-main">
     <div class="w-container">
-      {{> Chess_Breadcrumb}}
+      {{#if Breadcrumbs}}
+        {{> BreadcrumbsTemplate text="General Settings"}}
+      {{/if}}
       <div class="w-row">
         <div class="w-col w-col-2 wrn-menu-column">
           <div class="wrn-menu-header">WORONA&nbsp;SETTINGS</div>

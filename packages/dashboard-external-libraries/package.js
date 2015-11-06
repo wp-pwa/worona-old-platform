@@ -11,7 +11,9 @@ Package.onUse(function (api) {
   api.versionsFrom('1.2');
 
   // External packages needed for Worona Dashboard (but not Worona App).
-  var packages = [];
+  var packages = [
+    'worona:dashboard-router@1.0.0'
+  ];
 
   // Imply them so they are accesible anywhere in the dashboard.
   api.imply(packages);

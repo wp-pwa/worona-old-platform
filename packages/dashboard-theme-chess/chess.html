@@ -18,6 +18,8 @@
             {{> Chess_Login}}
           {{else}} {{#if IsCreateYourFirstApp}}
             {{> Chess_CreateYourFirstApp}}
+          {{else}} {{#if IsWpApiChecker}}
+            {{> WpApiChecker}}
           {{else}} {{#if AppId}}
             {{#if IsGeneralSettings}}
               {{> Chess_AppGeneralSettings}}
@@ -39,7 +41,7 @@
                 {{> Chess_Footer}}
               </div>
             </div>
-          {{/if}} {{/if}} {{/if}}
+          {{/if}} {{/if}} {{/if}} {{/if}}
 
         </div>
       </main>
