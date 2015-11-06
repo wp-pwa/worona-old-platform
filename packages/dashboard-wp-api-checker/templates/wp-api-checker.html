@@ -1,0 +1,93 @@
+<template name="WpApiChecker">
+  {{#if WpApiChecker.firstTime}}
+    {{> WpApiChecker_Checking}}
+  {{else}}
+    {{> WpApiChecker_Failed}}
+  {{/if}}
+</template>
+
+<template name="WpApiChecker_Checking">
+  <div class="wrn-padder login">
+    <h3 class="wrn-login-title">{{_ 'Checking_connection' name=name}}</h3>
+    {{> WpApiChecker_Loading}}
+  </div>
+</template>
+
+<template name="WpApiChecker_Loading">
+  {{#if WpApiChecker.checking}}
+    <span class="wp-api-checker-loading">
+      <div class="throbber-loader">
+        Loading…
+      </div>
+    </span>
+  {{/if}}
+</template>
+
+<template name="WpApiChecker_Error">
+  {{#if WpApiChecker.error}}
+    <span class="wrn-login-error wp-api-checker-loading">
+      {{_ WpApiChecker.error}}
+    </span>
+  {{/if}}
+</template>
+
+
+<template name="WpApiChecker_Failed">
+  <main class="w-section wrn-main">
+    <div class="w-container">
+      {{> BreadcrumbsTemplate text="Worona Plugin Check"}}
+      <div class="wrn-white-line">
+        <div class="wrn-padder center">
+          <h3 class="wrn-login-title danger">‍Ouch, connection failed! :(</h3>
+          <h3>‍It looks like Worona plugin is not working correctly in your WordPress site.</h3>
+          <div class="wrn-small-header dark-grey">‍PLEASE Try the following things</div>
+        </div>
+      </div>
+      <div class="wrn-white-line">
+        <div class="wrn-padder">
+          <h3>1. Install and activate Worona plugin</h3>
+          <div class="wrn-padder-padding">
+            <p>Go to your WordPress Dashboard and click on <strong>Plugins‍ -&gt; Add new‍</strong>
+            </p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/wodpress-plugins.png">
+            <p>Type <strong>worona</strong> in the Search bar</p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/search.png">
+            <p>Click on <strong>Install‍</strong>
+            </p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/install-worona.png">
+            <p>‍<strong>Activate</strong> the plugin‍</p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/activate-worona.png">
+            <p>If you have followed all these steps, click here to try again</p>
+            <a class="w-button wrn-submit" href="#" dispatch="CHECK_WP_API">{{_ 'Try_again'}}</a>
+            {{> WpApiChecker_Loading}}
+            {{> WpApiChecker_Error}}
+          </div>
+        </div>
+      </div>
+      <div class="wrn-white-line">
+        <div class="wrn-padder">
+          <h3>2. Check if the url is correct</h3>
+          <div class="wrn-padder-padding">
+            <p>Your current url is:</p>
+            <div class="w-form">
+              <form id="change-url-and-check">
+                <input class="w-input wrn-text-field" id="appUrl" type="url" placeholder="" name="appUrl" value="{{App.url}}">
+                <ul class="wrn-unordered">
+                  <li>If your WordPress is installed in a ‍folder, write it.
+                    <br><span class="wrn-italic-text">For example: http://yourblog.com/<strong>folder</strong></span>
+                  </li>
+                  <li>If your WordPress is using SSL, use https.
+                    <br><span class="wrn-italic-text">For example: <strong>https://</strong>yourblog.com</span>
+                  </li>
+                  <li>If your WordPress redirects to the www subdomain, write it.
+                    <br><span class="wrn-italic-text">For example: http://<strong>www</strong>.yourblog.com</span>
+                  </li>
+                </ul>
+                <p>If you think the url was wrong and now it is correct, click here to try again</p>
+                <input class="w-button wrn-submit" type="submit" value="{{_ 'Try_again'}}">
+                {{> WpApiChecker_Loading}}
+                {{> WpApiChecker_Error}}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>

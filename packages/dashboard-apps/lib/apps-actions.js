@@ -14,7 +14,7 @@ State.set('Apps.items', (state = []) => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });
 
-State.set('CurrentApp', (state = {}) => {
+State.set('App', (state = {}) => {
   let appId = State.get('AppId');
   return Apps.findOne(appId);
 });
@@ -47,6 +47,15 @@ First(() => {
       let name = Action.appName.value;
       let url  = Action.appUrl.value;
       Meteor.call('addNewApp', { name, url });
+      break;
+    case 'APP_CHANGED':
+      let id = State.get('AppId');
+      let data = {};
+      if (Action.appUrl)
+        data.url = Action.appUrl.value;
+      if (Action.appName)
+        data.name = Action.appName.value;
+      Meteor.call('changeApp', id, data);
       break;
   }
 });

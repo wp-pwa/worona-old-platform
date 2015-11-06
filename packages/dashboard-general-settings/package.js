@@ -12,14 +12,12 @@ Package.onUse(function(api) {
   api.use('worona:dashboard-router@1.0.0');
   api.use('templating');
 
-  api.use('browserify:wordpress-rest-api@0.5.0');
-
   api.addFiles('package-tap.i18n', ['client', 'server']);
 
   api.addFiles('lib/general-settings-routes.js', 'client');
   api.addFiles('lib/general-settings-actions.js', 'client');
-  api.addFiles('lib/general-settings.html', 'client');
-  api.addFiles('lib/general-settings.js', 'client');
+  api.addFiles('templates/general-settings.html', 'client');
+  api.addFiles('templates/general-settings.js', 'client');
 
   api.addFiles([
     'i18n/en.i18n.json',
