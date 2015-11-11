@@ -6,46 +6,55 @@
   <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
 </head>
 
-<template name="Chess">
+<template name="FullScreen">
   {{#if webFontLoaded}}
     <div class="wrn-body">
       {{> Chess_Header}}
-
       <main class="w-section wrn-main">
         <div class="w-container">
-
-          {{#if IsLogin}}
-            {{> Chess_Login}}
-          {{else}} {{#if IsCreateYourFirstApp}}
-            {{> Chess_CreateYourFirstApp}}
-          {{else}} {{#if IsWpApiChecker}}
-            {{> WpApiChecker}}
-          {{else}} {{#if AppId}}
-            {{#if IsGeneralSettings}}
-              {{> Chess_AppGeneralSettings}}
-            {{/if}}
-          {{else}}
-            <div class="w-row">
-              <div class="w-col w-col-3 wrn-menu-column">
-                {{> Chess_LeftMenu}}
-              </div>
-              <div class="w-col w-col-9 wrn-cards-column">
-                {{#if IsHome}}
-                  {{> Chess_Home}}
-                {{/if}}
-
-                {{#if IsProfile}}
-                  {{> Chess_Profile}}
-                {{/if}}
-
-                {{> Chess_Footer}}
-              </div>
-            </div>
-          {{/if}} {{/if}} {{/if}} {{/if}}
-
+          {{> Template.dynamic template=content}}
         </div>
       </main>
+    </div>
+  {{/if}}
+</template>
 
+<template name="GeneralScreen">
+  {{#if webFontLoaded}}
+    <div class="wrn-body">
+      {{> Chess_Header}}
+      <main class="w-section wrn-main">
+        <div class="w-container">
+          <div class="w-row">
+            <div class="w-col w-col-3 wrn-menu-column">
+              {{> Chess_GeneralMenu}}
+            </div>
+            <div class="w-col w-col-9 wrn-cards-column">
+              {{> Template.dynamic template=content}}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  {{/if}}
+</template>
+
+<template name="AppScreen">
+  {{#if webFontLoaded}}
+    <div class="wrn-body">
+      {{> Chess_Header}}
+      <main class="w-section wrn-main">
+        <div class="w-container">
+          <div class="w-row">
+            <div class="w-col w-col-3 wrn-menu-column">
+              {{> Chess_AppMenu}}
+            </div>
+            <div class="w-col w-col-9 wrn-cards-column">
+              {{> Template.dynamic template=content}}
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   {{/if}}
 </template>

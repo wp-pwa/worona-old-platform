@@ -3,6 +3,8 @@ FlowRouter.onRouteRegister(function(route) {
   let helper = route.options.helper;
   let type = route.options.type;
   let pathDef = route.pathDef;
+  let layout = route.options.layout;
+  let content = route.options.content;
 
   // Create IsRoute helpers. For example, IsHome or IsLogin.
   State.set(helper, (state = false) => {
@@ -37,6 +39,7 @@ FlowRouter.onRouteRegister(function(route) {
       } else {
         FlowRouter.go(pathDef);
       }
+      BlazeLayout.render(layout, { content });
     }
   });
 });
@@ -71,25 +74,33 @@ FlowRouter.triggers.enter([(context, redirect) => {
 FlowRouter.route('/', {
   name: 'Home',
   type: 'SHOW_HOME',
-  helper: 'IsHome'
+  helper: 'IsHome',
+  layout: 'GeneralScreen',
+  content: 'Chess_Home'
 });
 
 FlowRouter.route('/profile', {
   name: 'Profile',
   type: 'SHOW_PROFILE',
-  helper: 'IsProfile'
+  helper: 'IsProfile',
+  layout: 'GeneralScreen',
+  content: 'Chess_Profile'
 });
 
 FlowRouter.route('/login', {
   name: 'Login',
   type: 'SHOW_LOGIN',
-  helper: 'IsLogin'
+  helper: 'IsLogin',
+  layout: 'FullScreen',
+  content: 'Chess_Login'
 });
 
 FlowRouter.route('/create-your-first-app', {
   name: 'CreateYourFirstApp',
   type: 'SHOW_CREATE_YOUR_FIRST_APP',
-  helper: 'IsCreateYourFirstApp'
+  helper: 'IsCreateYourFirstApp',
+  layout: 'FullScreen',
+  content: 'Chess_CreateYourFirstApp'
 });
 
 FlowRouter.route('/app/:AppId/general-settings', {

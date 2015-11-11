@@ -33,18 +33,18 @@ Meteor.startup(() => {
       event.preventDefault();
       event.stopPropagation();
 
-      let firstName = event.currentTarget.firstName;
-      let appUrl  = event.currentTarget.appUrl;
-      let appName = s.strRight(appUrl.value, '://');
-      appName = s.strLeft(appName, '/');
+      let firstName = event.currentTarget.firstName.value;
 
-      if (appUrl.value === '') {
-        appUrl = { value: 'https://www.worona.org' };
-        appName = { value: 'Worona Blog (example)' };
+      let url  = event.currentTarget.appUrl.value;
+      let name = s(url).strRight('://').strLeft('/').value();
+
+      if (url === '') {
+        url = 'https://www.worona.org';
+        name = 'Worona Blog (example)';
       }
 
       Dispatch('PROFILE_CHANGED', { firstName })
-        .then('NEW_APP_CREATED', { appName, appUrl })
+        .then('NEW_APP_CREATED', { name, url })
         .then('SHOW_HOME');
     }
   });

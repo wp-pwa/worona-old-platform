@@ -19,7 +19,7 @@ Meteor.methods({
   },
   changeApp(id, data) {
     check(data, pattern);
-    
+
     if (Apps.findOne(id).userId === this.userId) {
       data.modifiedAt = new Date();
       Apps.update(id, {$set: data });

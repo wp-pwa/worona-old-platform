@@ -1,8 +1,14 @@
 let WP = Browserify['wordpress-rest-api'];
 
+let sanitizeUrl = function(url) {
+  return s(url)
+    .rtrim('/')
+    .value();
+};
+
 let checkWpApi = function(url) {
-  let wp = new WP({ endpoint: url + '/wp-json' });
-  wp.posts()
+  let wp = new WP({ endpoint: sanitizeUrl(url) + '/wp-json' });
+  wp.posts().filter('posts_per_page', 1)
     .then(function(data) {
       setTimeout(() => {
         Dispatch('WP_API_CHECK_SUCCEED', { data })

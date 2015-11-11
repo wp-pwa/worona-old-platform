@@ -11,7 +11,7 @@ Package.onUse(function(api) {
 
   // external libraries
   api.use('worona:external-libraries@1.0.0');
-  api.use('meteorflux:first-then-finally-blaze@1.0.1');
+  api.use('meteorflux:first-then-finally-blaze@1.1.1');
 
   // i18n
   api.addFiles('package-tap.i18n', ['client', 'server']);

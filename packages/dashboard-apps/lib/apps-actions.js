@@ -44,9 +44,7 @@ State.set('IsNewAppForm', (state = false) => {
 First(() => {
   switch (Action.type()) {
     case 'NEW_APP_CREATED':
-      let name = Action.appName.value;
-      let url  = Action.appUrl.value;
-      Meteor.call('addNewApp', { name, url });
+      Meteor.call('addNewApp', Action.payload());
       break;
     case 'APP_CHANGED':
       let id = State.get('AppId');
