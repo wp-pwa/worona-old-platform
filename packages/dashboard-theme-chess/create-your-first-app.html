@@ -1,4 +1,54 @@
 <template name="Chess_CreateYourFirstApp">
+  <form class="ui large {{#if LoggingIn}}loading{{/if}} form" dispatch="LOGIN_FORM_SENT">
+    <div class="ui very padded container segment" style="margin-top: 40px; max-width: 450px !important;">
+
+      <div class="ui center aligned container">
+        <h3 class="ui grey header">
+          {{_ 'Your_first_time_in_Worona'}}
+        </h3>
+        <span class="ui grey meta">
+          {{_ 'Let_us_know_more_about_you'}}
+        </span>
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="left aligned field">
+        <label>{{_ 'Your_name'}}</label>
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" name="firstName" placeholder="{{NameGuess}}">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>{{_ 'Url_of_your_WordPress_site'}}</label>
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="url" name="appUrl" placeholder="{{_ 'your_blog_url'}}">
+        </div>
+      </div>
+
+      <div class="inline field">
+        <div class="ui checkbox">
+          <input type="checkbox" name="terms">
+          <label>I agree to the terms and conditions</label>
+        </div>
+      </div>
+
+      <div class="ui center aligned container">
+        <div class="ui large teal submit icon button">
+          <i class="checkmark icon"></i>
+          {{_ 'Go_to_Admin_Panel'}}
+        </div>
+      </div>
+
+      <div class="ui error message"></div>
+    </div>
+  </form>
+</template>
+
+<template name="Chess_CreateYourFirstApp2">
   <div class="wrn-padder login">
 
     <h3 class="wrn-login-title wrn-create-your-first-app">{{_ 'Your_first_time_in_Worona'}}</h3>

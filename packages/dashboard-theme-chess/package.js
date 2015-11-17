@@ -20,29 +20,31 @@ Package.onUse(function(api) {
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
 
-  api.use('webtempest:animate@0.1.9');
   api.use('worona:dashboard-i18n@1.0.0');
+  api.use('worona:dashboard-semantic-ui@1.0.0');
 
   // Theme files
   api.addFiles([
     'chess.js',
     'chess.html',
     'login.html',
+    'login.js',
     'create-your-first-app.html',
+    'create-your-first-app.js',
     'header.html',
     'footer.html',
-    'left-menu.html',
+    'general-menu.html',
     'home.html',
     'profile.html',
     'new-app-form.html',
     'app-card.html',
     'app-general-settings.html',
-    'css/normalize.css',
-    'css/webflow.css',
-    'css/worona-dashboard.webflow.css',
-    'css/custom.css',
-    'js/modernizr.js',
-    'js/webflow.js'
+    // 'css/normalize.css',
+    // 'css/webflow.css',
+    // 'css/worona-dashboard.webflow.css',
+    // 'css/custom.css',
+    // 'js/modernizr.js',
+    // 'js/webflow.js'
   ], 'client');
 
   api.addAssets([

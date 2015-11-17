@@ -7,6 +7,11 @@
 </head>
 
 <template name="FullScreen">
+  {{> Chess_Header}}
+  {{> Template.dynamic template=content}}
+</template>
+
+<template name="FullScreen2">
   {{#if webFontLoaded}}
     <div class="wrn-body">
       {{> Chess_Header}}
