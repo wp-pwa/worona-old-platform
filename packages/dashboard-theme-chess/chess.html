@@ -11,37 +11,16 @@
   {{> Template.dynamic template=content}}
 </template>
 
-<template name="FullScreen2">
-  {{#if webFontLoaded}}
-    <div class="wrn-body">
-      {{> Chess_Header}}
-      <main class="w-section wrn-main">
-        <div class="w-container">
-          {{> Template.dynamic template=content}}
-        </div>
-      </main>
-    </div>
-  {{/if}}
-</template>
-
 <template name="GeneralScreen">
-  {{#if webFontLoaded}}
-    <div class="wrn-body">
-      {{> Chess_Header}}
-      <main class="w-section wrn-main">
-        <div class="w-container">
-          <div class="w-row">
-            <div class="w-col w-col-3 wrn-menu-column">
-              {{> Chess_GeneralMenu}}
-            </div>
-            <div class="w-col w-col-9 wrn-cards-column">
-              {{> Template.dynamic template=content}}
-            </div>
-          </div>
-        </div>
-      </main>
+    {{> Chess_Header}}
+    <div class="ui grid container">
+      <div class="three wide column">
+        {{> Chess_GeneralMenu}}
+      </div>
+      <div class="thirteen wide column">
+        {{> Template.dynamic template=content}}
+      </div>
     </div>
-  {{/if}}
 </template>
 
 <template name="AppScreen">

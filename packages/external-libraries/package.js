@@ -20,7 +20,7 @@ Package.onUse(function (api) {
     'accounts-password@1.1.3',
     'underscorestring:underscore.string@3.2.2',
     'tap:i18n@1.7.0',
-    'meteorflux:first-then-finally@1.2.5'
+    'meteorflux:first-then-finally@1.2.7'
   ];
 
   // Imply them so they are accesible anywhere in the app or the dashboard.

@@ -12,7 +12,7 @@
   "Profile": "Profile",
   "Edit_profile": "Edit profile",
   "Logout": "Logout",
-  "logging_out": "logging out",
+  "logging_out": "Logout",
   "Error!": "Error!",
   "Incorrect password": "Incorrect password",
   "Checking_account": "Checking account",
@@ -30,5 +30,6 @@
   "Modified": "Modified",
   "Apps": "Apps",
   "General_Settings": "General Settings",
-  "DASHBOARD": "DASHBOARD"
+  "DASHBOARD": "DASHBOARD",
+  "PROFILE": "PROFILE"
 }

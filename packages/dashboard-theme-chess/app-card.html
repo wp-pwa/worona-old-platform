@@ -1,4 +1,22 @@
 <template name="Chess_AppCard">
+  <div class="card">
+      <div class="content">
+        <a class="header" href="{{WpApiCheckerUrl AppId=_id}}">
+          {{name}}
+        </a>
+        <div class="meta">
+          <strong>{{_ 'ID'}}:</strong>
+          {{_id}}
+        </div>
+        <div class="meta">
+          <strong>{{_ 'Modified'}}:</strong>
+          {{moFromNow createdAt}}
+        </div>
+      </div>
+  </div>
+</template>
+
+<template name="Chess_AppCard2">
   <div class="w-col w-col-4">
     <div class="wrn-app-card"><a class="wrn-app-card-title" href="{{WpApiCheckerUrl AppId=_id}}">{{name}}</a>
       <div class="wrn-app-card-props"><strong>{{_ 'ID'}}: </strong>{{_id}}</div>

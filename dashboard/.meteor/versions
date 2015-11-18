@@ -66,7 +66,7 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.10
 meteor-base@1.0.1
-meteorflux:first-then-finally@1.2.5
+meteorflux:first-then-finally@1.2.7
 meteorflux:first-then-finally-blaze@1.1.1
 meteorflux:namespace@1.0.0
 meteorflux:reactive-state@1.1.2

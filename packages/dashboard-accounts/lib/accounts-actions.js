@@ -73,7 +73,8 @@ let loginSent = function({ email, password }) {
 
           // Account created succesfully. Show 'CreateYourFirstApp' template.
           } else {
-            Dispatch('SHOW_CREATE_YOUR_FIRST_APP');
+            Dispatch('ACCOUNT_CREATION_SUCCEED')
+            .then('SHOW_CREATE_YOUR_FIRST_APP');
           }
         });
 

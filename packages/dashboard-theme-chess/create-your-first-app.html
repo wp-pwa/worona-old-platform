@@ -1,14 +1,14 @@
 <template name="Chess_CreateYourFirstApp">
-  <form class="ui large {{#if LoggingIn}}loading{{/if}} form" dispatch="LOGIN_FORM_SENT">
+  <form class="ui large {{#if LoggingIn}}loading{{/if}} form">
     <div class="ui very padded container segment" style="margin-top: 40px; max-width: 450px !important;">
 
       <div class="ui center aligned container">
-        <h3 class="ui grey header">
+        <div class="ui grey header">
           {{_ 'Your_first_time_in_Worona'}}
-        </h3>
-        <span class="ui grey meta">
+        </div>
+        <p class="lightgrey">
           {{_ 'Let_us_know_more_about_you'}}
-        </span>
+        </p>
       </div>
 
       <div class="ui divider"></div>

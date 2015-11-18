@@ -23,9 +23,14 @@ Package.onUse(function(api) {
     'semantic-ui/semantic.less',
     'semantic-ui/theme.config.import.less',
     'semantic-ui/site/globals/site.variables.import.less',
+    'semantic-ui/site/globals/site.overrides.import.less',
     'semantic-ui/site/collections/menu.variables.import.less',
+    'semantic-ui/site/collections/menu.overrides.import.less',
+    'semantic-ui/site/collections/form.variables.import.less',
     'semantic-ui/site/elements/input.variables.import.less',
     'semantic-ui/site/elements/segment.variables.import.less',
+    'semantic-ui/site/elements/label.variables.import.less',
+    'semantic-ui/site/views/card.variables.import.less',
     'semantic-ui/definitions/behaviors/form.js'
   ], 'client');
 });
