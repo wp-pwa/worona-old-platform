@@ -41,18 +41,26 @@ State.set('IsNewAppForm', (state = false) => {
   }
 });
 
+let cleanUndefinedValues = function(object) {
+  let undefineds = _.chain(object)
+    .map((v, k) => { if (_.isUndefined(v)) return k; })
+    .filter(v => !_.isUndefined(v))
+    .value();
+  return _.omit(object, undefineds);
+};
+
 First(() => {
+  let data = {
+    name: Action.appName,
+    url: Action.appUrl
+  };
+  data = cleanUndefinedValues(data);
   switch (Action.type()) {
     case 'NEW_APP_CREATED':
-      Meteor.call('addNewApp', Action.payload());
+      Meteor.call('addNewApp', data);
       break;
     case 'APP_CHANGED':
       let id = State.get('AppId');
-      let data = {};
-      if (Action.appUrl)
-        data.url = Action.appUrl.value;
-      if (Action.appName)
-        data.name = Action.appName.value;
       Meteor.call('changeApp', id, data);
       break;
   }

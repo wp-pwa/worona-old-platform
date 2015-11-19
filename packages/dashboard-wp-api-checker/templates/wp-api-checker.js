@@ -5,10 +5,10 @@ Template.WpApiChecker_Checking.helpers({
 });
 
 Template.WpApiChecker_Failed.events({
-  'submit #change-url-and-check'(event) {
+  'submit .change-url.form'(event) {
     event.preventDefault();
     event.stopPropagation();
-    let appUrl = event.currentTarget.appUrl;
+    let appUrl = event.currentTarget.appUrl.value;
     Dispatch('APP_CHANGED', { appUrl })
       .then('CHECK_WP_API');
   }

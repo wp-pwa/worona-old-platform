@@ -1,4 +1,25 @@
 <template name="Chess_NewAppForm">
+  <form class="ui form" dispatch="NEW_APP_CREATED">
+    <div class="two fields">
+      <div class="field">
+        <label>{{_ 'App_Name'}}</label>
+        <input name="appName" placeholder="{{_ 'Your_Blog'}}" type="text">
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>{{_ 'WordPress_URL'}}</label>
+        <input name="appUrl" placeholder="{{_ 'your_blog_url'}}" type="url">
+      </div>
+    </div>
+    <div class="ui teal submit button">{{_ 'Create'}}</div>
+    <button class="ui button" dispatch="CLOSE_NEW_APP_FORM">{{_ 'Cancel'}}</button>
+    <div class="ui error message"></div>
+  </form>
+  <div class="ui divider"></div>
+</template>
+
+<template name="Chess_NewAppForm2">
     <div class="wrn-padder animated out">
         <div class="w-form">
           <form id="email-form" name="email-form" data-name="Email Form" dispatch="NEW_APP_CREATED">

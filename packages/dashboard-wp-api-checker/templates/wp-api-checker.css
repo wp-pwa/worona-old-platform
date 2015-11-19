@@ -1,3 +1,17 @@
 .wp-api-checker-loading {
   margin-left: 10px;
 }
+
+.ui.padded.divider {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.explanation.column .content {
+  padding-left: 20px;
+}
+
+.explanation.column p,
+.explanation.column img {
+  margin-bottom: 10px;
+}

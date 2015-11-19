@@ -37,6 +37,7 @@ Package.onUse(function(api) {
     'home.html',
     'profile.html',
     'new-app-form.html',
+    'new-app-form.js',
     'app-card.html',
     'app-general-settings.html',
     // 'css/normalize.css',

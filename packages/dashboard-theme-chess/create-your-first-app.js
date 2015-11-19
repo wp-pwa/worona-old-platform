@@ -17,7 +17,7 @@ Template.Chess_CreateYourFirstApp.onRendered(function() {
         rules: [
           {
             type   : 'url',
-            prompt : 'Please enter the url of your blog'
+            prompt : 'Please enter a valid url'
           }
         ]
       },
