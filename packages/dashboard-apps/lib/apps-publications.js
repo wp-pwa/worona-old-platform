@@ -1,3 +1,3 @@
-Meteor.publish('UserApps', function() {
+Meteor.publish('apps', function() {
   return Apps.find({ userId: this.userId });
 });

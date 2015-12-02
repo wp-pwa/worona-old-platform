@@ -32,7 +32,7 @@ Template.Login.onRendered(function() {
   });
 
   this.autorun(() => {
-    let error = State.get('LogInError');
+    let error = State.get('accounts.logInError');
     if (error) {
       $('.ui.form').form('add errors', [
         error

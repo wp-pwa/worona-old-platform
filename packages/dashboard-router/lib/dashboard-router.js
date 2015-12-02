@@ -1,5 +1,5 @@
 // Create ComposeUrl helper. For example:
-// {{ComposeUrl path=GeneralScreen AppId=_id}}
+// {{ComposeUrl path=GeneralScreen appId=_id}}
 Template.registerHelper('ComposeUrl', function(params) {
   check(params, Spacebars.kw);
   check(params.hash, Match.ObjectIncluding({ path: String }));

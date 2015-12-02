@@ -1,6 +1,6 @@
 Template.WpApiChecker_Checking.helpers({
   name() {
-    return State.get('App.name');
+    return State.get('app.name');
   }
 });
 

@@ -9,13 +9,10 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
 
-  api.use('templating', 'client');
-  api.use('jquery', 'client');
-  api.imply('jquery', 'client');
   api.use('worona:external-libraries@1.0.0');
-  api.use('worona:dashboard-i18n@1.0.0');
+  api.use('worona:dashboard-external-libraries@1.0.0');
   api.use('worona:dashboard-semantic-ui@1.0.0');
-  api.use('worona:dashboard-router@1.0.0');
+  api.use('worona:menu-helper@1.0.0');
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
   api.addFiles('lib/theme-chess-routes.js', 'client');

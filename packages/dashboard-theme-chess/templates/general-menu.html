@@ -1,21 +1,12 @@
 <template name="Chess_GeneralMenu">
-  <div class="ui secondary vertical menu">
-    <div class="header item">{{_ 'DASHBOARD'}}</div>
-    <a class="{{#if Route.is.Apps}}active{{/if}} item" href={{Route.Apps.url}}>
-      {{_ 'Apps'}}
-    </a>
-    <div class="sub header item">
-      {{_ 'PROFILE'}}
+  {{#menu name='general'}}
+    <div class="ui secondary vertical menu">
+      {{#each category in categories}}
+        <div class="uppercase header item">{{_ category.name}}</div>
+        {{#each item in category.items}}
+          {{> Template.dynamic template=item.template}}
+        {{/each}}
+      {{/each}}
     </div>
-    <a class="{{#if Route.is.Profile}}active{{/if}} item" href={{Route.Profile.url}}>
-      {{_ 'Edit_profile'}}
-    </a>
-    <a class="item" href="#" dispatch="LOGOUT">
-      {{#if LoggingOut}}
-        {{_ 'logging_out'}} <div class="ui active mini inline loader"></div>
-      {{else}}
-        {{_ 'Logout'}}
-      {{/if}}
-    </a>
-  </div>
+  {{/menu}}
 </template>

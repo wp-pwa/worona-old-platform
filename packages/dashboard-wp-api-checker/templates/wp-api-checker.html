@@ -42,7 +42,7 @@
 
 <template name="WpApiChecker_Failed">
   <div class="ui very padded segment container">
-    {{> Breadcrumbs text="Worona Plugin Check"}}
+    {{> breadcrumb text="Worona Plugin Check"}}
 
     <div class="ui hidden divider"></div>
 
@@ -93,7 +93,7 @@
         2. Check if the url is correct
       </h3>
       <div class="content">
-        <p>Your current url is: <strong>{{App.url}}</strong></p>
+        <p>Your current url is: <strong>{{app.url}}</strong></p>
         <div class="ui relaxed list">
           <div class="item">
             <i class="large info circle top aligned icon"></i>
@@ -132,7 +132,7 @@
         <p>If you think the url was wrong and correct it and try again</p>
         <form class="ui change-url form">
           <div class="two fields">
-            <input class="field" type="url" placeholder="" name="url" value="{{App.url}}">
+            <input class="field" type="url" placeholder="" name="url" value="{{app.url}}">
           </div>
           <input class="ui teal submit button" type="submit" value="{{_ 'Try_again'}}">
           {{> WpApiChecker_Loading}}

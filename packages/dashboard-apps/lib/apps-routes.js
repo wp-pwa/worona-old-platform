@@ -12,10 +12,3 @@ FlowRouter.triggers.enter([
     }
   }
 ]);
-
-// State.modify('Menus.General', (state = []) => {
-//   state.push({
-//     template:
-//   });
-//   return state;
-// });

@@ -16,8 +16,10 @@ Package.onUse(function(api) {
   api.addFiles('lib/profile-publications.js', 'server');
   api.addFiles('lib/profile-methods.js', ['client', 'server']);
   api.addFiles('lib/profile-actions.js', 'client');
+  api.addFiles('lib/profile-states.js', 'client');
   api.addFiles('lib/profile-routes.js', 'client');
   api.addFiles('templates/profile.html', 'client');
+  api.addFiles('templates/profile-menu-item.html', 'client');
 });
 
 Package.onTest(function(api) {

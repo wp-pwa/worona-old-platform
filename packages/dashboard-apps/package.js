@@ -16,11 +16,13 @@ Package.onUse(function(api) {
   api.addFiles('lib/apps-publications.js', 'server');
   api.addFiles('lib/apps-methods.js', ['client', 'server']);
   api.addFiles('lib/apps-actions.js', 'client');
+  api.addFiles('lib/apps-states.js', 'client');
   api.addFiles('lib/apps-routes.js', 'client');
   api.addFiles('templates/apps.html', 'client');
   api.addFiles('templates/new-app-form.html', 'client');
   api.addFiles('templates/new-app-form.js', 'client');
   api.addFiles('templates/app-card.html', 'client');
+  api.addFiles('templates/app-menu-item.html', 'client');
 
   api.export('Apps');
 });

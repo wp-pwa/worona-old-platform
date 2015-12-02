@@ -1,14 +1,14 @@
 let __ = TAPi18n.__;
 
-Template.Breadcrumbs.onCreated(() => {
+Template.breadcrumb.onCreated(() => {
   let text = Template.instance().data.text;
-  State.modify('Breadcrumbs.items', (state = []) => {
+  State.modify('breadcrumbs.items', (state = []) => {
     return [
       { Name: __('Apps'),
         Url: '/',
         NextBreadcrumb: true},
-      { Name: State.get('App.name'),
-        Url: State.get('App.url'),
+      { Name: State.get('app.name'),
+        Url: State.get('app.url'),
         NextBreadcrumb: true},
       { Name: text,
         Url: '#',

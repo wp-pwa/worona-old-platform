@@ -14,10 +14,12 @@ Package.onUse(function(api) {
 
   api.addFiles('lib/accounts-actions.js', 'client');
   api.addFiles('lib/accounts-routes.js', 'client');
+  api.addFiles('lib/accounts-states.js', 'client');
   api.addFiles('templates/login.html', 'client');
   api.addFiles('templates/login.js', 'client');
   api.addFiles('templates/create-your-first-app.html', 'client');
   api.addFiles('templates/create-your-first-app.js', 'client');
+  api.addFiles('templates/logout-menu-item.html', 'client');
 });
 
 Package.onTest(function(api) {
