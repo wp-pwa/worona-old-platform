@@ -30,9 +30,7 @@ worona:dashboard-theme-chess
 #   These packages go with the shipped version of Worona but you can remove
 #   them and Worona should still work properly. They depend on worona-dashboard-base.
 
-meteorflux:first-then-finally
-worona:dashboard-debug
-
+meteorflux:meteorflux
 
 ### Your Custom Packages:
 #   ---------------------

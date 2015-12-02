@@ -1,13 +1,7 @@
 let WP = Browserify['wordpress-rest-api'];
 
-let sanitizeUrl = function(url) {
-  return s(url)
-    .rtrim('/')
-    .value();
-};
-
 let checkWpApi = function(url) {
-  let wp = new WP({ endpoint: sanitizeUrl(url) + '/wp-json' });
+  let wp = new WP({ endpoint: url + '/wp-json' });
   wp.posts().filter('posts_per_page', 1)
     .then(function(data) {
       setTimeout(() => {
@@ -22,10 +16,10 @@ let checkWpApi = function(url) {
     });
 };
 
-State.set('WpApiChecker.error', (state = false) => {
+State.modify('WpApiChecker.error', (state = false) => {
   switch (Action.type()) {
     case 'WP_API_CHECK_FAILED':
-      return 'Not working yet. Try again.';
+      return true;
     case 'CHECK_WP_API':
     case 'WP_API_CHECK_SUCCEED':
       return false;
@@ -37,7 +31,7 @@ State.set('WpApiChecker.error', (state = false) => {
 // Variable to control if the "Connecting" template should be shown or not
 // because we don't want to show the "Ouch, connection failed" template the
 // first time.
-State.set('WpApiChecker.firstTime', (state = true) => {
+State.modify('WpApiChecker.firstTime', (state = true) => {
   switch (Action.type()) {
     case 'SHOW_WP_API_CHECKER':
       return true;
@@ -48,7 +42,7 @@ State.set('WpApiChecker.firstTime', (state = true) => {
   }
 });
 
-State.set('WpApiChecker.checking', (state = false) => {
+State.modify('WpApiChecker.checking', (state = false) => {
   switch (Action.type()) {
     case 'CHECK_WP_API':
     case 'SHOW_WP_API_CHECKER':
@@ -61,7 +55,7 @@ State.set('WpApiChecker.checking', (state = false) => {
   }
 });
 
-Finally(() => {
+AfterAction(() => {
   switch (Action.type()) {
     case 'SHOW_WP_API_CHECKER':
       // Use tracker to wait until App is set. It can be delayed because

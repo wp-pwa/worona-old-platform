@@ -1,0 +1,21 @@
+<template name="Chess_GeneralMenu">
+  <div class="ui secondary vertical menu">
+    <div class="header item">{{_ 'DASHBOARD'}}</div>
+    <a class="{{#if Route.is.Apps}}active{{/if}} item" href={{Route.Apps.url}}>
+      {{_ 'Apps'}}
+    </a>
+    <div class="sub header item">
+      {{_ 'PROFILE'}}
+    </div>
+    <a class="{{#if Route.is.Profile}}active{{/if}} item" href={{Route.Profile.url}}>
+      {{_ 'Edit_profile'}}
+    </a>
+    <a class="item" href="#" dispatch="LOGOUT">
+      {{#if LoggingOut}}
+        {{_ 'logging_out'}} <div class="ui active mini inline loader"></div>
+      {{else}}
+        {{_ 'Logout'}}
+      {{/if}}
+    </a>
+  </div>
+</template>

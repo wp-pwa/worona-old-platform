@@ -1,4 +1,4 @@
-Template.Chess_CreateYourFirstApp.onRendered(function() {
+Template.CreateYourFirstApp.onRendered(function() {
 
   $('.ui.form').form({
     fields: {
@@ -34,7 +34,7 @@ Template.Chess_CreateYourFirstApp.onRendered(function() {
   });
 });
 
-Template.Chess_CreateYourFirstApp.events({
+Template.CreateYourFirstApp.events({
   'submit .ui.form'(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -51,6 +51,6 @@ Template.Chess_CreateYourFirstApp.events({
 
     Dispatch('PROFILE_CHANGED', { firstName })
       .then('NEW_APP_CREATED', { name, url })
-      .then('SHOW_HOME');
+      .then('SHOW_APPS');
   }
 });

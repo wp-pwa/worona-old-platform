@@ -1,22 +1,22 @@
-State.set('LoggingIn', () => {
+State.modify('LoggingIn', () => {
   return Meteor.loggingIn();
 });
 
-State.set('LogInError', (state = false) => {
+State.modify('LogInError', (state = false) => {
   if (Action.is('LOGIN_FAILED'))
     return Action.error.reason;
   else
     return false;
 });
 
-State.set('LoggingOut', (state = false) => {
+State.modify('LoggingOut', (state = false) => {
   if (Action.is('LOGOUT'))
     return true;
   else
     return false;
 });
 
-State.set('LastEmailUsed', (state = '') => {
+State.modify('LastEmailUsed', (state = '') => {
   if (Action.is('LOGIN_FORM_SENT'))
     return Action.event.currentTarget.email.value;
   else
@@ -24,7 +24,7 @@ State.set('LastEmailUsed', (state = '') => {
 });
 
 // Get a guess of the user name for the second step.
-State.set('NameGuess', (state = '') => {
+State.modify('NameGuess', (state = '') => {
   if (Action.is('LOGIN_FORM_SENT')) {
     let email = Action.event.currentTarget.email.value;
     let nameArray = s(email).strLeft('@').split('.');
@@ -36,7 +36,7 @@ State.set('NameGuess', (state = '') => {
   }
 });
 
-First(() => {
+Register(() => {
   switch (Action.type()) {
     case 'LOGIN_FORM_SENT':
       let email = Action.event.currentTarget.email.value;

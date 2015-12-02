@@ -1,4 +1,4 @@
-<template name="BreadcrumbsTemplate">
+<template name="Breadcrumbs">
   <div class="ui breadcrumb">
     {{#each Breadcrumbs.items}}
       {{#if NextBreadcrumb}}
@@ -12,20 +12,5 @@
       </div>
       {{/if}}
     {{/each}}
-  </div>
-</template>
-
-<template name="BreadcrumbsTemplate2">
-  <div class="wrn-breadcrumb">
-    <h3 class="breadcrumb">
-      {{#each Breadcrumbs.items}}
-        <a href="{{Url}}" class="wrn-breadcrumb-link">
-          {{Name}}
-        </a>
-        {{#if NextBreadcrumb}}
-          &gt;
-        {{/if}}
-      {{/each}}
-    </h3>
   </div>
 </template>

@@ -1,9 +1,9 @@
-Template.Chess_NewAppForm.onRendered(function() {
+Template.NewAppForm.onRendered(function() {
 
   $('.ui.form').form({
     fields: {
       appName: {
-        identifier  : 'appName',
+        identifier  : 'name',
         rules: [
           {
             type   : 'empty',
@@ -12,7 +12,7 @@ Template.Chess_NewAppForm.onRendered(function() {
         ]
       },
       appUrl: {
-        identifier  : 'appUrl',
+        identifier  : 'url',
         rules: [
           {
             type   : 'empty',

@@ -9,56 +9,24 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
 
-  // external libraries
-  api.use('worona:external-libraries@1.0.0');
-  api.use('meteorflux:first-then-finally-blaze@1.1.1');
-
-  // i18n
-  api.addFiles('package-tap.i18n', ['client', 'server']);
-
   api.use('templating', 'client');
   api.use('jquery', 'client');
   api.imply('jquery', 'client');
-
+  api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-i18n@1.0.0');
   api.use('worona:dashboard-semantic-ui@1.0.0');
+  api.use('worona:dashboard-router@1.0.0');
 
-  // Theme files
-  api.addFiles([
-    'chess.js',
-    'chess.html',
-    'login.html',
-    'login.js',
-    'create-your-first-app.html',
-    'create-your-first-app.js',
-    'header.html',
-    'footer.html',
-    'general-menu.html',
-    'home.html',
-    'profile.html',
-    'new-app-form.html',
-    'new-app-form.js',
-    'app-card.html',
-    'app-general-settings.html',
-    // 'css/normalize.css',
-    // 'css/webflow.css',
-    // 'css/worona-dashboard.webflow.css',
-    // 'css/custom.css',
-    // 'js/modernizr.js',
-    // 'js/webflow.js'
-  ], 'client');
+  api.addFiles('package-tap.i18n', ['client', 'server']);
+  api.addFiles('lib/theme-chess-routes.js', 'client');
+  api.addFiles('templates/chess.html', 'client');
+  api.addFiles('templates/header.html', 'client');
+  api.addFiles('templates/footer.html', 'client');
+  api.addFiles('templates/general-menu.html', 'client');
+  api.addFiles('i18n/en.i18n.json', ['client', 'server']);
+  api.addFiles('i18n/es.i18n.json', ['client', 'server']);
 
-  api.addAssets([
-    'images/worona.svg'
-  ], 'client');
-
-  api.addFiles([
-    'i18n/en.i18n.json',
-    'i18n/es.i18n.json',
-  ], ['client', 'server']);
-
-  api.export('WebFontConfig');
-
+  api.addAssets('images/worona.svg', 'client');
 });
 
 Package.onTest(function(api) {

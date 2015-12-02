@@ -27,12 +27,11 @@ i18n.setLanguage = function (language) {
     });
 };
 
-Tracker.autorun(() => {
-  if (momentReady.get() && tapi18nReady.get()) {
-    State.set('lang.isReady', true);
-  } else {
-    State.set('lang.isReady', false);
-  }
+State.modify('lang.isReady', (state = false) => {
+  if (momentReady.get() && tapi18nReady.get())
+    return true;
+  else
+    return false;
 });
 
 Meteor.startup(function () {

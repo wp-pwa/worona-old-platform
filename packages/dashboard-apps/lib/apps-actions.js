@@ -6,20 +6,20 @@ Tracker.autorun(() => {
     handle.stop();
 });
 
-State.set('Apps.isReady', (state = false) => {
-  return !!handle && handle.ready();
+State.modify('Apps.isReady', (state = false) => {
+  return (!!handle && handle.ready());
 });
 
-State.set('Apps.items', (state = []) => {
+State.modify('Apps.items', (state = []) => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });
 
-State.set('App', (state = {}) => {
+State.modify('App', (state = {}) => {
   let appId = State.get('AppId');
   return Apps.findOne(appId);
 });
 
-State.set('AppId', (state = false) => {
+State.modify('AppId', (state = false) => {
   if ((Action.type().startsWith('SHOW_') === true)) {
     if ((Action.params) && (Action.params.AppId))
       return Action.params.AppId;
@@ -29,7 +29,7 @@ State.set('AppId', (state = false) => {
   return state;
 });
 
-State.set('IsNewAppForm', (state = false) => {
+State.modify('IsNewAppForm', (state = false) => {
   switch (Action.type()) {
     case 'OPEN_NEW_APP_FORM':
       return true;
@@ -49,10 +49,10 @@ let cleanUndefinedValues = function(object) {
   return _.omit(object, undefineds);
 };
 
-First(() => {
+Register(() => {
   let data = {
-    name: Action.appName,
-    url: Action.appUrl
+    name: Action.name,
+    url: Action.url
   };
   data = cleanUndefinedValues(data);
   switch (Action.type()) {

@@ -1,4 +1,4 @@
-Template.Chess_Login.onRendered(function() {
+Template.Login.onRendered(function() {
 
   $('.ui.form').form({
     fields: {

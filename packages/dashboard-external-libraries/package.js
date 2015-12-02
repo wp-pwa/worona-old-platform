@@ -12,7 +12,7 @@ Package.onUse(function (api) {
 
   // External packages needed for Worona Dashboard (but not Worona App).
   var packages = [
-    'worona:dashboard-router@1.0.0'
+    'worona:dashboard-router@1.0.0',
   ];
 
   // Imply them so they are accesible anywhere in the dashboard.

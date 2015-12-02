@@ -8,9 +8,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
+
   api.use('worona:external-libraries@1.0.0');
-  api.use('templating');
-  api.addFiles('lib/breadcrumbs-actions.js', 'client');
+  api.use('worona:dashboard-external-libraries@1.0.0');
+  
   api.addFiles('templates/breadcrumbs.html', 'client');
   api.addFiles('templates/breadcrumbs.js', 'client');
 });

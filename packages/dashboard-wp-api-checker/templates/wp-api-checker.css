@@ -15,3 +15,13 @@
 .explanation.column img {
   margin-bottom: 10px;
 }
+
+.explanation.column .description {
+  padding: 5px 0 0 10px;
+  font-size: 12px;
+  color: rgba(139, 139, 139, 0.87) !important;
+}
+
+.ui.explanation.accordion .title:not(.ui) {
+    font-size: 1.3em;
+}
