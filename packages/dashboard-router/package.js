@@ -8,10 +8,13 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
+
   api.use('worona:external-libraries@1.0.0');
-  api.use('templating');
   api.use('kadira:flow-router@2.8.0');
+  api.use('kadira:blaze-layout@2.2.0');
   api.imply('kadira:flow-router@2.8.0');
+  api.imply('kadira:blaze-layout@2.2.0');
+
   api.addFiles('lib/dashboard-router.js', 'client');
 });
 

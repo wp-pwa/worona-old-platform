@@ -8,9 +8,16 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
+
   api.use('worona:external-libraries@1.0.0');
-  api.use('kadira:flow-router@2.6.2');
+  api.use('worona:dashboard-external-libraries@1.0.0');
+
   api.addFiles('lib/accounts-actions.js', 'client');
+  api.addFiles('lib/accounts-routes.js', 'client');
+  api.addFiles('templates/login.html', 'client');
+  api.addFiles('templates/login.js', 'client');
+  api.addFiles('templates/create-your-first-app.html', 'client');
+  api.addFiles('templates/create-your-first-app.js', 'client');
 });
 
 Package.onTest(function(api) {

@@ -1,0 +1,29 @@
+<template name="Login">
+  <div class="ui one column stackable center aligned grid container" style="margin-top: 40px;">
+    <form class="ui large {{#if LoggingIn}}loading{{/if}} form" dispatch="LOGIN_FORM_SENT">
+      <div class="ui very padded segment">
+        <h3 class="ui grey header">
+          {{_ 'Login_or_Create_account'}}
+        </h3>
+        <div class="ui divider"></div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="email" placeholder="email address">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="password">
+          </div>
+        </div>
+        <div class="ui fluid large teal submit icon button">
+          <i class="checkmark icon"></i>
+          {{_ 'Submit_Login'}}
+        </div>
+      </div>
+      <div class="ui error message"></div>
+    </form>
+  </div>
+</template>

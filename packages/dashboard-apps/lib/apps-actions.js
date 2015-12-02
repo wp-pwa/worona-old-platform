@@ -6,20 +6,20 @@ Tracker.autorun(() => {
     handle.stop();
 });
 
-State.set('Apps.isReady', (state = false) => {
-  return !!handle && handle.ready();
+State.modify('Apps.isReady', (state = false) => {
+  return (!!handle && handle.ready());
 });
 
-State.set('Apps.items', (state = []) => {
+State.modify('Apps.items', (state = []) => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });
 
-State.set('App', (state = {}) => {
+State.modify('App', (state = {}) => {
   let appId = State.get('AppId');
   return Apps.findOne(appId);
 });
 
-State.set('AppId', (state = false) => {
+State.modify('AppId', (state = false) => {
   if ((Action.type().startsWith('SHOW_') === true)) {
     if ((Action.params) && (Action.params.AppId))
       return Action.params.AppId;
@@ -29,7 +29,7 @@ State.set('AppId', (state = false) => {
   return state;
 });
 
-State.set('IsNewAppForm', (state = false) => {
+State.modify('IsNewAppForm', (state = false) => {
   switch (Action.type()) {
     case 'OPEN_NEW_APP_FORM':
       return true;
@@ -41,20 +41,26 @@ State.set('IsNewAppForm', (state = false) => {
   }
 });
 
-First(() => {
+let cleanUndefinedValues = function(object) {
+  let undefineds = _.chain(object)
+    .map((v, k) => { if (_.isUndefined(v)) return k; })
+    .filter(v => !_.isUndefined(v))
+    .value();
+  return _.omit(object, undefineds);
+};
+
+Register(() => {
+  let data = {
+    name: Action.name,
+    url: Action.url
+  };
+  data = cleanUndefinedValues(data);
   switch (Action.type()) {
     case 'NEW_APP_CREATED':
-      let name = Action.appName.value;
-      let url  = Action.appUrl.value;
-      Meteor.call('addNewApp', { name, url });
+      Meteor.call('addNewApp', data);
       break;
     case 'APP_CHANGED':
       let id = State.get('AppId');
-      let data = {};
-      if (Action.appUrl)
-        data.url = Action.appUrl.value;
-      if (Action.appName)
-        data.name = Action.appName.value;
       Meteor.call('changeApp', id, data);
       break;
   }

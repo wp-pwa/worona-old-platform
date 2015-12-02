@@ -1,0 +1,36 @@
+<template name="Apps">
+  <div class="ui very padded segment">
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="ui grey header">
+          {{_ 'Welcome'}}
+          {{#if Profile.isReady}}
+            {{Profile.firstName}}!
+          {{else}}
+            ...
+          {{/if}}
+        </div>
+        <div class="ui lightgrey sub header">
+          {{_ 'Choose_an_app'}}
+        </div>
+      </div>
+      <div class="four wide column">
+        <button class="ui teal right labeled icon button" dispatch="OPEN_NEW_APP_FORM">
+          <i class="right plus icon"></i>
+          {{_ 'add_new_app'}}
+        </button>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <p>
+      {{#if IsNewAppForm}}
+        {{> NewAppForm}}
+      {{/if}}
+    </p>
+    <div class="ui cards">
+      {{#each Apps.items}}
+        {{> AppCard}}
+      {{/each}}
+    </div>
+  </div>
+</template>

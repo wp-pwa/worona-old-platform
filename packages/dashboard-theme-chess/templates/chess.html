@@ -1,0 +1,44 @@
+<head>
+  <meta charset="utf-8">
+  <title>Worona Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">
+  <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
+</head>
+
+<template name="FullScreen">
+  {{> Chess_Header}}
+  {{> Template.dynamic template=content}}
+</template>
+
+<template name="GeneralScreen">
+    {{> Chess_Header}}
+    <div class="ui grid container">
+      <div class="three wide column">
+        {{> Chess_GeneralMenu}}
+      </div>
+      <div class="thirteen wide column">
+        {{> Template.dynamic template=content}}
+      </div>
+    </div>
+</template>
+
+<template name="AppScreen">
+  {{#if webFontLoaded}}
+    <div class="wrn-body">
+      {{> Chess_Header}}
+      <main class="w-section wrn-main">
+        <div class="w-container">
+          <div class="w-row">
+            <div class="w-col w-col-3 wrn-menu-column">
+              {{> Chess_AppMenu}}
+            </div>
+            <div class="w-col w-col-9 wrn-cards-column">
+              {{> Template.dynamic template=content}}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  {{/if}}
+</template>

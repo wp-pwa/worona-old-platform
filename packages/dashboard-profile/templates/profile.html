@@ -1,0 +1,16 @@
+<template name="Chess_Profile">
+  <div class="ui very padded segment">
+    <div class="ui grey header">
+      {{_ 'Profile'}}
+      {{#if Profile.isReady}}
+        {{Profile.firstName}}!
+      {{else}}
+        ...
+      {{/if}}
+    </div>
+    <div class="ui lightgrey sub header">
+      {{_ 'Change_your_profile'}}
+    </div>
+    <div class="ui divider"></div>
+  </div>
+</template>

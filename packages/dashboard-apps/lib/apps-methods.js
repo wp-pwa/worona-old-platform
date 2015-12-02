@@ -7,6 +7,12 @@ let pattern = {
   url: Match.Optional(Match.Where(validateUrl))
 };
 
+let sanitizeUrl = function(url) {
+  return s(url)
+    .rtrim('/')
+    .value();
+};
+
 Meteor.methods({
   addNewApp(data) {
     check(data, pattern);
@@ -15,11 +21,17 @@ Meteor.methods({
     data.createdAt = new Date();
     data.modifiedAt = new Date();
 
+    if (data.url)
+      data.url = sanitizeUrl(data.url);
+
     Apps.insert(data);
   },
   changeApp(id, data) {
     check(data, pattern);
-    
+
+    if (data.url)
+      data.url = sanitizeUrl(data.url);
+
     if (Apps.findOne(id).userId === this.userId) {
       data.modifiedAt = new Date();
       Apps.update(id, {$set: data });

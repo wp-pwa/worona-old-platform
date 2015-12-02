@@ -23,7 +23,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 #   You also need at least one theme package.
 
 worona:dashboard-base
-meteorflux:first-then-finally
 worona:dashboard-theme-chess
 
 ### Worona Dashboard Optional Packages:
@@ -31,9 +30,7 @@ worona:dashboard-theme-chess
 #   These packages go with the shipped version of Worona but you can remove
 #   them and Worona should still work properly. They depend on worona-dashboard-base.
 
-worona:dashboard-debug
-browserify:wordpress-rest-api
-
+meteorflux:meteorflux
 
 ### Your Custom Packages:
 #   ---------------------

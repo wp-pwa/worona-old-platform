@@ -8,10 +8,11 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
+
   api.use('worona:external-libraries@1.0.0');
-  api.use('templating');
-  api.addFiles('lib/theme-switcher.js', 'client');
-  api.addFiles('lib/theme.html', 'client');
+
+  api.addFiles('lib/theme-switcher-actions.js', 'client');
+  api.addFiles('templates/theme.html', 'client');
 });
 
 Package.onTest(function(api) {
