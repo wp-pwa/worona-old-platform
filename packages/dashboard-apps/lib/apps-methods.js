@@ -17,12 +17,22 @@ Meteor.methods({
   addNewApp(data) {
     check(data, pattern);
 
-    data.userId =  Meteor.userId();
-    data.createdAt = new Date();
-    data.modifiedAt = new Date();
+    let doc = {
+      userId:  Meteor.userId(),
+      createdAt: new Date(),
+      modifiedAt: new Date(),
+      settingsTester: {
+        general: {}
+      },
+      settingsProduction: {
+        general: {}
+      }
+    };
 
-    if (data.url)
-      data.url = sanitizeUrl(data.url);
+    if (data.url) {
+      doc.settingsProduction.general.url = sanitizeUrl(data.url);
+      doc.settingsTester.general.url = sanitizeUrl(data.url);
+    }
 
     Apps.insert(data);
   },
