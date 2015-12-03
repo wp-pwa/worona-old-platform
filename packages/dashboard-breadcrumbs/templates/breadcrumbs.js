@@ -2,13 +2,16 @@ let __ = TAPi18n.__;
 
 Template.breadcrumb.onCreated(() => {
   let text = Template.instance().data.text;
+  let path = State.get('route.generalSettings.url');
+  let appId = State.get('app.id');
+  let url = FlowRouter.path(path, { appId });
   State.modify('breadcrumbs.items', (state = []) => {
     return [
       { name: __('Apps'),
-        url: '/',
+        url: State.get('route.home.url'),
         next: true},
       { name: State.get('app.name'),
-        url: State.get('app.url'),
+        url,
         next: true},
       { name: text,
         url: '#',

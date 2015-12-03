@@ -3,3 +3,7 @@
   height: 520px;
   background-color: #CCC;
 }
+
+.ui.fixed.preview.segment {
+  width: 333px;
+}
