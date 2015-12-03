@@ -1,17 +1,17 @@
-let handle = Meteor.subscribe('UserProfile');
+let handle = Meteor.subscribe('profile');
 
-State.modify('Profile.isReady', (state = false) => {
+State.modify('profile.isReady', (state = false) => {
   return !!handle && handle.ready();
 });
 
-State.modify('Profile', (state = {}) => {
+State.modify('profile', (state = {}) => {
   return Meteor.users.findOne(Meteor.userId());
 });
 
 State.modify('menu.general.items', (state = []) => {
   state.push({
-    category: 'Profile',
-    template: 'ProfileMenuItem',
+    category: 'profile',
+    template: 'profileMenuItem',
     order: 50
   });
   return state;

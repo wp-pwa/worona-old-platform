@@ -1,8 +1,8 @@
-Template.NewAppForm.onRendered(function() {
+Template.apps_newAppForm.onRendered(function() {
 
   $('.ui.form').form({
     fields: {
-      appName: {
+      name: {
         identifier  : 'name',
         rules: [
           {
@@ -11,7 +11,7 @@ Template.NewAppForm.onRendered(function() {
           }
         ]
       },
-      appUrl: {
+      url: {
         identifier  : 'url',
         rules: [
           {

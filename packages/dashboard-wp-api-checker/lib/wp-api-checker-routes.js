@@ -1,6 +1,5 @@
 FlowRouter.route('/app/:appId/wp-api-checker', {
-  name: 'WpApiChecker',
+  name: 'wpApiChecker',
   type: 'SHOW_WP_API_CHECKER',
-  layout: 'FullScreen',
-  content: 'WpApiChecker'
+  layout: 'full'
 });

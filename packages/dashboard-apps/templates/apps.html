@@ -1,11 +1,11 @@
-<template name="Apps">
+<template name="apps">
   <div class="ui very padded segment">
     <div class="ui grid">
       <div class="twelve wide column">
         <div class="ui grey header">
           {{_ 'Welcome'}}
-          {{#if Profile.isReady}}
-            {{Profile.firstName}}!
+          {{#if profile.isReady}}
+            {{profile.firstName}}!
           {{else}}
             ...
           {{/if}}
@@ -24,12 +24,12 @@
     <div class="ui divider"></div>
     <p>
       {{#if apps.isNewAppFormOpen}}
-        {{> NewAppForm}}
+        {{> apps_newAppForm}}
       {{/if}}
     </p>
     <div class="ui cards">
       {{#each apps.items}}
-        {{> AppCard}}
+        {{> apps_appCard}}
       {{/each}}
     </div>
   </div>

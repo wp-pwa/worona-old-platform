@@ -43,8 +43,8 @@ State.modify('apps.isNewAppFormOpen', (state = false) => {
 
 State.modify('menu.general.items', (state = []) => {
   state.push({
-    category: 'Dashboard',
-    template: 'AppMenuItem',
+    category: 'dashboard',
+    template: 'appMenuItem',
     order: 10
   });
   return state;

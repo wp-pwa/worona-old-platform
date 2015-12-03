@@ -1,29 +1,28 @@
 FlowRouter.route('/login', {
-  name: 'Login',
+  name: 'login',
   type: 'SHOW_LOGIN',
-  layout: 'FullScreen',
-  content: 'Login'
+  layout: 'fullLayout'
 });
 
 FlowRouter.route('/create-your-first-app', {
-  name: 'CreateYourFirstApp',
+  name: 'createYourFirstApp',
   type: 'SHOW_CREATE_YOUR_FIRST_APP',
-  layout: 'FullScreen',
-  content: 'CreateYourFirstApp'
+  layout: 'fullLayout'
 });
 
 FlowRouter.triggers.enter([
   (context, redirect) => {
-    if (!Meteor.userId() && context.path !== '/login') {
+    if (!Meteor.userId()) {
       redirect('/login');
     }
-  },
+  }], { except: ['login'] });
+
+FlowRouter.triggers.enter([
   (context, redirect) => {
-    if (Meteor.userId() && context.path === '/login') {
+    if (Meteor.userId()) {
       redirect('/create-your-first-app');
     }
-  }
-]);
+  }], { only: ['login'] });
 
 Dispatch.filter(payload => {
   if (payload.type.startsWith('SHOW_') && !Meteor.userId())

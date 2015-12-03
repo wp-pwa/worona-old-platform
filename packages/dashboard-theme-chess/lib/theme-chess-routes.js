@@ -1,6 +1,5 @@
 FlowRouter.route('/', {
-  name: 'Home',
+  name: 'home',
   type: 'SHOW_HOME',
-  layout: 'GeneralScreen',
-  content: 'Chess_Home'
+  layout: 'generalLayout'
 });

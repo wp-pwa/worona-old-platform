@@ -10,3 +10,36 @@
 .ui.menu > .uppercase.header {
   text-transform: uppercase;
 }
+
+@media only screen and (max-width: @tabletBreakpoint - 1) {
+    .mobile.hidden,
+    .tablet.only,
+    .small.monitor.only,
+    .large.monitor.only {
+        display: none !important;
+    }
+}
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @computerBreakpoint - 1) {
+    .mobile.only,
+    .tablet.hidden,
+    .small.monitor.only,
+    .large.monitor.only {
+        display: none !important;
+    }
+}
+@media only screen and (min-width: @computerBreakpoint) and (max-width: @largeMonitorBreakpoint - 1) {
+    .mobile.only,
+    .tablet.only,
+    .small.monitor.hidden,
+    .large.monitor.only {
+        display: none !important;
+    }
+}
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+    .mobile.only,
+    .tablet.only,
+    .small.monitor.only,
+    .large.monitor.hidden {
+        display: none !important;
+    }
+}

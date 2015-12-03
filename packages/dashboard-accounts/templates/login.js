@@ -1,4 +1,4 @@
-Template.Login.onRendered(function() {
+Template.login.onRendered(function() {
 
   $('.ui.form').form({
     fields: {

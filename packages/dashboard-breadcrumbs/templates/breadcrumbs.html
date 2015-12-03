@@ -1,14 +1,14 @@
 <template name="breadcrumb">
   <div class="ui breadcrumb">
     {{#each breadcrumbs.items}}
-      {{#if NextBreadcrumb}}
-        <a class="section" href="{{Url}}">
-          {{Name}}
+      {{#if next}}
+        <a class="section" href="{{url}}">
+          {{name}}
         </a>
         <i class="right chevron icon divider"></i>
       {{else}}
       <div class="active section">
-        {{Name}}
+        {{name}}
       </div>
       {{/if}}
     {{/each}}

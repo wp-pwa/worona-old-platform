@@ -6,11 +6,11 @@ Register(() => {
       loginSent({ email, password });
       break;
     case 'LOGOUT':
-      Meteor.logout( function(err) {
-        if (!err) {
-          Dispatch('SHOW_LOGIN');
+      Meteor.logout( function(error) {
+        if (!error) {
+          Dispatch('LOGOUT_SUCCEED').then('SHOW_LOGIN');
         } else {
-          console.log(err);
+          Dispatch('LOGOUT_FAILED', { error });
         }
       });
       break;
@@ -19,19 +19,19 @@ Register(() => {
 
 
 // Async login action.
-let loginSent = function({ email, password }) {
-  Meteor.loginWithPassword(email, password, function(err){
+var loginSent = function({ email, password }) {
+  Meteor.loginWithPassword(email, password, function(error){
 
     // Error logging in.
-    if (err) {
+    if (error) {
 
       // But error is user not found, let's create an account for him/her.
-      if (err.message === "User not found [403]") {
-        Accounts.createUser({ email, password }, function(err) {
+      if (error.message === "User not found [403]") {
+        Accounts.createUser({ email, password }, function(error) {
 
           // Error creating the account. Report.
-          if (err) {
-            console.log('Error creating account: ', err);
+          if (error) {
+            Dispatch('ACCOUNT_CREATION_FAILED', { error });
 
           // Account created succesfully. Show 'CreateYourFirstApp' template.
           } else {
@@ -42,7 +42,7 @@ let loginSent = function({ email, password }) {
 
       // Error logging in, report it.
       } else {
-        Dispatch('LOGIN_FAILED', { error: err });
+        Dispatch('LOGIN_FAILED', { error });
       }
 
     // Log in sucessful.

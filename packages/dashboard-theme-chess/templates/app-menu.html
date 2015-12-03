@@ -1,6 +1,6 @@
-<template name="generalMenu">
-  {{#menu name='general'}}
-    <div class="ui secondary vertical menu">
+<template name="appMenu">
+  {{#menu name='app'}}
+    <div class="ui secondary vertical fluid menu">
       {{#each category in categories}}
         <div class="uppercase header item">{{_ category.name}}</div>
         {{#each item in category.items}}

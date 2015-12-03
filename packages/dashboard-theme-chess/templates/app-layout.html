@@ -1,0 +1,19 @@
+<template name="appLayout">
+  {{> header}}
+  <div class="ui container mobile only">
+    <div class="ui grid">
+      <div class="sixteen wide column">
+        {{> breadcrumb text="General Settings"}}
+      </div>
+      <div class="two wide column">
+        {{> appMenu}}
+      </div>
+      <div class="eight wide column">
+        {{> Template.dynamic template=main}}
+      </div>
+      <div class="five wide column">
+        {{> appPreview}}
+      </div>
+    </div>
+  </div>
+</template>

@@ -31,6 +31,7 @@ worona:dashboard-theme-chess
 #   them and Worona should still work properly. They depend on worona-dashboard-base.
 
 meteorflux:meteorflux
+babrahams:constellation
 
 ### Your Custom Packages:
 #   ---------------------

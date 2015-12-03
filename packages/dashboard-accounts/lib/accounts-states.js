@@ -1,7 +1,7 @@
 State.modify('menu.general.items', (state = []) => {
   state.push({
-    category: 'Profile',
-    template: 'LogoutMenuItem',
+    category: 'profile',
+    template: 'logoutMenuItem',
     order: 100
   });
   return state;

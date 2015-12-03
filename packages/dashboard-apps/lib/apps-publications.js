@@ -1,3 +1,5 @@
 Meteor.publish('apps', function() {
-  return Apps.find({ userId: this.userId });
+  if (!this.userId) return this.ready();
+  else
+    return Apps.find({ userId: this.userId });
 });

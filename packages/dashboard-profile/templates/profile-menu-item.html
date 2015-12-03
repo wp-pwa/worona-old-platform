@@ -1,5 +1,6 @@
-<template name="ProfileMenuItem">
-  <a class="{{#if Route.is.Profile}}active{{/if}} item" href={{Route.Profile.url}}>
-    {{_ 'Edit_profile'}}
+<template name="profileMenuItem">
+  <a class="{{#if route.profile.isActive}}active{{/if}} item"
+    href={{route.profile.url}}>
+      {{_ 'Edit_profile'}}
   </a>
 </template>
