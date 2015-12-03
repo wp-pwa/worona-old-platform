@@ -1,28 +1,29 @@
-<template name="WpApiChecker">
-  {{#if WpApiChecker.firstTime}}
-    {{> WpApiChecker_Checking}}
+<template name="wpApiChecker">
+  {{#if wpApiChecker.firstTime}}
+    {{> wpApiChecker_Checking}}
   {{else}}
-    {{> WpApiChecker_Failed}}
+    {{> wpApiChecker_Failed}}
   {{/if}}
 </template>
 
-<template name="WpApiChecker_Checking">
-  <div class="ui one column stackable center aligned grid container" style="margin-top: 40px;">
-    <div class="ui very padded segment">
-      <div class="ui header">
-        {{#if name}}
-          {{_ 'Checking_connection' name=name}}
-        {{else}}
-          Waiting...
-        {{/if}}
+<template name="wpApiChecker_Checking">
+  <div class="ui hidden divider"></div>
+  <div class="ui one column stackable center aligned grid container">
+      <div class="ui very padded compact segment">
+        <div class="ui header">
+          {{#if name}}
+            {{_ 'Checking_connection' name=name}}
+          {{else}}
+            Waiting...
+          {{/if}}
+        </div>
+        {{> wpApiChecker_Loading}}
       </div>
-      {{> WpApiChecker_Loading}}
-    </div>
   </div>
 </template>
 
-<template name="WpApiChecker_Loading">
-  {{#if WpApiChecker.checking}}
+<template name="wpApiChecker_Loading">
+  {{#if wpApiChecker.checking}}
     <span class="wp-api-checker-loading">
       <div class="throbber-loader">
         Loading…
@@ -31,8 +32,8 @@
   {{/if}}
 </template>
 
-<template name="WpApiChecker_Error">
-  {{#if WpApiChecker.error}}
+<template name="wpApiChecker_Error">
+  {{#if wpApiChecker.error}}
     <div class="ui left pointing red basic label">
       {{_ 'Not_working_yet'}}
     </div>
@@ -40,9 +41,9 @@
 </template>
 
 
-<template name="WpApiChecker_Failed">
+<template name="wpApiChecker_Failed">
   <div class="ui very padded segment container">
-    {{> Breadcrumbs text="Worona Plugin Check"}}
+    {{> breadcrumb text="Worona Plugin Check"}}
 
     <div class="ui hidden divider"></div>
 
@@ -69,31 +70,51 @@
     </div>
 
     <div class="ui fluid explanation accordion">
-      <h3 class="title">
+      <h3 class="title"
+          data-content="Click to open and follow the instructions"
+          data-variation="wide">
         <i class="dropdown icon"></i>
         1. Install and activate Worona plugin
       </h3>
       <div class="content">
-        <p>Go to your WordPress Dashboard and click on <strong>Plugins‍ -&gt; Add new‍</strong>
-        </p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/wodpress-plugins.png">
-        <p>Type <strong>worona</strong> in the Search bar</p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/search.png">
-        <p>Click on <strong>Install‍</strong>
-        </p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/install-worona.png">
-        <p>‍<strong>Activate</strong> the plugin‍</p><img class="wrn-padder-image" src="/packages/worona_dashboard-wp-api-checker/images/activate-worona.png">
-        <p>If you have followed all these steps, click here to try again</p>
-        <a class="ui teal button" href="#" dispatch="CHECK_WP_API">{{_ 'Try_again'}}</a>
-        {{> WpApiChecker_Loading}}
-        {{> WpApiChecker_Error}}
+        <ol class="ui list">
+          <li>
+            Go to your WordPress Dashboard and click on <strong>Plugins‍ -&gt; Add new‍</strong>
+            <img class="ui rounded bordered image" src="/packages/worona_dashboard-wp-api-checker/images/wodpress-plugins.png">
+          </li>
+          <li>
+            Type <strong>worona</strong> in the Search bar
+            <img class="ui rounded bordered image" src="/packages/worona_dashboard-wp-api-checker/images/search.png">
+          </li>
+          <li>
+            Click on <strong>Install‍</strong>
+            <img class="ui rounded bordered image" src="/packages/worona_dashboard-wp-api-checker/images/install-worona.png">
+          </li>
+          <li>
+            <strong>Activate</strong> the plugin‍
+            <img class="ui rounded bordered image" src="/packages/worona_dashboard-wp-api-checker/images/activate-worona.png">
+          </li>
+          <li>
+            Once the plugin is activated, you can try again:
+            <div class="try-again">
+              <a class="ui teal button" href="#" dispatch="CHECK_WP_API">{{_ 'Try_again'}}</a>
+              {{> wpApiChecker_Loading}}
+              {{> wpApiChecker_Error}}
+            </div>
+          </li>
+        </ol>
       </div>
 
       <div class="ui padded divider"></div>
 
-      <h3 class="title">
+      <h3 class="title"
+          data-content="Click to open and follow the instructions"
+          data-variation="wide">
         <i class="dropdown icon"></i>
         2. Check if the url is correct
       </h3>
       <div class="content">
-        <p>Your current url is: <strong>{{App.url}}</strong></p>
+        <p>Your current url is: <strong>{{app.url}}</strong></p>
         <div class="ui relaxed list">
           <div class="item">
             <i class="large info circle top aligned icon"></i>
@@ -132,11 +153,11 @@
         <p>If you think the url was wrong and correct it and try again</p>
         <form class="ui change-url form">
           <div class="two fields">
-            <input class="field" type="url" placeholder="" name="url" value="{{App.url}}">
+            <input class="field" type="url" placeholder="" name="url" value="{{app.url}}">
           </div>
           <input class="ui teal submit button" type="submit" value="{{_ 'Try_again'}}">
-          {{> WpApiChecker_Loading}}
-          {{> WpApiChecker_Error}}
+          {{> wpApiChecker_Loading}}
+          {{> wpApiChecker_Error}}
         </form>
       </div>
     </div>

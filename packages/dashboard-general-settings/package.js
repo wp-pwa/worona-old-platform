@@ -14,7 +14,9 @@ Package.onUse(function(api) {
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
   api.addFiles('lib/general-settings-routes.js', 'client');
+  api.addFiles('lib/general-settings-states.js', 'client');
   api.addFiles('templates/general-settings.html', 'client');
+  api.addFiles('templates/general-settings-menu-item.html', 'client');
   api.addFiles('i18n/en.i18n.json', ['client', 'server']);
   api.addFiles('i18n/es.i18n.json', ['client', 'server']);
 });

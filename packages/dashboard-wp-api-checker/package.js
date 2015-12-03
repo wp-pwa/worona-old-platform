@@ -16,12 +16,13 @@ Package.onUse(function(api) {
   api.addFiles('package-tap.i18n', ['client', 'server']);
   api.addFiles('lib/wp-api-checker-routes.js', 'client');
   api.addFiles('lib/wp-api-checker-actions.js', 'client');
+  api.addFiles('lib/wp-api-checker-states.js', 'client');
   api.addFiles('templates/wp-api-checker.html', 'client');
   api.addFiles('templates/wp-api-checker.js', 'client');
   api.addFiles('templates/wp-api-checker.css', 'client');
   api.addFiles('templates/throbber.css', 'client');
-  api.addFiles('i18n/en.i18n.json', 'client');
-  api.addFiles('i18n/es.i18n.json', 'client');
+  api.addFiles('i18n/en.i18n.json', ['client', 'server']);
+  api.addFiles('i18n/es.i18n.json', ['client', 'server']);
 
   api.addAssets('images/activate-worona.png', 'client');
   api.addAssets('images/install-worona.png', 'client');

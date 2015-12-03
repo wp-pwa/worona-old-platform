@@ -1,9 +1,9 @@
-<template name="Chess_Profile">
+<template name="profile">
   <div class="ui very padded segment">
     <div class="ui grey header">
       {{_ 'Profile'}}
-      {{#if Profile.isReady}}
-        {{Profile.firstName}}!
+      {{#if profile.isReady}}
+        {{profile.firstName}}!
       {{else}}
         ...
       {{/if}}

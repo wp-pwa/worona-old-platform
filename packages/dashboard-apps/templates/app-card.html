@@ -1,16 +1,20 @@
-<template name="AppCard">
+<template name="apps_appCard">
   <div class="card">
       <div class="content">
-        <a class="header" href="{{ComposeUrl path='WpApiChecker' AppId=_id}}">
+        <a class="header" href="{{composeUrl path='wpApiChecker' appId=_id}}">
           {{name}}
         </a>
-        <div class="meta">
+        <!--<div class="meta">
           <strong>{{_ 'ID'}}:</strong>
           {{_id}}
+        </div>-->
+        <div class="meta">
+          <strong>{{_ 'Url'}}:</strong>
+          {{url}}
         </div>
         <div class="meta">
           <strong>{{_ 'Modified'}}:</strong>
-          {{moFromNow createdAt}}
+          {{moFromNow modifiedAt}}
         </div>
       </div>
   </div>

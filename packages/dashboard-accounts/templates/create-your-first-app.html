@@ -1,5 +1,5 @@
-<template name="CreateYourFirstApp">
-  <form class="ui large {{#if LoggingIn}}loading{{/if}} form">
+<template name="createYourFirstApp">
+  <form class="ui large {{#if accounts.loggingIn}}loading{{/if}} form">
     <div class="ui very padded container segment" style="margin-top: 40px; max-width: 450px !important;">
 
       <div class="ui center aligned container">
@@ -17,7 +17,7 @@
         <label>{{_ 'Your_name'}}</label>
         <div class="ui left icon input">
           <i class="user icon"></i>
-          <input type="text" name="firstName" placeholder="{{NameGuess}}">
+          <input type="text" name="firstName" placeholder="{{accounts.nameGuess}}">
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         <label>{{_ 'Url_of_your_WordPress_site'}}</label>
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          <input type="url" name="appUrl" placeholder="{{_ 'your_blog_url'}}">
+          <input type="url" name="url" placeholder="{{_ 'your_blog_url'}}">
         </div>
       </div>
 
@@ -46,23 +46,4 @@
       <div class="ui error message"></div>
     </div>
   </form>
-</template>
-
-<template name="Chess_CreateYourFirstApp2">
-  <div class="wrn-padder login">
-
-    <h3 class="wrn-login-title wrn-create-your-first-app">{{_ 'Your_first_time_in_Worona'}}</h3>
-    <div class="wrn-login-subtitle wrn-create-your-first-app">{{_ 'Let_us_know_more_about_you'}}</div>
-
-    <div class="w-form">
-      <form id="email-form" class="create-your-first-app" name="email-form" data-name="Email Form">
-        <label for="firstName" class="wrn-label">{{_ 'Your_name'}}</label>
-        <input class="w-input wrn-text-field" id="firstName" type="text" placeholder="{{NameGuess}}" name="firstName" required="required">
-        <label for="appUrl" class="wrn-label">{{_ 'Url_of_your_WordPress_site'}}</label>
-        <input class="w-input wrn-text-field" id="appUrl" type="url" placeholder="{{_ 'your_blog_url'}}" name="appUrl">
-        <input class="w-button wrn-submit" type="submit" value="{{_ 'Go_to_Admin_Panel'}}">
-      </form>
-    </div>
-
-  </div>
 </template>

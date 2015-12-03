@@ -1,0 +1,11 @@
+<template name="generalLayout">
+    {{> header}}
+    <div class="ui grid container">
+      <div class="three wide column">
+        {{> generalMenu}}
+      </div>
+      <div class="thirteen wide column">
+        {{> Template.dynamic template=main}}
+      </div>
+    </div>
+</template>

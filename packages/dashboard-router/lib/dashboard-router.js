@@ -1,6 +1,6 @@
-// Create ComposeUrl helper. For example:
-// {{ComposeUrl path=GeneralScreen AppId=_id}}
-Template.registerHelper('ComposeUrl', function(params) {
+// Create composeUrl helper. For example:
+// {{composeUrl path=GeneralScreen appId=_id}}
+Template.registerHelper('composeUrl', function(params) {
   check(params, Spacebars.kw);
   check(params.hash, Match.ObjectIncluding({ path: String }));
   let pathDef = FlowRouter._routesMap[params.hash.path].pathDef;
@@ -13,10 +13,9 @@ FlowRouter.onRouteRegister(function(route) {
   let type = route.options.type;
   let pathDef = route.pathDef;
   let layout = route.options.layout;
-  let content = route.options.content;
 
-  // Create Route.is helpers. For example, Route.is.Home or Route.is.Login.
-  State.modify('Route.is.' + name, (state = false) => {
+  // Create route.xxx.isActive helpers. For example, route.home.isActive.
+  State.modify('route.' + name + '.isActive', (state = false) => {
     if (Action.is(type))
       return true;
     else if (Action.type().startsWith('SHOW_'))
@@ -25,8 +24,8 @@ FlowRouter.onRouteRegister(function(route) {
       return state;
   });
 
-  // Create Route.XX.url helpers. For example, Route.Home.url or Route.Apps.url
-  State.modify('Route.' + name + '.url', (state = '') => {
+  // Create route.xxx.url helpers. For example, route.home.url.
+  State.modify('route.' + name + '.url', (state = '') => {
     return pathDef;
   });
 
@@ -46,7 +45,7 @@ FlowRouter.onRouteRegister(function(route) {
       } else {
         FlowRouter.go(pathDef);
       }
-      BlazeLayout.render(layout, { content });
+      BlazeLayout.render(layout, { main: name });
     }
   });
 });

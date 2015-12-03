@@ -23,6 +23,7 @@ Package.onUse(function(api) {
   api.addFiles('semantic-ui/site/globals/site.overrides.import.less', 'client');
   api.addFiles('semantic-ui/site/collections/menu.variables.import.less', 'client');
   api.addFiles('semantic-ui/site/collections/menu.overrides.import.less', 'client');
+  api.addFiles('semantic-ui/site/collections/breadcrumb.overrides.import.less', 'client');
   api.addFiles('semantic-ui/site/collections/form.variables.import.less', 'client');
   api.addFiles('semantic-ui/site/elements/input.variables.import.less', 'client');
   api.addFiles('semantic-ui/site/elements/segment.variables.import.less', 'client');
@@ -30,6 +31,8 @@ Package.onUse(function(api) {
   api.addFiles('semantic-ui/site/views/card.variables.import.less', 'client');
   api.addFiles('semantic-ui/definitions/behaviors/form.js', 'client');
   api.addFiles('semantic-ui/definitions/modules/accordion.js', 'client');
+  api.addFiles('semantic-ui/definitions/modules/popup.js', 'client');
+  api.addFiles('semantic-ui/definitions/modules/transition.js', 'client');
 });
 
 Package.onTest(function(api) {

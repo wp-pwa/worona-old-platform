@@ -1,18 +1,21 @@
 let __ = TAPi18n.__;
 
-Template.Breadcrumbs.onCreated(() => {
+Template.breadcrumb.onCreated(() => {
   let text = Template.instance().data.text;
-  State.modify('Breadcrumbs.items', (state = []) => {
+  let path = State.get('route.generalSettings.url');
+  let appId = State.get('app.id');
+  let url = FlowRouter.path(path, { appId });
+  State.modify('breadcrumbs.items', (state = []) => {
     return [
-      { Name: __('Apps'),
-        Url: '/',
-        NextBreadcrumb: true},
-      { Name: State.get('App.name'),
-        Url: State.get('App.url'),
-        NextBreadcrumb: true},
-      { Name: text,
-        Url: '#',
-        NextBreadcrumb: false}
+      { name: __('Apps'),
+        url: State.get('route.home.url'),
+        next: true},
+      { name: State.get('app.name'),
+        url,
+        next: true},
+      { name: text,
+        url: '#',
+        next: false}
     ];
   });
 });

@@ -1,8 +1,20 @@
-<template name="GeneralSettings">
+<template name="generalSettings">
+  <div class="ui very padded segment">
+    <div class="ui grey header">
+      General Settings
+    </div>
+    <div class="ui lightgrey sub header">
+      {{_ 'Change_your_profile'}}
+    </div>
+    <div class="ui divider"></div>
+  </div>
+</template>
+
+<template name="generalSettings2">
   <main class="w-section wrn-main">
     <div class="w-container">
-      {{#if Breadcrumbs}}
-        {{> BreadcrumbsTemplate text="General Settings"}}
+      {{#if breadcrumb}}
+        {{> breadcrumb text="General Settings"}}
       {{/if}}
       <div class="w-row">
         <div class="w-col w-col-2 wrn-menu-column">

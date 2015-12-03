@@ -1,8 +1,7 @@
 FlowRouter.route('/apps', {
-  name: 'Apps',
+  name: 'apps',
   type: 'SHOW_APPS',
-  layout: 'GeneralScreen',
-  content: 'Apps'
+  layout: 'generalLayout'
 });
 
 FlowRouter.triggers.enter([
@@ -12,10 +11,3 @@ FlowRouter.triggers.enter([
     }
   }
 ]);
-
-// State.modify('Menus.General', (state = []) => {
-//   state.push({
-//     template:
-//   });
-//   return state;
-// });

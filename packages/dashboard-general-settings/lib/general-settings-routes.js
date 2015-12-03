@@ -1,6 +1,5 @@
-FlowRouter.route('/app/:AppId/general-settings', {
-  name: 'GeneralSettings',
+FlowRouter.route('/app/:appId/general-settings', {
+  name: 'generalSettings',
   type: 'SHOW_GENERAL_SETTINGS',
-  layout: 'AppScreen',
-  content: 'GeneralSettings'
+  layout: 'appLayout'
 });

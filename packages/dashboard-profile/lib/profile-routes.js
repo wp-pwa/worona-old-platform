@@ -1,6 +1,5 @@
 FlowRouter.route('/profile', {
-  name: 'Profile',
+  name: 'profile',
   type: 'SHOW_PROFILE',
-  layout: 'GeneralScreen',
-  content: 'Chess_Profile'
+  layout: 'generalLayout'
 });

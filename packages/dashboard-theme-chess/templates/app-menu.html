@@ -1,0 +1,12 @@
+<template name="appMenu">
+  {{#menu name='app'}}
+    <div class="ui secondary vertical fluid menu">
+      {{#each category in categories}}
+        <div class="uppercase header item">{{_ category.name}}</div>
+        {{#each item in category.items}}
+          {{> Template.dynamic template=item.template}}
+        {{/each}}
+      {{/each}}
+    </div>
+  {{/menu}}
+</template>

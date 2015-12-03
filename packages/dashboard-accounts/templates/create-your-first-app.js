@@ -1,4 +1,4 @@
-Template.CreateYourFirstApp.onRendered(function() {
+Template.createYourFirstApp.onRendered(function() {
 
   $('.ui.form').form({
     fields: {
@@ -12,7 +12,7 @@ Template.CreateYourFirstApp.onRendered(function() {
         ]
       },
       appUrl: {
-        identifier  : 'appUrl',
+        identifier  : 'url',
         optional    : true,
         rules: [
           {
@@ -34,14 +34,14 @@ Template.CreateYourFirstApp.onRendered(function() {
   });
 });
 
-Template.CreateYourFirstApp.events({
+Template.createYourFirstApp.events({
   'submit .ui.form'(event) {
     event.preventDefault();
     event.stopPropagation();
 
     let firstName = event.currentTarget.firstName.value;
 
-    let url  = event.currentTarget.appUrl.value;
+    let url  = event.currentTarget.url.value;
     let name = s(url).strRight('://').strLeft('/').value();
 
     if (url === '') {
