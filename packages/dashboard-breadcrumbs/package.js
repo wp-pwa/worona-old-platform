@@ -13,8 +13,8 @@ Package.onUse(function(api) {
   api.use('worona:dashboard-external-libraries@1.0.0');
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
+  api.addFiles('lib/breadcrumbs-states.js', 'client');
   api.addFiles('templates/breadcrumbs.html', 'client');
-  api.addFiles('templates/breadcrumbs.js', 'client');
   api.addFiles('i18n/en.i18n.json', ['client', 'server']);
   api.addFiles('i18n/es.i18n.json', ['client', 'server']);
 });
