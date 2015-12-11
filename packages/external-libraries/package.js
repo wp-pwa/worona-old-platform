@@ -21,14 +21,14 @@ Package.onUse(function (api) {
     'accounts-password',
     'underscorestring:underscore.string@3.2.2',
     'tap:i18n@1.7.0',
-    'meteorflux:meteorflux@1.1.2'
+    'meteorflux:meteorflux@1.1.7'
   ];
 
   // Imply them so they are accesible anywhere in the app or the dashboard.
   api.imply(packages);
 
   api.addFiles('lib/namespace.js'); // Add the Worona namespace.
-  
+
   api.export('Worona');             // Export the Worona namespace.
 });
 

@@ -6,7 +6,9 @@ let checkWpApi = function(url) {
     .then(function(data) {
       setTimeout(() => {
         Dispatch('WP_API_CHECK_SUCCEED', { data })
-        .then('SHOW_GENERAL_SETTINGS', { params: { appId: State.get('app.id')}});
+        .then('SHOW_GENERAL_SETTINGS', {
+          params: { appId: State.get('app.id') }
+        });
       }, 1000);
     })
     .catch(function(error) {

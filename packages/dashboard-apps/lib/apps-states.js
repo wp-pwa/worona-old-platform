@@ -1,11 +1,4 @@
-let handle = null;
-Tracker.autorun(() => {
-  if (Meteor.userId())
-    handle = Meteor.subscribe('apps');
-  else if (handle)
-    handle.stop();
-});
-
+var handle = Meteor.subscribe('apps-tester');
 State.modify('apps.isReady', (state = false) => {
   return (!!handle && handle.ready());
 });
