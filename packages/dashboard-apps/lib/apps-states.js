@@ -7,11 +7,6 @@ State.modify('apps.items', (state = []) => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });
 
-State.modify('app', (state = {}) => {
-  let appId = State.get('app.id');
-  return Apps.findOne(appId);
-});
-
 State.modify('app.id', (state = false) => {
   if ((Action.type().startsWith('SHOW_') === true)) {
     if ((Action.params) && (Action.params.appId))
@@ -22,13 +17,24 @@ State.modify('app.id', (state = false) => {
   return state;
 });
 
+State.modify('app', (state = {}) => {
+  let appId = State.get('app.id');
+  switch (Action.type()) {
+    case 'OPEN_NEW_APP_FORM':
+      return new App();
+    default:
+      return appId ? Apps.findOne(appId) : state;
+  }
+});
+
 State.modify('apps.isNewAppFormOpen', (state = false) => {
   switch (Action.type()) {
     case 'OPEN_NEW_APP_FORM':
       return true;
     case 'CLOSE_NEW_APP_FORM':
-    case 'NEW_APP_CREATED':
       return false;
+    case 'NEW_APP_CREATED':
+      return State.get('app.hasValidationErrors');
     default:
       return state;
   }

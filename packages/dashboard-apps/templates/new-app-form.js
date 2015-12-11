@@ -1,29 +1,17 @@
-Template.apps_newAppForm.onRendered(function() {
-
-  $('.ui.form').form({
-    fields: {
-      name: {
-        identifier  : 'name',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter the app name'
-          }
-        ]
-      },
-      url: {
-        identifier  : 'url',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter the url of your blog'
-          },
-          {
-            type   : 'url',
-            prompt : 'Please enter a valid url'
-          }
-        ]
-      }
-    }
-  });
+Template.newAppForm.events({
+  'change input[name=url]'(event) {
+    let app = this;
+    let input = event.currentTarget;
+    app.set('settings.general.url', input.value);
+    app.set('production.general.url', input.value);
+    app.validate();
+    event.stopImmediatePropagation();
+  },
+  'change input'(event) {
+    let app = this;
+    let input = event.currentTarget;
+    app.set(input.name, input.value);
+    app.validate();
+    event.stopImmediatePropagation();
+  }
 });

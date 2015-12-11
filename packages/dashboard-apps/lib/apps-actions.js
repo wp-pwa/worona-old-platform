@@ -1,20 +1,19 @@
-let cleanUndefinedValues = function(object) {
-  let undefineds = _.chain(object)
-    .map((v, k) => { if (_.isUndefined(v)) return k; })
-    .filter(v => !_.isUndefined(v))
-    .value();
-  return _.omit(object, undefineds);
-};
-
 Register(() => {
   let data = {
     name: Action.name,
-    url: Action.url
+    url: s.rtrim(Action.url, '/')
   };
-  data = cleanUndefinedValues(data);
   switch (Action.type()) {
     case 'NEW_APP_CREATED':
-      Meteor.call('addNewApp', data);
+      let app = State.get('app');
+      app.set('name', data.name);
+      app.settings.general.set(data);
+      app.production.general.set(data);
+
+      if (app.validate()) {
+        Meteor.call('addNewApp', app);
+      }
+
       break;
     case 'APP_CHANGED':
       let id = State.get('app.id');

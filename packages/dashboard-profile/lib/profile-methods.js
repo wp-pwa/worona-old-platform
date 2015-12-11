@@ -1,11 +1,11 @@
-let fields = {
-  firstName: Match.Optional(String)
-};
-
 Meteor.methods({
   changeProfile(data) {
-    check(data, fields);
+    let user = Meteor.users.findOne(Meteor.userId());
+    user.profile.set(data);
 
-    Meteor.users.update(Meteor.userId(), { $set: data });
+    if (user.validate())
+      user.save();
+    else
+      user.throwValidationException();
   }
 });

@@ -5,7 +5,8 @@ State.modify('profile.isReady', (state = false) => {
 });
 
 State.modify('profile', (state = {}) => {
-  return Meteor.users.findOne(Meteor.userId());
+  let user = Meteor.users.findOne(Meteor.userId());
+  return user ? user.profile.raw() : {};
 });
 
 State.modify('menu.general.items', (state = []) => {

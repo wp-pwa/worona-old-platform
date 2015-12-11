@@ -13,6 +13,7 @@ Package.onUse(function(api) {
   api.use('worona:dashboard-external-libraries@1.0.0');
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
+  api.addFiles('lib/apps-validators.js', ['client', 'server']);
   api.addFiles('lib/apps-collections.js', ['client', 'server']);
   api.addFiles('lib/apps-publications.js', 'server');
   api.addFiles('lib/apps-methods.js', ['client', 'server']);
@@ -28,6 +29,7 @@ Package.onUse(function(api) {
   api.addFiles('i18n/es.i18n.json', ['client', 'server']);
 
   api.export('Apps');
+  api.export('App');
 });
 
 Package.onTest(function(api) {

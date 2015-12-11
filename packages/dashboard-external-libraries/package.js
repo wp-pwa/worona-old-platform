@@ -13,7 +13,10 @@ Package.onUse(function (api) {
   // External packages needed for Worona Dashboard (but not Worona App).
   var packages = [
     'worona:dashboard-router@1.0.0',
-    'worona:dashboard-i18n@1.0.0'
+    'worona:dashboard-i18n@1.0.0',
+    'jagi:astronomy@1.2.6',
+    'jagi:astronomy-timestamp-behavior@1.1.0',
+    'jagi:astronomy-validators@1.1.2'
   ];
 
   // Imply them so they are accesible anywhere in the dashboard.
