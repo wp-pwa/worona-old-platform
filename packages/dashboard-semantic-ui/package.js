@@ -25,6 +25,7 @@ Package.onUse(function(api) {
   api.addFiles('semantic-ui/site/collections/menu.overrides.import.less', 'client');
   api.addFiles('semantic-ui/site/collections/breadcrumb.overrides.import.less', 'client');
   api.addFiles('semantic-ui/site/collections/form.variables.import.less', 'client');
+  api.addFiles('semantic-ui/site/collections/form.overrides.import.less', 'client');
   api.addFiles('semantic-ui/site/elements/input.variables.import.less', 'client');
   api.addFiles('semantic-ui/site/elements/segment.variables.import.less', 'client');
   api.addFiles('semantic-ui/site/elements/label.variables.import.less', 'client');

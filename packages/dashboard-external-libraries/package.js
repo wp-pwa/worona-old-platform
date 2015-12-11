@@ -13,7 +13,9 @@ Package.onUse(function (api) {
   // External packages needed for Worona Dashboard (but not Worona App).
   var packages = [
     'worona:dashboard-router@1.0.0',
-    'worona:dashboard-i18n@1.0.0'
+    'worona:dashboard-i18n@1.0.0',
+    'aldeed:collection2@2.6.0',
+    'aldeed:autoform@5.8.0'
   ];
 
   // Imply them so they are accesible anywhere in the dashboard.

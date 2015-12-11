@@ -30,6 +30,7 @@ Package.onUse(function (api) {
   api.addFiles('lib/namespace.js'); // Add the Worona namespace.
 
   api.export('Worona');             // Export the Worona namespace.
+  api.export('Schema');             // Export the Schema namespace.
 });
 
 Package.onTest(function (api) {

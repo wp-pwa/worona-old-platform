@@ -24,7 +24,7 @@ AfterAction(() => {
       // Use tracker to wait until App is set. It can be delayed because
       // if the page is accessed directly, Apps subscription may not be ready.
       Tracker.autorun(c => {
-        let url = State.get('app.url');
+        let url = State.get('app.settings.general.url');
         if (url) {
           checkWpApi(url);
           c.stop();

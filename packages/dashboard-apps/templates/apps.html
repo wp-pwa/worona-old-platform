@@ -23,13 +23,13 @@
     </div>
     <div class="ui divider"></div>
     <p>
-      {{#if apps.isNewAppFormOpen}}
-        {{> apps_newAppForm}}
+      {{#if apps.insertAppFormOpen}}
+        {{> insertAppForm}}
       {{/if}}
     </p>
     <div class="ui cards">
       {{#each apps.items}}
-        {{> apps_appCard}}
+        {{> appCard}}
       {{/each}}
     </div>
   </div>

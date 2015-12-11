@@ -24,6 +24,15 @@ State.modify('wpApiChecker.firstTime', (state = true) => {
   }
 });
 
+State.modify('wpApiChecker.changeUrl.isInvalid', (state = false) => {
+  if (Action.is('UPDATE_APP_FAILED'))
+    return true;
+  else if (Action.is('UPDATE_APP_SUCCEDD'))
+    return false;
+  else
+    return state;
+});
+
 State.modify('wpApiChecker.checking', (state = false) => {
   switch (Action.type()) {
     case 'CHECK_WP_API':

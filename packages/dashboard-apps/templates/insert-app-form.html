@@ -1,5 +1,5 @@
-<template name="apps_newAppForm">
-  <form class="ui form" dispatch="NEW_APP_CREATED">
+<template name="insertAppForm">
+  <form class="ui form">
     <div class="two fields">
       <div class="field">
         <label>{{_ 'App_Name'}}</label>
@@ -9,10 +9,10 @@
     <div class="two fields">
       <div class="field">
         <label>{{_ 'WordPress_URL'}}</label>
-        <input name="url" placeholder="{{_ 'your_blog_url'}}" type="url">
+        <input name="url" placeholder="{{_ 'your_blog_url'}}" type="text">
       </div>
     </div>
-    <div class="ui teal submit button">{{_ 'Create'}}</div>
+    <input type="submit" class="ui teal submit button" value="{{_ 'Create'}}">
     <button class="ui button" dispatch="CLOSE_NEW_APP_FORM">{{_ 'Cancel'}}</button>
     <div class="ui error message"></div>
   </form>

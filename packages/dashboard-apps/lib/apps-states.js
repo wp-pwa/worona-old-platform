@@ -22,7 +22,7 @@ State.modify('app.id', (state = false) => {
   return state;
 });
 
-State.modify('apps.isNewAppFormOpen', (state = false) => {
+State.modify('apps.insertAppFormOpen', (state = false) => {
   switch (Action.type()) {
     case 'OPEN_NEW_APP_FORM':
       return true;

@@ -20,8 +20,8 @@ Package.onUse(function(api) {
   api.addFiles('lib/apps-states.js', 'client');
   api.addFiles('lib/apps-routes.js', 'client');
   api.addFiles('templates/apps.html', 'client');
-  api.addFiles('templates/new-app-form.html', 'client');
-  api.addFiles('templates/new-app-form.js', 'client');
+  api.addFiles('templates/insert-app-form.html', 'client');
+  api.addFiles('templates/insert-app-form.js', 'client');
   api.addFiles('templates/app-card.html', 'client');
   api.addFiles('templates/app-menu-item.html', 'client');
   api.addFiles('i18n/en.i18n.json', ['client', 'server']);
