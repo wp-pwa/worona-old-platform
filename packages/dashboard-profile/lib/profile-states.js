@@ -1,11 +1,19 @@
-let handle = Meteor.subscribe('profile');
-
-State.modify('profile.isReady', (state = false) => {
-  return !!handle && handle.ready();
+State.modify('profile.isReady', (state) => {
+  if (Meteor.userId()) {
+    let handle = Meteor.subscribe('profile');
+    return !!handle && handle.ready();
+  } else {
+    return false;
+  }
 });
 
-State.modify('profile', (state = {}) => {
-  return Meteor.users.findOne(Meteor.userId());
+State.modify('profile', (state) => {
+  if (State.get('profile.isReady')) {
+    let user = Meteor.users.findOne(Meteor.userId());
+    return user.profile;
+  } else {
+    return {};
+  }
 });
 
 State.modify('menu.general.items', (state = []) => {

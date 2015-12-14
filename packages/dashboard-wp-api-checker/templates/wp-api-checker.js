@@ -8,7 +8,7 @@ Template.wpApiChecker_Failed.events({
     let doc = { settings: { general: { url } } };
     let valid = changeUrlContext.validateOne(doc, 'settings.general.url');
     if (valid) {
-      Dispatch('UPDATE_APP_SUCCEDD', { doc });
+      Dispatch('UPDATE_APP_SUCCEED', { doc });
     } else {
       Dispatch('UPDATE_APP_FAILED', { context: changeUrlContext });
     }

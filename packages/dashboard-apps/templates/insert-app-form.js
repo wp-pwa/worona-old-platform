@@ -6,12 +6,12 @@ Template.insertAppForm.events({
     let doc = { settings: { general: {} }, production: { general: {} } };
     doc.settings.general.url = doc.production.general.url = url;
     doc.name = doc.settings.general.title = doc.production.general.title = name;
-    let contextInsertApp = Schema.Apps.namedContext('insertApp');
     Schema.Apps.clean(doc);
-    let isValid = contextInsertApp.validate(doc);
+    let context = Schema.Apps.namedContext('insertApp');
+    let isValid = context.validate(doc);
     if (isValid)
-      Dispatch('INSERT_APP_SUCCEED');
+      Dispatch('INSERT_APP_SUCCEED', { doc });
     else
-      Dispatch('INSERT_APP_FAILED');
+      Dispatch('INSERT_APP_FAILED', { context });
   }
 });

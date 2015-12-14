@@ -1,5 +1,5 @@
 <template name="insertAppForm">
-  <form class="ui form">
+  <form class="ui {{#unless insertApp.isValid}}error{{/unless}} form">
     <div class="two fields">
       <div class="field">
         <label>{{_ 'App_Name'}}</label>
@@ -14,7 +14,11 @@
     </div>
     <input type="submit" class="ui teal submit button" value="{{_ 'Create'}}">
     <button class="ui button" dispatch="CLOSE_NEW_APP_FORM">{{_ 'Cancel'}}</button>
-    <div class="ui error message"></div>
+    <div class="ui error message">
+      {{#each insertApp.invalidKeys}}
+        {{name}}
+      {{/each}}
+    </div>
   </form>
   <div class="ui divider"></div>
 </template>

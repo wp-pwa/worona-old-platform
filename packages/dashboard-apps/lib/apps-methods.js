@@ -2,6 +2,7 @@ SimpleSchema.debug = 1;
 
 Meteor.methods({
   insertApp(doc) {
+    check(doc, Schema.Apps);
     Apps.insert(doc);
   },
 

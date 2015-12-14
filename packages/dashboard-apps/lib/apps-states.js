@@ -22,7 +22,24 @@ State.modify('app.id', (state = false) => {
   return state;
 });
 
-State.modify('apps.insertAppFormOpen', (state = false) => {
+State.modify('insertApp', (state = { isValid: true }) => {
+  switch (Action.type()) {
+    case 'INSERT_APP_FAILED':
+      let obj = {};
+      _.each(_.allKeys(Action.context), key => {
+        if (Match.test(Action.context[key], Function))
+          obj[key] = Action.context[key].bind(Action.context);
+        // else
+        //   obj[key] = Action.context[key];
+      });
+      let invalidKeys = Action.context.
+      return obj;
+    default:
+      return state;
+  }
+});
+
+State.modify('insertApp.isOpen', (state = false) => {
   switch (Action.type()) {
     case 'OPEN_NEW_APP_FORM':
       return true;
