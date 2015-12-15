@@ -1,7 +1,7 @@
 <template name="insertAppForm">
-  <form class="ui {{#unless insertApp.isValid}}error{{/unless}} form">
+  <form class="ui {{#unless insertApp.form.isValid}}error{{/unless}} form">
     <div class="two fields">
-      <div class="field">
+      <div class="field {{#if insertApp.form.keyIsInvalid 'name'}}error{{/if}}">
         <label>{{_ 'App_Name'}}</label>
         <input name="name" placeholder="{{_ 'Your_Blog'}}" type="text">
       </div>
@@ -15,8 +15,8 @@
     <input type="submit" class="ui teal submit button" value="{{_ 'Create'}}">
     <button class="ui button" dispatch="CLOSE_NEW_APP_FORM">{{_ 'Cancel'}}</button>
     <div class="ui error message">
-      {{#each insertApp.invalidKeys}}
-        {{name}}
+      {{#each insertApp.form.invalidKeys}}
+        <p>{{insertApp.form.keyErrorMessage name}}</p>
       {{/each}}
     </div>
   </form>

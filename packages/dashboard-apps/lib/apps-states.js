@@ -22,18 +22,10 @@ State.modify('app.id', (state = false) => {
   return state;
 });
 
-State.modify('insertApp', (state = { isValid: true }) => {
+State.modify('insertApp.form', (state = { isValid: true }) => {
   switch (Action.type()) {
     case 'INSERT_APP_FAILED':
-      let obj = {};
-      _.each(_.allKeys(Action.context), key => {
-        if (Match.test(Action.context[key], Function))
-          obj[key] = Action.context[key].bind(Action.context);
-        // else
-        //   obj[key] = Action.context[key];
-      });
-      let invalidKeys = Action.context.
-      return obj;
+      return Action.context;
     default:
       return state;
   }
