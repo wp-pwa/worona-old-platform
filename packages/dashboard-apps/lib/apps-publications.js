@@ -1,5 +1,6 @@
 Meteor.publish('apps-tester', function() {
-  if (!this.userId) return this.ready();
+  if (!this.userId)
+    return this.ready();
   else
     return Apps.find({ userId: this.userId });
 });

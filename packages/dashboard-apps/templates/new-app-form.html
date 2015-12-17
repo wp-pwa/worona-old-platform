@@ -1,24 +1,24 @@
 <template name="newAppForm">
   {{#with app}}
-    <form class="ui form" dispatch="NEW_APP_CREATED">
+    <form class="ui form">
       <div class="two fields">
-        <div class="field">
+        <div class="field {{#if hasValidationError 'name'}}error{{/if}}">
           <label>{{_ 'App_Name'}}</label>
           <input name="name" placeholder="{{_ 'Your_Blog'}}" type="text">
-          {{#if hasValidationError "name"}}
+          {{#if hasValidationError 'name'}}
             <div class="ui pointing red basic label">
-              {{getValidationError "name"}}
+              {{getValidationError 'name'}}
             </div>
           {{/if}}
         </div>
       </div>
       <div class="two fields">
-        <div class="field">
+        <div class="field {{#if hasValidationError 'url'}}error{{/if}}">
           <label>{{_ 'WordPress_URL'}}</label>
           <input name="url" placeholder="{{_ 'your_blog_url'}}" type="text">
-          {{#if hasValidationError "settings.general.url"}}
+          {{#if hasValidationError 'url'}}
             <div class="ui pointing red basic label">
-              {{getValidationError "settings.general.url"}}
+              {{getValidationError 'url'}}
             </div>
           {{/if}}
         </div>

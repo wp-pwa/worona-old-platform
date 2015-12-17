@@ -16,7 +16,8 @@ Package.onUse(function (api) {
     'worona:dashboard-i18n@1.0.0',
     'jagi:astronomy@1.2.6',
     'jagi:astronomy-timestamp-behavior@1.1.0',
-    'jagi:astronomy-validators@1.1.2'
+    'jagi:astronomy-validators@1.1.2',
+    'ongoworks:security@1.3.0'
   ];
 
   // Imply them so they are accesible anywhere in the dashboard.

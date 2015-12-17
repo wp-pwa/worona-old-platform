@@ -7,7 +7,7 @@ let checkWpApi = function(url) {
       setTimeout(() => {
         Dispatch('WP_API_CHECK_SUCCEED', { data })
         .then('SHOW_GENERAL_SETTINGS', {
-          params: { appId: State.get('app.id') }
+          params: { appId: State.get('app._id') }
         });
       }, 1000);
     })
@@ -24,7 +24,8 @@ AfterAction(() => {
       // Use tracker to wait until App is set. It can be delayed because
       // if the page is accessed directly, Apps subscription may not be ready.
       Tracker.autorun(c => {
-        let url = State.get('app.url');
+        debugger;
+        let url = State.get('app.settings.general.url');
         if (url) {
           checkWpApi(url);
           c.stop();

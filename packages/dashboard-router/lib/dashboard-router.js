@@ -32,7 +32,7 @@ FlowRouter.onRouteRegister(function(route) {
   // Dispatch the action if it is not dispatched.
   FlowRouter._routesMap[name]._action = () => {
     if (!Dispatch.isDispatching()) {
-      Dispatch(type, { params: FlowRouter.current().params });
+      Dispatch(type, { params: FlowRouter.current().params || {} });
     }
   };
 

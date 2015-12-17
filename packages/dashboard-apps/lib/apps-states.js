@@ -7,23 +7,16 @@ State.modify('apps.items', (state = []) => {
   return Apps.find({}, { sort: { modifiedAt: -1 } });
 });
 
-State.modify('app.id', (state = false) => {
-  if ((Action.type().startsWith('SHOW_') === true)) {
-    if ((Action.params) && (Action.params.appId))
-      return Action.params.appId;
-    else
-      return false;
-  }
-  return state;
-});
-
 State.modify('app', (state = {}) => {
-  let appId = State.get('app.id');
-  switch (Action.type()) {
-    case 'OPEN_NEW_APP_FORM':
-      return new App();
-    default:
-      return appId ? Apps.findOne(appId) : state;
+  if ((Action.type().startsWith('SHOW_'))  && (Action.params.appId)) {
+    return Apps.findOne(Action.params.appId);
+  } else {
+    switch (Action.type()) {
+      case 'OPEN_NEW_APP_FORM':
+        return new App();
+      default:
+        return state;
+    }
   }
 });
 

@@ -7,19 +7,21 @@
 </template>
 
 <template name="wpApiChecker_Checking">
-  <div class="ui hidden divider"></div>
-  <div class="ui one column stackable center aligned grid container">
-      <div class="ui very padded compact segment">
-        <div class="ui header">
-          {{#if name}}
-            {{_ 'Checking_connection' name=name}}
-          {{else}}
-            Waiting...
-          {{/if}}
+  {{#with app}}
+    <div class="ui hidden divider"></div>
+    <div class="ui one column stackable center aligned grid container">
+        <div class="ui very padded compact segment">
+          <div class="ui header">
+            {{#if name}}
+              {{_ 'Checking_connection'}} {{name}}
+            {{else}}
+              Waiting...
+            {{/if}}
+          </div>
+          {{> wpApiChecker_Loading}}
         </div>
-        {{> wpApiChecker_Loading}}
-      </div>
-  </div>
+    </div>
+  {{/with}}
 </template>
 
 <template name="wpApiChecker_Loading">

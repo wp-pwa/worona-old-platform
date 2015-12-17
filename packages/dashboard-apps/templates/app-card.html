@@ -1,16 +1,16 @@
 <template name="apps_appCard">
   <div class="card">
       <div class="content">
-        <a class="header" href="#" dispatch="SHOW_APP" data-id={{_id}}>
-          {{settingsTester.general.name}}
+        <a class="header" href="{{composeUrl path='app' appId=_id}}">
+          {{name}}
         </a>
         <div class="meta">
           <strong>{{_ 'Url'}}:</strong>
-          {{settingsTester.general.url}}
+          {{settings.general.url}}
         </div>
         <div class="meta">
           <strong>{{_ 'Modified'}}:</strong>
-          {{moFromNow modifiedAt}}
+          {{moFromNow updatedAt}}
         </div>
       </div>
   </div>

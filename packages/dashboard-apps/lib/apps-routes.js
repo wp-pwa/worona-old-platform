@@ -4,6 +4,12 @@ FlowRouter.route('/apps', {
   layout: 'generalLayout'
 });
 
+FlowRouter.route('/app/:appId', {
+  name: 'app',
+  type: 'SHOW_APP',
+  layout: 'appLayout'
+});
+
 FlowRouter.triggers.enter([
   (context, redirect) => {
     if (context.path === '/') {
