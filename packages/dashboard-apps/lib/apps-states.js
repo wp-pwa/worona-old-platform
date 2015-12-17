@@ -22,7 +22,7 @@ State.modify('app.id', (state = false) => {
   return state;
 });
 
-State.modify('insertApp.form', (state = { isValid: true }) => {
+State.modify('insertApp.form', (state = { isValid: true, keyIsInvalid: () => {} }) => {
   switch (Action.type()) {
     case 'INSERT_APP_FAILED':
       return Action.context;

@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="two fields">
-      <div class="field">
+      <div class="field {{#if insertApp.form.keyIsInvalid 'settings.general.url'}}error{{/if}}">
         <label>{{_ 'WordPress_URL'}}</label>
         <input name="url" placeholder="{{_ 'your_blog_url'}}" type="text">
       </div>
