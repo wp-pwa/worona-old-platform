@@ -48,6 +48,7 @@ App = Astro.Class({
     url: {
       type: 'string',
       transient: true,
+      optional: true,
       validator: [
         Validators.url(null, 'It has to be a valid url')
       ]

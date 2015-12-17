@@ -116,7 +116,7 @@
         2. Check if the url is correct
       </h3>
       <div class="content">
-        <p>Your current url is: <strong>{{app.url}}</strong></p>
+        <p>Your current url is: <strong>{{app.settings.general.url}}</strong></p>
         <div class="ui relaxed list">
           <div class="item">
             <i class="large info circle top aligned icon"></i>
@@ -155,7 +155,9 @@
         <p>If you think the url was wrong and correct it and try again</p>
         <form class="ui change-url form">
           <div class="two fields">
-            <input class="field" type="url" placeholder="" name="url" value="{{app.url}}">
+            <div class="field">
+              <input type="url" placeholder="" name="url" value="{{app.settings.general.url}}">
+            </div>
           </div>
           <input class="ui teal submit button" type="submit" value="{{_ 'Try_again'}}">
           {{> wpApiChecker_Loading}}

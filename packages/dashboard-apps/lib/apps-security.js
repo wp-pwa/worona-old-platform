@@ -8,5 +8,4 @@ Security.defineMethod("ifIsOwner", {
 
 Apps.permit(['insert']).ifLoggedIn().apply();
 
-Apps.permit(['update'])
-  .ifIsOwner().exceptProps(['userId', 'createdAt']).apply();
+Apps.permit(['update']).apply();
