@@ -1,6 +1,6 @@
 <template name="login">
   <div class="ui one column stackable center aligned grid container" style="margin-top: 40px;">
-    <form class="ui large {{#if accounts.loggingIn}}loading{{/if}} form" dispatch="LOGIN_FORM_SENT">
+    <form class="ui large {{#if user.loggingIn}}loading{{/if}} form" dispatch="LOGIN_FORM_SENT">
       <div class="ui very padded segment">
         <h3 class="ui grey header">
           {{_ 'Login_or_Create_account'}}

@@ -1,22 +1,9 @@
-var handle = Meteor.subscribe('apps-tester');
-State.modify('apps.isReady', (state = false) => {
-  return (!!handle && handle.ready());
-});
-
-State.modify('apps.items', (state = []) => {
-  return Apps.find({}, { sort: { modifiedAt: -1 } });
-});
-
 State.modify('app', (state = {}) => {
-  if ((Action.type().startsWith('SHOW_'))  && (Action.params.appId)) {
-    return Apps.findOne(Action.params.appId);
-  } else {
-    switch (Action.type()) {
-      case 'OPEN_NEW_APP_FORM':
-        return new App();
-      default:
-        return state;
-    }
+  switch (Action.type()) {
+    case 'OPEN_NEW_APP_FORM':
+      return new App();
+    default:
+      return state;
   }
 });
 
@@ -26,8 +13,6 @@ State.modify('apps.isNewAppFormOpen', (state = false) => {
       return true;
     case 'CLOSE_NEW_APP_FORM':
       return false;
-    case 'NEW_APP_CREATED':
-      return State.get('app.hasValidationErrors');
     default:
       return state;
   }

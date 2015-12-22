@@ -10,6 +10,12 @@ FlowRouter.route('/create-your-first-app', {
   layout: 'fullLayout'
 });
 
+FlowRouter.route('/profile', {
+  name: 'profile',
+  type: 'SHOW_PROFILE',
+  layout: 'generalLayout'
+});
+
 FlowRouter.triggers.enter([
   (context, redirect) => {
     if (!Meteor.userId()) {

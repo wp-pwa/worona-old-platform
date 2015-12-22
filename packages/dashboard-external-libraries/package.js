@@ -17,7 +17,8 @@ Package.onUse(function (api) {
     'jagi:astronomy@1.2.6',
     'jagi:astronomy-timestamp-behavior@1.1.0',
     'jagi:astronomy-validators@1.1.2',
-    'ongoworks:security@1.3.0'
+    'ongoworks:security@1.3.0',
+    'meteorflux:blaze-utils@1.0.0'
   ];
 
   // Imply them so they are accesible anywhere in the dashboard.

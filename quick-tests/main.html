@@ -1,8 +1,7 @@
 <body>
-  <a href='/profile'>profile</a>
-  <a href='/'>home</a>
-  <a href='/app/1234/general-settings'>general-settings</a>
-  <a href='/app/5678/general-settings'>general-settings 2</a>
-  <a href='/app/1234/other-thing'>other-thing</a>
-  <a href='/app/5678/other-thing'>other-thing 2</a>
+  {{> hello}}
 </body>
+
+<template name="hello">
+  Post title is {{post.title}} and {{hola}}.
+</template>

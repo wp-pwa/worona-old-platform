@@ -11,7 +11,6 @@ Package.onUse(function(api) {
 
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-external-libraries@1.0.0');
-  api.use('worona:dashboard-apps@1.0.0');
 
   api.addFiles('lib/settings-collections.js', ['client', 'server']);
   api.addFiles('lib/settings-publications.js', 'server');

@@ -4,8 +4,8 @@
       <div class="twelve wide column">
         <div class="ui grey header">
           {{_ 'Welcome'}}
-          {{#if profile.isReady}}
-            {{profile.firstName}}!
+          {{#if user.isReady}}
+            {{user.profile.firstName}}!
           {{else}}
             ...
           {{/if}}

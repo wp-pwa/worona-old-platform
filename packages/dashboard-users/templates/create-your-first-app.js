@@ -50,7 +50,7 @@ Template.createYourFirstApp.events({
     }
 
     Dispatch('PROFILE_CHANGED', { firstName })
-      .then('NEW_APP_CREATED', { name, url })
+      .then('APP_CREATION_SUCCEED', { name, url })
       .then('SHOW_APPS');
   }
 });

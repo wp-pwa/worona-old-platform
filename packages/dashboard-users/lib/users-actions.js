@@ -14,6 +14,12 @@ Register(() => {
         }
       });
       break;
+    case 'PROFILE_CHANGED':
+      var user = Meteor.users.findOne(Meteor.userId());
+      user.profile.set(Action.payload());
+      if (user.validate())
+        user.save();
+      break;
   }
 });
 

@@ -7,9 +7,9 @@ UserProfile = Astro.Class({
       type: 'string',
       validator: Validators.string()
     },
-    secondName: {
-      type: 'string',
-      optional: true
+    apps: {
+      type: 'array',
+      default: () => []
     }
   }
 });

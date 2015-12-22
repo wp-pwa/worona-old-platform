@@ -9,6 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
 
+  api.use('random');
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-external-libraries@1.0.0');
 
@@ -21,7 +22,7 @@ Package.onUse(function(api) {
   api.addFiles('lib/apps-routes.js', 'client');
   api.addFiles('lib/apps-states.js', 'client');
   api.addFiles('lib/apps-actions.js', 'client');
-  
+
   api.addFiles('templates/apps.html', 'client');
   api.addFiles('templates/new-app-form.html', 'client');
   api.addFiles('templates/new-app-form.js', 'client');
