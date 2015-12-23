@@ -18,6 +18,22 @@ State.modify('apps.isNewAppFormOpen', (state = false) => {
   }
 });
 
+State.modify('apps.items', (state = []) => {
+  let arr = [];
+  _.each(Settings.find().fetch(), settings => {
+    let arrIds = _.pluck(arr, 'appId');
+    let i = _.indexOf(arrIds, settings.appId);
+    if (i === -1) {
+      arr.push({_id: settings.appId});
+      i = arr.length - 1;
+    }
+    arr[i][settings.extension] = _.omit(settings.raw(), [
+      '_id', 'appId', 'extension'
+    ]);
+  });
+  return arr;
+});
+
 State.modify('menu.general.items', (state = []) => {
   state.push({
     category: 'dashboard',

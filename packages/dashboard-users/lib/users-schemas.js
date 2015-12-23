@@ -6,10 +6,6 @@ UserProfile = Astro.Class({
     firstName: {
       type: 'string',
       validator: Validators.string()
-    },
-    apps: {
-      type: 'array',
-      default: () => []
     }
   }
 });
@@ -27,6 +23,10 @@ User = Astro.Class({
       type: 'object',
       nested: 'UserProfile',
       default: () => { return {}; }
+    },
+    apps: {
+      type: 'array',
+      default: () => []
     }
   }
 });

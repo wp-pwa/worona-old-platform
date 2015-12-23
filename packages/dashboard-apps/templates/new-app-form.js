@@ -9,7 +9,7 @@ Template.newAppForm.events({
     event.preventDefault();
     let app = this;
     if (app.validate())
-      Dispatch('APP_CREATION_SUCCEED', { app });
+      Dispatch('APP_CREATION_SENT', { app });
     else
       Dispatch('APP_CREATION_FAILED', { app });
   }

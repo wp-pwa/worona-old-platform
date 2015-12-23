@@ -49,8 +49,20 @@ Template.createYourFirstApp.events({
       name = 'Worona Blog (example)';
     }
 
-    Dispatch('PROFILE_CHANGED', { firstName })
-      .then('APP_CREATION_SUCCEED', { name, url })
-      .then('SHOW_APPS');
+    let app = new App({ name, url });
+    let user = Meteor.users.findOne(Meteor.userId());
+    user.profile.set({ firstName });
+
+    if (!user.validate()) {
+      Dispatch('PROFILE_CHANGE_FAILED', { user });
+    } else if (!app.validate()) {
+      Dispatch('APP_CREATION_FAILED', { app });
+    } else {
+      Dispatch('PROFILE_CHANGE_SENT', { user })
+        .then('APP_CREATION_SENT', { app })
+        .then('SHOW_APPS');
+    }
+
+
   }
 });

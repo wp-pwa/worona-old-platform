@@ -1,10 +1,12 @@
 Register(() => {
+  let user;
   switch (Action.type()) {
     case 'LOGIN_FORM_SENT':
       let email = Action.event.currentTarget.email.value;
       let password = Action.event.currentTarget.password.value;
       loginSent({ email, password });
       break;
+
     case 'LOGOUT':
       Meteor.logout( function(error) {
         if (!error) {
@@ -14,11 +16,29 @@ Register(() => {
         }
       });
       break;
-    case 'PROFILE_CHANGED':
-      var user = Meteor.users.findOne(Meteor.userId());
-      user.profile.set(Action.payload());
+
+    case 'PROFILE_CHANGE_SENT':
+      user = Action.user;
       if (user.validate())
-        user.save();
+        user.save((error, _id) => {
+          if (error)
+            Dispatch('PROFILE_CHANGE_FAILED', { error });
+          else
+            Dispatch('PROFILE_CHANGE_SUCCEED', { user });
+        });
+      break;
+
+    case 'APP_CREATION_SENT':
+      let app = Action.app;
+      user = Meteor.users.findOne(Meteor.userId());
+      user.push('apps', Action.app._id);
+      if (user.validate())
+        user.save((error, _id) => {
+          if (error)
+            Dispatch('APP_CREATION_FAILED', { error });
+          else
+            Dispatch('APP_CREATION_SUCCEED', { app });
+        });
       break;
   }
 });

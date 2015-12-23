@@ -15,7 +15,8 @@ Package.onUse(function(api) {
   api.addFiles('package-tap.i18n', ['client', 'server']);
 
   api.addFiles('lib/users-publications.js', 'server');
-  api.addFiles('lib/users-collections.js', ['client', 'server']);
+  api.addFiles('lib/users-schemas.js', ['client', 'server']);
+  api.addFiles('lib/users-security.js', 'server');
   api.addFiles('lib/users-actions.js', 'client');
   api.addFiles('lib/users-routes.js', 'client');
   api.addFiles('lib/users-states.js', 'client');

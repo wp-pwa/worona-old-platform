@@ -12,12 +12,17 @@ Package.onUse(function(api) {
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-external-libraries@1.0.0');
 
-  api.addFiles('lib/settings-collections.js', ['client', 'server']);
+  api.addFiles('lib/settings-validators.js', ['client', 'server']);
+  api.addFiles('lib/settings-schemas.js', ['client', 'server']);
+  api.addFiles('lib/settings-security.js', 'server');
   api.addFiles('lib/settings-publications.js', 'server');
   api.addFiles('lib/settings-methods.js', ['client', 'server']);
   api.addFiles('lib/settings-actions.js', 'client');
   api.addFiles('lib/settings-states.js', 'client');
   api.addFiles('lib/settings-routes.js', 'client');
+
+  api.export('SettingsSchema');
+  api.export('Settings');
 });
 
 Package.onTest(function(api) {

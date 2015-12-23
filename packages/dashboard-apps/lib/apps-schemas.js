@@ -15,7 +15,7 @@ App = Astro.Class({
           'Enter a valid url. Start with http:// or https://')
       ]
     },
-    id: {
+    _id: {
       type: 'string',
       default: () => Random.id(),
       immutable: true,

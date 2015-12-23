@@ -12,16 +12,13 @@ Package.onUse(function(api) {
   api.use('random');
   api.use('worona:external-libraries@1.0.0');
   api.use('worona:dashboard-external-libraries@1.0.0');
+  api.use('worona:dashboard-settings@1.0.0');
 
   api.addFiles('package-tap.i18n', ['client', 'server']);
 
-  api.addFiles('lib/apps-validators.js', ['client', 'server']);
-  api.addFiles('lib/apps-collections.js', ['client', 'server']);
-  api.addFiles('lib/apps-security.js', 'server');
-  api.addFiles('lib/apps-publications.js', 'server');
+  api.addFiles('lib/apps-schemas.js', ['client', 'server']);
   api.addFiles('lib/apps-routes.js', 'client');
   api.addFiles('lib/apps-states.js', 'client');
-  api.addFiles('lib/apps-actions.js', 'client');
 
   api.addFiles('templates/apps.html', 'client');
   api.addFiles('templates/new-app-form.html', 'client');
